@@ -1,0 +1,69 @@
+%input{:type => "text", :placeholder => "Search"}
+%input{:type => "text", :placeholder => "Where"}
+%input{:type => "text", :placeholder => "Category"}
+
+%ul
+	%li= link_to @baby.name, category_path(@baby)
+	- @baby.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@baby, subcategory)
+
+	%li= link_to @book.name, category_path(@book)
+	- @book.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@book, subcategory)
+
+	%li= link_to @camera.name, category_path(@camera)
+	- @camera.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@camera, subcategory)
+
+	%li= link_to @costume.name, category_path(@costume)
+	- @costume.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@costume, subcategory)
+
+	%li= link_to @electronic.name, category_path(@electronic)
+	- @electronic.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@electronic, subcategory)
+
+	%li= link_to @event.name, category_path(@event)
+	- @event.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@event, subcategory)
+
+	%li= link_to @media.name, category_path(@media)
+	- @media.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@media, subcategory)
+
+	%li= link_to @medical.name, category_path(@medical)
+	- @medical.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@medical, subcategory)
+
+	%li= link_to @musical.name, category_path(@musical)
+	- @musical.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@musical, subcategory)
+
+	%li= link_to @realestate.name, category_path(@realestate)
+	- @realestate.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@realestate, subcategory)
+
+	%li= link_to @service.name, category_path(@service)
+	- @service.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@service, subcategory)
+
+	%li= link_to @sport.name, category_path(@sport)
+	- @sport.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@sport, subcategory)
+
+	%li= link_to @vehicle.name, category_path(@vehicle)
+	- @vehicle.subcategories.each do |subcategory|
+		%ul
+			%li= link_to subcategory.name, category_subcategory_path(@vehicle, subcategory)
