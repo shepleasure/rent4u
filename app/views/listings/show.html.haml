@@ -1,0 +1,15 @@
+= link_to "Home", root_path
+
+
+%h1= @listing.title
+%p= @listing.description
+%p= @listing.city
+%p= @listing.state
+%p= @listing.locality
+%p 
+posted 
+=time_ago_in_words(@listing.created_at)
+ago
+- if @listing.user = current_user
+	= link_to 'Edit', edit_listing_path, class: "btn btn-default"
+	= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"

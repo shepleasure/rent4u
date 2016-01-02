@@ -1,4 +1,20 @@
+= link_to "Home", root_path
+>
+= link_to @category.name, @category
+>
+= @subcategory.name
+
 %ul
-	%li post1
-	%li post2
-	%li post3
+- if @listings.present?
+	- @listings.each do |listing|
+		%li
+			%span
+				= listing.created_at.strftime('%B %d, %Y')
+			= link_to listing.title, listing
+			( 
+			= listing.city
+			,
+			= listing.state
+			)
+- else 
+	%p No Items found
