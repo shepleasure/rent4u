@@ -1,7 +1,13 @@
 class Listing < ActiveRecord::Base
+	
+	has_many   :attachments
+	accepts_nested_attributes_for :attachments, :reject_if => proc { |attributes| attributes['image'].blank? }, :allow_destroy => true
+
+	
 	belongs_to :category
 	belongs_to :subcategory
 	belongs_to :user
+	
 	validates_presence_of :user_id
 	validates_presence_of :title
 	validates_presence_of :description

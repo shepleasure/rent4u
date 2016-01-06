@@ -2,6 +2,10 @@
 
 
 %h1= @listing.title
+%ul
+- @listing.attachments.each do |attachment|
+	%li= image_tag attachment.image.large.url
+
 %p= @listing.description
 %p= @listing.city
 %p= @listing.state

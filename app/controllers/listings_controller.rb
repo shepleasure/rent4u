@@ -10,8 +10,8 @@ class ListingsController < ApplicationController
 
 	def create
 		@listing = Listing.new(listing_params)
+		@listing.user = current_user
 		if @listing.save
-			@listing.user = current_user
 		    redirect_to @listing
 		else
 			flash[:alert] = @listing.errors.full_messages.to_sentence
@@ -46,7 +46,7 @@ class ListingsController < ApplicationController
 	private
 
 	def listing_params
-		params.require(:listing).permit(:title, :description, :city, :state, :locality, :category_id, :subcategory_id)
+		params.require(:listing).permit(:title, :description, :city, :state, :locality, :category_id, :subcategory_id, attachments_attributes: [:id, :image, :_destroy])
 	end
 
 	def find_listing
