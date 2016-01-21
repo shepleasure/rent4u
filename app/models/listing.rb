@@ -8,6 +8,9 @@ class Listing < ActiveRecord::Base
 	validates_presence_of :city
 	validates_presence_of :state
 
+	has_many :listing_attachments
+    accepts_nested_attributes_for :listing_attachments
+
 	geocoded_by :full_address
 	after_validation :geocode
 

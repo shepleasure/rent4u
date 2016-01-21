@@ -13,6 +13,8 @@ gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'geocoder', '~> 1.2', '>= 1.2.14'
 gem 'devise', '~> 3.5', '>= 3.5.3'
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.3', '>= 4.3.6'
 
 group :development, :test do
   gem 'byebug'

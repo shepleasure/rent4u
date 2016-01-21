@@ -4,6 +4,10 @@
 	.form-group
 		= f.input :title, input_html: { class: 'form-control' }
 
+	= f.fields_for :listing_attachments do |p|
+		= p.label :avatar
+		= p.file_field :avatar, :multiple => true, name: "listing_attachments[avatar][]"
+
 	.form-group
 		%label Category
 		= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category" }, input_html: { class: "dropdown-toggle" }

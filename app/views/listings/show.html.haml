@@ -2,6 +2,8 @@
 
 
 %h1= @listing.title
+- @listing_attachments.each do |listing_attachment|
+	= image_tag listing_attachment.avatar
 %p= @listing.description
 %p= @listing.city
 %p= @listing.state

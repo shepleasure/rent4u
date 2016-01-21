@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :listing_attachments
   devise_for :users
   root 'categories#index'
 
