@@ -23,5 +23,5 @@ vehicle_category = Category.where(name: 'Vehicles').first_or_create(name: 'Vehic
 Subcategory.where(name: 'Toys', category_id: baby_category.id).first_or_create(name: 'Toys', category_id: baby_category.id)
 Subcategory.where(name: 'Competitive Exams', category_id: book_category.id).first_or_create(name: 'Competitive Exams', category_id: book_category.id)
 Subcategory.where(name: 'Camera', category_id: camera_category.id).first_or_create(name: 'Camera', category_id: camera_category.id)
-Vehicles
+
 
