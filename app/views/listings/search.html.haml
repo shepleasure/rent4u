@@ -8,6 +8,7 @@
 		%li
 			%span
 				= listing.created_at.strftime('%B %d, %Y')
+			= image_tag listing.listing_attachments.first.avatar.thumb.url
 			= link_to listing.title, listing
 			( 
 			= listing.city
