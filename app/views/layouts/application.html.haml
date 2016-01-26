@@ -7,7 +7,6 @@
 		= csrf_meta_tags
 
 	%body
-
 		%nav.navbar.navbar-default
 			.container
 				.navbar-brand= link_to "Rent4U", root_path
@@ -19,7 +18,7 @@
 					- else
 						%li= link_to "Sign In", new_user_session_path
 						%li= link_to "Sign Up", new_user_registration_path
-					%li= link_to 'Post an Item', new_listing_path
+					%li= link_to 'Post an Item', new_listing_path, 'data-no-turbolink' => true
 		.container
 			- flash.each do |name, msg|
 				= content_tag :div, msg, class: "alert alert-info"
