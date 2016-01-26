@@ -4,9 +4,12 @@
 	.form-group
 		= f.input :title, input_html: { class: 'form-control' }
 
-	= f.fields_for :listing_attachments do |p|
-		= p.label :avatar
-		= p.file_field :avatar, :multiple => true, name: "listing_attachments[avatar][]"
+
+
+	= f.simple_fields_for :listing_attachments do |avatar|
+		= render 'listing_attachment_fields', f: avatar
+	.links
+		= link_to_add_association 'add a photo', f, :listing_attachments
 
 	.form-group
 		%label Category

@@ -15,6 +15,7 @@ gem 'geocoder', '~> 1.2', '>= 1.2.14'
 gem 'devise', '~> 3.5', '>= 3.5.3'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3', '>= 4.3.6'
+gem 'cocoon', '~> 1.2', '>= 1.2.6'
 
 group :development, :test do
   gem 'byebug'
