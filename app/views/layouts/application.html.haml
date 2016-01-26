@@ -1,34 +1,34 @@
 !!!5
 %html
-%head
-	%title Rent4u
-	= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-	= javascript_include_tag "application", "data-turbolinks-track" => true
-	= csrf_meta_tags
+	%head
+		%title Rent4u
+		= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+		= javascript_include_tag "application", "data-turbolinks-track" => true
+		= csrf_meta_tags
 
-%body
+	%body
 
-	%nav.navbar.navbar-default
+		%nav.navbar.navbar-default
+			.container
+				.navbar-brand= link_to "Rent4U", root_path
+				%ul.nav.navbar-nav.navbar-right
+					- if user_signed_in?
+						%li= link_to "My Items", mylistings_path
+						%li= link_to "My Account", edit_user_registration_path
+						%li= link_to "Sign Out", destroy_user_session_path, method: :delete
+					- else
+						%li= link_to "Sign In", new_user_session_path
+						%li= link_to "Sign Up", new_user_registration_path
+					%li= link_to 'Post an Item', new_listing_path
 		.container
-			.navbar-brand= link_to "Rent4U", root_path
-			%ul.nav.navbar-nav.navbar-right
-				- if user_signed_in?
-					%li= link_to "My Items", mylistings_path
-					%li= link_to "My Account", edit_user_registration_path
-					%li= link_to "Sign Out", destroy_user_session_path, method: :delete
-				- else
-					%li= link_to "Sign In", new_user_session_path
-					%li= link_to "Sign Up", new_user_registration_path
-				%li= link_to 'Post an Item', new_listing_path
-	.container
-		- flash.each do |name, msg|
-			= content_tag :div, msg, class: "alert alert-info"
+			- flash.each do |name, msg|
+				= content_tag :div, msg, class: "alert alert-info"
 
-		= yield
-		= link_to "Rent4U", root_path
-		%ul
-		%li= link_to "Help and FAQ", help_path
-		%li= link_to "Terms of Use", term_path
-		%li= link_to "Privacy Policy", privacy_path
-		%li= link_to "About Us" , about_path
-		%li= link_to "Contact Us", contact_path
+			= yield
+			= link_to "Rent4U", root_path
+			%ul
+			%li= link_to "Help and FAQ", help_path
+			%li= link_to "Terms of Use", term_path
+			%li= link_to "Privacy Policy", privacy_path
+			%li= link_to "About Us" , about_path
+			%li= link_to "Contact Us", contact_path
