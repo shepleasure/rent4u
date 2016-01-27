@@ -44,11 +44,11 @@ class ListingsController < ApplicationController
 	end
 
 	def search
-		@listings = Listing.search(params)
+		@listings = Listing.search(params).order("created_at DESC")
 	end
 
 	def mylistings
-		@listings = Listing.where(user: current_user)
+		@listings = Listing.where(user: current_user).order("created_at DESC")
 	end
 
 	private
