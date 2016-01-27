@@ -1,0 +1,14 @@
+= simple_form_for [@listing, @review] do |f|
+	.form-group
+		#star-rating
+
+	.form-group
+		= f.input :comment, input_html: { class: 'form-control' }
+
+	= f.button :submit, "Write a Review", class: "btn btn-primary"
+
+%script
+	$('#star-rating').raty({
+	path: '/assets/',
+	scoreName: 'review[rating]'
+	});

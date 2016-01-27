@@ -4,6 +4,8 @@
 %h1= @listing.title
 - @listing.listing_attachments.each do |listing_attachment|
 	= image_tag listing_attachment.avatar.large.url
+.star-rating{:data => {'score' => @avg_review}} 
+%em= "#{@reviews.length} reviews"
 %p= @listing.description
 %p= @listing.city
 %p= @listing.state
@@ -12,6 +14,27 @@
 posted 
 =time_ago_in_words(@listing.created_at)
 ago
+= link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default"
+
+- if @reviews.blank?
+	%h3 No reviews just yet, would you like to add the first!
+	= link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default"
+- else
+	- @reviews.each do |review|
+		.reviews
+			.star-rating{:data => {'score' => review.rating}} 
+			%p= review.comment
+
 - if @listing.user == current_user
 	= link_to 'Edit', edit_listing_path, class: "btn btn-default"
 	= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+
+%script
+	$('.star-rating').raty({
+	path: '/assets/',
+	readOnly: true,
+	score: function() {
+	return $(this).attr('data-score');
+	}
+	});
+
