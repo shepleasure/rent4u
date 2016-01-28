@@ -6,7 +6,6 @@ class Listing < ActiveRecord::Base
 	validates_presence_of :title
 	validates_presence_of :description
 	validates_presence_of :city
-	validates_presence_of :state
 	validates_presence_of :listing_attachments
 
 	has_many :listing_attachments, :dependent => :destroy
@@ -18,7 +17,7 @@ class Listing < ActiveRecord::Base
 	after_validation :geocode
 
 	def full_address
-		[city, state, locality].join(', ')
+		[city, locality].join(', ')
 	end
 
 	def self.search(params)

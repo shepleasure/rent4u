@@ -20,9 +20,12 @@
 			= link_to listing.title, listing
 			( 
 			= listing.city
-			,
-			= listing.state
-			)
+			- if listing.locality.blank?
+				)
+			- else 
+				,
+				= listing.locality
+				)
 - else 
 	%p No Items found
 	

@@ -22,12 +22,12 @@
 		= f.input :description, input_html: { class: 'form-control' }
 
 	.form-group
-		= f.input :city, input_html: { class: 'form-control' }
-
-	.form-group
-		= f.input :state, input_html: { class: 'form-control' }
+		= f.input :city, input_html: { class: 'form-control', id: 'city', autocomplete: 'off', data: {country: "in" } }
 
 	.form-group
 		= f.input :locality, input_html: { class: 'form-control' }
 
 	= f.button :submit, "Post an Item", class: "btn btn-primary"
+
+%script 
+	$('input#city').cityAutocomplete();
