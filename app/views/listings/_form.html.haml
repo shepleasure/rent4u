@@ -29,5 +29,8 @@
 
 	= f.button :submit, "Post an Item", class: "btn btn-primary"
 
+
+= javascript_include_tag "//maps.googleapis.com/maps/api/js?libraries=places&language=en"
+
 %script 
 	$('input#city').cityAutocomplete();
