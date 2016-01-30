@@ -54,7 +54,7 @@ class ListingsController < ApplicationController
 	private
 
 	def listing_params
-		params.require(:listing).permit(:title, :description, :city, :locality, :category_id, :subcategory_id, listing_attachments_attributes: [:id, :avatar, :avatar_cache, :_destroy])
+		params.require(:listing).permit(:title, :description, :city, :locality, :price, :time, :category_id, :subcategory_id, listing_attachments_attributes: [:id, :avatar, :avatar_cache, :_destroy])
 	end
 
 	def find_listing

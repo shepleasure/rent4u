@@ -27,6 +27,19 @@
 	.form-group
 		= f.input :locality, input_html: { class: 'form-control' }
 
+	.row
+		.col-xs-4.col-sm-3.col-md-2.col-lg-1	
+			.form-group
+				= f.input :price, input_html: { class: 'form-control' }
+		.col-xs-4.col-sm-3.col-md-2.col-lg-1
+			%br
+			%p per
+		.col-xs-4.col-sm-3.col-md-2.col-lg-1
+			%br
+			.form-group
+				= f.select :time, ['hour','day','week','month'], :selected => 'hour', input_html: { class: 'form-control' }
+
+
 	= f.button :submit, "Post an Item", class: "btn btn-primary"
 
 
@@ -39,7 +52,7 @@
 	$( "#automplete-1" ).autocomplete({
 	source: availableTutorials,
 	autoFocus:true,
-	minLength:2,
+	minLength:1,
 	delay:250,
 	});
 	});
