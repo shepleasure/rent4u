@@ -70,3 +70,39 @@
 	- @vehicle.subcategories.each do |subcategory|
 		%ul
 			%li= link_to subcategory.name, category_subcategory_path(@vehicle, subcategory)
+
+.jumbotron
+	%h3 Top Rated Items
+	- if @listings.present?
+		- @listings.each do |listing|
+			%li
+				%span
+					= listing.created_at.strftime('%B %d, %Y')
+				%br
+				= link_to image_tag(listing.listing_attachments.first.avatar.thumb.url), listing
+				.star-rating{:data => {'score' => listing.average_rating}} 
+				= link_to listing.title, listing
+				( 
+				= listing.city
+				- if listing.locality.blank?
+					)
+				- else 
+					,
+					= listing.locality
+					)
+				- if listing.price.blank?
+				-else
+					Rs. 
+					= listing.price 
+					per 
+					= listing.time
+	- else 
+		%p No Items found
+%script
+	$('.star-rating').raty({
+	path: '/assets/',
+	readOnly: true,
+	score: function() {
+	return $(this).attr('data-score');
+	}
+	});
