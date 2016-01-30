@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
 		@sport = @categories[11]
 		@vehicle = @categories[12]
 
-		@listings = Listing.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC")
+		@listings = Listing.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").limit(3)
 	end
 
 	def show
