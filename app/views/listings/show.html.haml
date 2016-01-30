@@ -9,10 +9,13 @@
 %p= @listing.description
 %p= @listing.city
 %p= @listing.locality
-Rs. 
-= @listing.price 
-per 
-= @listing.time
+- if @listing.price.blank?
+	%p Price not mentioned
+-else
+	Rs. 
+	= @listing.price 
+	per 
+	= @listing.time
 %p 
 posted 
 =time_ago_in_words(@listing.created_at)
