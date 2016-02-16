@@ -5,6 +5,16 @@
 = @subcategory.name
 
 %ul
+	%li 
+		= link_to "Popular", request.query_parameters.merge({:price => "popular"})
+	%li 
+		= link_to "High Price", request.query_parameters.merge({:price => "high"})
+	%li 
+		= link_to "Low Price", request.query_parameters.merge({:price => "low"})
+	%li 
+		= link_to "New", request.query_parameters.merge({:price => "new"})
+		
+%ul
 - if @listings.present?
 	- @listings.each do |listing|
 		%li

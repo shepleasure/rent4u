@@ -20,7 +20,16 @@ class CategoriesController < ApplicationController
 	end
 
 	def show
-		@listings = Listing.where(category_id: params[:id]).order("created_at DESC")
+		if params[:price].blank? || params[:price] == "popular"
+			@listings_def = Listing.where(category_id: params[:id])
+			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC")
+		elsif params[:price] == "high"
+			@listings = Listing.where(category_id: params[:id]).order("price DESC")	
+		elsif params[:price] == "low"
+			@listings = Listing.where(category_id: params[:id]).order("price ASC")
+		elsif params[:price] == "new"
+			@listings = Listing.where(category_id: params[:id]).order("created_at DESC")
+		end	
 		@category = Category.find(params[:id])
 	end
 end

@@ -21,6 +21,7 @@ class ListingsController < ApplicationController
 	end
 
 	def show
+		
 		@reviews = Review.where(listing_id: @listing.id).order("created_at DESC")
 
 		if @reviews.blank?
@@ -44,12 +45,31 @@ class ListingsController < ApplicationController
 	end
 
 	def search
-		@listings = Listing.search(params).order("created_at DESC")
+		if params[:price].blank? || params[:price] == "popular"
+			@listings_def = Listing.search(params)
+			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC")
+		elsif params[:price] == "high"
+			@listings = Listing.search(params).order("price DESC")	
+		elsif params[:price] == "low"
+			@listings = Listing.search(params).order("price ASC")
+		elsif params[:price] == "new"
+			@listings = Listing.search(params).order("created_at DESC")
+		end	
 	end
 
 	def mylistings
-		@listings = Listing.where(user: current_user).order("created_at DESC")
+		if params[:price].blank? || params[:price] == "popular"
+			@listings_def = Listing.where(user: current_user)
+			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC")
+		elsif params[:price] == "high"
+			@listings = Listing.where(user: current_user).order("price DESC")	
+		elsif params[:price] == "low"
+			@listings = Listing.where(user: current_user).order("price ASC")
+		elsif params[:price] == "new"
+			@listings = Listing.where(user: current_user).order("created_at DESC")
+		end	
 	end
+
 
 	private
 

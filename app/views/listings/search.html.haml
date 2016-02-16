@@ -1,5 +1,45 @@
 = link_to "Home", root_path
+>
 
+- case params[:category]
+- when '1'
+	Baby Accessories and Toys
+- when '2'
+	Books
+- when '3'
+	Camera and Accessories
+- when '4'
+	Costume and Accessories
+- when '5'
+	Electronics
+- when '6'
+	Event and Wedding Supplies
+- when '7'
+	Media and Gaming 
+- when '8'
+	Medical Supplies
+- when '9'
+	Musical Instruments
+- when '10'
+	Real Estate
+- when '11'
+	Services
+- when '12'
+	Sports, Fitness and Outdoor
+- when '13'
+	Vehicles
+- else
+	puts ''
+
+%ul
+	%li 
+		= link_to "Popular", request.query_parameters.merge({:price => "popular"})
+	%li 
+		= link_to "High Price", request.query_parameters.merge({:price => "high"})
+	%li 
+		= link_to "Low Price", request.query_parameters.merge({:price => "low"})
+	%li 
+		= link_to "New", request.query_parameters.merge({:price => "new"})
 
 
 %ul
