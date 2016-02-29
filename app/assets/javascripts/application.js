@@ -16,6 +16,5 @@
 //= require bootstrap-sprockets
 //= require cocoon
 //= require turbolinks
-//= require typeahead.bundle.min
 //= require listings
 //= require_tree .
