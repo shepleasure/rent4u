@@ -46,27 +46,27 @@ class ListingsController < ApplicationController
 
 	def search_main
 		if params[:price].blank? || params[:price] == "new"
-			@listings = Listing.search_main(params).order("created_at DESC")
+			@listings = Listing.search_main(params).order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
 		elsif params[:price] == "high"
-			@listings = Listing.search_main(params).order("price DESC")	
+			@listings = Listing.search_main(params).order("price DESC").paginate(:page => params[:page], :per_page => 3)	
 		elsif params[:price] == "low"
-			@listings = Listing.search_main(params).order("price ASC")
+			@listings = Listing.search_main(params).order("price ASC").paginate(:page => params[:page], :per_page => 3)
 		elsif params[:price] == "popular"
 			@listings_def = Listing.search_main(params)
-			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC")
+			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:page], :per_page => 3)
 		end	
 	end
 
 	def mylistings
 		if params[:price].blank? || params[:price] == "new"
-			@listings = Listing.where(user: current_user).order("created_at DESC")
+			@listings = Listing.where(user: current_user).order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
 		elsif params[:price] == "high"
-			@listings = Listing.where(user: current_user).order("price DESC")	
+			@listings = Listing.where(user: current_user).order("price DESC").paginate(:page => params[:page], :per_page => 3)	
 		elsif params[:price] == "low"
-			@listings = Listing.where(user: current_user).order("price ASC")
+			@listings = Listing.where(user: current_user).order("price ASC").paginate(:page => params[:page], :per_page => 3)
 		elsif params[:price] == "popular"
 			@listings_def = Listing.where(user: current_user)
-			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC")
+			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:page], :per_page => 3)
 		end	
 	end
 

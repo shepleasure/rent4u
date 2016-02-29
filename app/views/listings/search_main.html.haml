@@ -76,10 +76,10 @@
 				per 
 				= listing.time
 
-
+	= will_paginate @listings, renderer: BootstrapPagination::Rails
+	
 - else 
 	%p No Items found
-
 
 
 %script

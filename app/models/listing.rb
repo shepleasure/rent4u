@@ -22,7 +22,7 @@ class Listing < ActiveRecord::Base
 
 	def self.search_main(params)
 	    listings = Listing.where(category_id: params[:category].to_i)
-	    listings = listings.where("title LIKE ? or description LIKE ?", "%#{params[:search_main]}%", "%#{params[:search_main]}%") if params[:search_main].present?
+	    listings = listings.where("title ILIKE ? or description ILIKE ?", "%#{params[:search_main]}%", "%#{params[:search_main]}%") if params[:search_main].present?
 	    listings = listings.near(params[:location], 20) if params[:location].present?
 	    listings
   	end

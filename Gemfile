@@ -17,7 +17,6 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3', '>= 4.3.6'
 gem 'cocoon', '~> 1.2', '>= 1.2.6'
 gem "jquery-ui-rails"
-gem 'searchkick', '~> 1.1', '>= 1.1.2'
 gem 'will_paginate', '~> 3.1'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
