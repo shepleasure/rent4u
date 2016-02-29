@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
 
 	before_action :find_listing, only: [:show, :edit, :update, :destroy]
-	before_action :authenticate_user!, except: [:index, :show, :search]
+	before_action :authenticate_user!, except: [:index, :show, :search_main, :search]
 
 
 	def new
@@ -44,29 +44,29 @@ class ListingsController < ApplicationController
 		redirect_to root_path
 	end
 
-	def search
-		if params[:price].blank? || params[:price] == "popular"
-			@listings_def = Listing.search(params)
-			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC")
+	def search_main
+		if params[:price].blank? || params[:price] == "new"
+			@listings = Listing.search_main(params).order("created_at DESC")
 		elsif params[:price] == "high"
-			@listings = Listing.search(params).order("price DESC")	
+			@listings = Listing.search_main(params).order("price DESC")	
 		elsif params[:price] == "low"
-			@listings = Listing.search(params).order("price ASC")
-		elsif params[:price] == "new"
-			@listings = Listing.search(params).order("created_at DESC")
+			@listings = Listing.search_main(params).order("price ASC")
+		elsif params[:price] == "popular"
+			@listings_def = Listing.search_main(params)
+			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC")
 		end	
 	end
 
 	def mylistings
-		if params[:price].blank? || params[:price] == "popular"
-			@listings_def = Listing.where(user: current_user)
-			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC")
+		if params[:price].blank? || params[:price] == "new"
+			@listings = Listing.where(user: current_user).order("created_at DESC")
 		elsif params[:price] == "high"
 			@listings = Listing.where(user: current_user).order("price DESC")	
 		elsif params[:price] == "low"
 			@listings = Listing.where(user: current_user).order("price ASC")
-		elsif params[:price] == "new"
-			@listings = Listing.where(user: current_user).order("created_at DESC")
+		elsif params[:price] == "popular"
+			@listings_def = Listing.where(user: current_user)
+			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC")
 		end	
 	end
 

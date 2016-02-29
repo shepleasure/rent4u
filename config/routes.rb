@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :listings do
     collection do
+      get 'search_main'
       get 'search'
+      get 'autocomplete'
     end
     resources :reviews, except: [:show, :index]
   end

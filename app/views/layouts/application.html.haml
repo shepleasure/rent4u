@@ -23,6 +23,13 @@
 			- flash.each do |name, msg|
 				= content_tag :div, msg, class: "alert alert-info"
 
+			
+			= form_tag search_main_listings_path, method: :get do |f|
+				= text_field_tag :search_main, nil, placeholder: 'Search'
+				= text_field_tag :location, nil, placeholder: 'Near'
+				= select_tag :category, options_for_select(Category.all.map { |c| [c.name, c.id] })
+				= submit_tag '>'
+
 			= yield
 			= link_to "Rent4U", root_path
 			%ul
@@ -31,3 +38,47 @@
 			%li= link_to "Privacy Policy", privacy_path
 			%li= link_to "About Us" , about_path
 			%li= link_to "Contact Us", contact_path
+
+- @search_listings = Listing.all
+
+- search_titles = []
+- search_location = []
+
+- @search_listings.each do |listing|
+	- @s_title = listing.title
+	- search_titles.push(@s_title)
+
+	- @s_location = listing.city
+	- search_location.push(@s_location)
+
+- search_titles.uniq!
+- @json = search_titles.to_json
+- @jsonsafe = @json.html_safe
+
+- search_location.uniq!
+- @json2 = search_location.to_json
+- @jsonsafe2 = @json2.html_safe
+
+%script
+	$(function() {
+	$( "#search_main" ).autocomplete({
+	source: 
+	= @jsonsafe
+	,
+	autoFocus:true,
+	minLength:1,
+	delay:250,
+	});
+	});
+
+%script
+	$(function() {
+	$( "#location" ).autocomplete({
+	source: 
+	= @jsonsafe2
+	,
+	autoFocus:true,
+	minLength:1,
+	delay:250,
+	});
+	});
