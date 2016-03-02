@@ -20,6 +20,8 @@
 posted 
 =time_ago_in_words(@listing.created_at)
 ago
+by
+= @listing.user.email
 = link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default"
 
 - if @reviews.blank?
@@ -28,8 +30,12 @@ ago
 - else
 	- @reviews.each do |review|
 		.reviews
-			.star-rating{:data => {'score' => review.rating}} 
+			
+			%span.star-rating{:data => {'score' => review.rating}} 
+			= review.title
+			%p= "#{review.user.email} on #{review.created_at.strftime('%d/%m/%y') }"
 			%p= review.comment
+			
 
 - if @listing.user == current_user
 	= link_to 'Edit', edit_listing_path, class: "btn btn-default"
