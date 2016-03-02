@@ -84,12 +84,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'https://fast-bastion-64952.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
-    :user_name => ENV['app46851885@heroku.com'],
-    :password => ENV['ouw49mgm3829'],
-    :address => 'smtp.sendgrid.net',
-    :domain => 'fast-bastion-64952.herokuapp.com',
-    :port => 587,
-    :authentication => :plain,
+    :user_name            => ENV['SENDGRID_USERNAME'],
+    :password             => ENV['SENDGRID_PASSWORD'],
+    :address              => 'smtp.sendgrid.net',
+    :domain               => 'fast-bastion-64952.herokuapp.com',
+    :port                 => 587,
+    :authentication       => :plain,
     :enable_starttls_auto => true
   }
 end
