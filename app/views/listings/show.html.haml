@@ -21,7 +21,7 @@ posted
 =time_ago_in_words(@listing.created_at)
 ago
 by
-= @listing.user.email
+= @listing.user.fullname
 = link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default"
 
 - if @reviews.blank?
@@ -33,7 +33,7 @@ by
 			
 			%span.star-rating{:data => {'score' => review.rating}} 
 			= review.title
-			%p= "#{review.user.email} on #{review.created_at.strftime('%d/%m/%y') }"
+			%p= "#{review.user.fullname} on #{review.created_at.strftime('%d/%m/%y') }"
 			%p= review.comment
 			
 
