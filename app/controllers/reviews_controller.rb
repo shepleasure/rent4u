@@ -26,12 +26,12 @@ class ReviewsController < ApplicationController
 
 	def update
 		@review.update(review_params)
-		redirect_to @review
+		redirect_to @listing
 	end
 
 	def destroy
 		@review.destroy
-		redirect_to root_path
+		redirect_to listing_path(@listing)
 	end
 
 	private

@@ -22,6 +22,12 @@ posted
 ago
 by
 = @listing.user.fullname
+
+			
+- if @listing.user == current_user
+	= link_to 'Edit', edit_listing_path, class: "btn btn-default"
+	= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+
 = link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default"
 
 - if @reviews.blank?
@@ -35,11 +41,10 @@ by
 			= review.title
 			%p= "#{review.user.fullname} on #{review.created_at.strftime('%d/%m/%y') }"
 			%p= review.comment
-			
+			- if review.user == current_user
+				= link_to 'Edit', edit_listing_review_path(@listing, review), class: "btn btn-default"
+				= link_to 'Delete', [review.listing, review], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
 
-- if @listing.user == current_user
-	= link_to 'Edit', edit_listing_path, class: "btn btn-default"
-	= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
 
 %script
 	$('.star-rating').raty({
