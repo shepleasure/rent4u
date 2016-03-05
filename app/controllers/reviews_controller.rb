@@ -12,8 +12,10 @@ class ReviewsController < ApplicationController
 		@review = Review.new(review_params)
 		@review.user_id = current_user.id
 		@review.listing_id = @listing.id
+		@listing_user = @listing.user
 
 		if @review.save
+			ReviewNotifier.send_review_email(@listing_user,@review.user.fullname, @review.listing.title).deliver
 		    redirect_to @listing
 		else
 			flash[:alert] = @review.errors.full_messages.to_sentence
