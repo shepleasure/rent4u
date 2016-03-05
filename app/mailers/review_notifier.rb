@@ -13,4 +13,13 @@ class ReviewNotifier < ApplicationMailer
 	    :subject => 'You have a New Notification' )
 	  end
 
+	  def send_edit_review_email(user, review_user, listing)
+	    @user = user
+	    @review_user = review_user
+	    @listing_title = listing
+
+
+	    mail( :to => @user.email,
+	    :subject => 'You have a New Notification' )
+	  end
 end

@@ -5,7 +5,13 @@ class ReviewsController < ApplicationController
 	before_action :authenticate_user!
 
 	def new
-		@review = 	Review.new
+		if current_user 
+			@review = Review.where(user_id: current_user.id, listing_id: params[:listing_id]).first_or_initialize 
+		    if @review.id.present? 
+		    	flash[:alert] = "You can't review a product more than once. But you can edit your existing review"
+		    	render 'edit' 
+		    end 
+		end 
 	end
 
 	def create
@@ -27,7 +33,9 @@ class ReviewsController < ApplicationController
 	end
 
 	def update
+
 		@review.update(review_params)
+		ReviewNotifier.send_edit_review_email(@listing.user,@review.user.fullname, @review.listing.title).deliver
 		redirect_to @listing
 	end
 
