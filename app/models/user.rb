@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   has_many :listings, dependent: :destroy
 
   has_many :reviews, dependent: :destroy
+
+  validates_presence_of :fullname
 end
