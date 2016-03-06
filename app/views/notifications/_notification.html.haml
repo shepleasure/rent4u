@@ -1,0 +1,2 @@
+%li{:class => ('unread' if notification.read == false)}
+	= link_to "#{notification.notified_by.fullname} has #{notification.notice_type}ed on your post", link_through_path(notification)

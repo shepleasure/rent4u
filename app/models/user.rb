@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
 
+  has_many :notifications, dependent: :destroy
+
   validates_presence_of :fullname
 end

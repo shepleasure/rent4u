@@ -20,3 +20,24 @@
 @import "bootstrap";
 
 @import 'normalize';
+
+.notification-dropdown {
+  margin-top: 10px;
+  button {
+    border: none;
+  }
+}
+
+.notification-index-list {
+  margin-top: 5em;
+  list-style: none;
+  li {
+    margin-top: 1em;
+    background-color: white;
+    padding: 1.5em;
+  }
+}
+
+.unread {
+  background-color: gray;
+}

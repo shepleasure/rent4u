@@ -8,10 +8,12 @@ class Listing < ActiveRecord::Base
 	validates_presence_of :city
 	validates_presence_of :listing_attachments
 
-	has_many :listing_attachments, :dependent => :destroy
+	has_many :listing_attachments, dependent: :destroy
     accepts_nested_attributes_for :listing_attachments, reject_if: proc{ |param| param[:avatar].blank? && param[:avatar_cache].blank? && param[:id].blank? }, allow_destroy: true
 
-	has_many :reviews, :dependent => :destroy
+	has_many :reviews, dependent: :destroy
+
+	has_many :notifications, dependent: :destroy
 
 	geocoded_by :full_address
 	after_validation :geocode

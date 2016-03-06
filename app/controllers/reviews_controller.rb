@@ -23,8 +23,12 @@ class ReviewsController < ApplicationController
 		@listing_user = @listing.user
 
 		if @review.save
+			create_notification @listing, @review
+			respond_to do |format|
+		        format.html { redirect_to @listing }
+		        format.js
+		    end
 			ReviewNotifier.send_review_email(@listing_user,@review.user.fullname, @review.listing.title).deliver
-		    redirect_to @listing
 		else
 			flash[:alert] = @review.errors.full_messages.to_sentence
 			render 'new'
@@ -46,6 +50,14 @@ class ReviewsController < ApplicationController
 	end
 
 	private
+
+	def create_notification(listing, review)  
+	    Notification.create(user_id: listing.user.id,
+	                        notified_by_id: current_user.id,
+	                        listing_id: listing.id,
+	                        identifier: review.id,
+	                        notice_type: 'review')
+	end  
 
 	def review_params
 		params.require(:review).permit(:rating, :comment, :title)
