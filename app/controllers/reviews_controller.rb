@@ -21,9 +21,10 @@ class ReviewsController < ApplicationController
 		@review.user_id = current_user.id
 		@review.listing_id = @listing.id
 		@listing_user = @listing.user
+		@notice_type = 'review'
 
 		if @review.save
-			create_notification @listing, @review
+			create_notification @listing, @review, @notice_type
 			respond_to do |format|
 		        format.html { redirect_to @listing }
 		        format.js
@@ -39,7 +40,10 @@ class ReviewsController < ApplicationController
 	end
 
 	def update
+		@notice_type = 'modifi'
+
 		@review.update(review_params)
+		create_notification @listing, @review, @notice_type
 		ReviewNotifier.send_edit_review_email(@listing.user,@review.user.fullname, @review.listing.title).deliver
 		redirect_to @listing
 	end
@@ -51,12 +55,12 @@ class ReviewsController < ApplicationController
 
 	private
 
-	def create_notification(listing, review)  
+	def create_notification(listing, review, notice_type)  
 	    Notification.create(user_id: listing.user.id,
 	                        notified_by_id: current_user.id,
 	                        listing_id: listing.id,
 	                        identifier: review.id,
-	                        notice_type: 'review')
+	                        notice_type: notice_type)
 	end  
 
 	def review_params
