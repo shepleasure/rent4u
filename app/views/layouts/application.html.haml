@@ -29,7 +29,7 @@
 			= form_tag search_main_listings_path, method: :get do |f|
 				= text_field_tag :search_main, nil, placeholder: 'Search'
 				= text_field_tag :location, nil, placeholder: 'Near'
-				= select_tag :category, options_for_select(Category.all.map { |c| [c.name, c.id] })
+				= select_tag :category, options_for_select(Category.all.map { |c| [c.name, c.id] }), :include_blank => 'All categories', :default => nil
 				= submit_tag '>'
 
 			= yield
