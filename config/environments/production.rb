@@ -81,13 +81,13 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.default_url_options = { :host => 'https://safe-depths-27513.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'https://mrentz.com' }
 
   config.action_mailer.smtp_settings = {
     :user_name            => ENV['SENDGRID_USERNAME'],
     :password             => ENV['SENDGRID_PASSWORD'],
     :address              => 'smtp.sendgrid.net',
-    :domain               => 'safe-depths-27513.herokuapp.com',
+    :domain               => 'mrentz.com',
     :port                 => 587,
     :authentication       => :plain,
     :enable_starttls_auto => true
