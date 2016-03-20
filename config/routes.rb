@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   
   get 'notifications', to: 'notifications#index'
 
+  post 'verifications' => 'verifications#create'
+
+  patch 'verifications' => 'verifications#verify'
+
+  match '/verifications',    to: 'verifications#sendpin',    via: :get
 
   resources :listing_attachments
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "acme/registrations"}
   root 'categories#index'
 
   resources :categories do

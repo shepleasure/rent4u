@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306140002) do
+ActiveRecord::Schema.define(version: 20160317103836) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 20160306140002) do
   add_index "notifications", ["notified_by_id"], name: "index_notifications_on_notified_by_id"
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
+  create_table "phone_numbers", force: :cascade do |t|
+    t.string   "phone_number"
+    t.string   "pin"
+    t.boolean  "verified"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "listing_id"
+  end
+
+  add_index "phone_numbers", ["listing_id"], name: "index_phone_numbers_on_listing_id"
+
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
     t.text     "comment"
@@ -90,6 +101,9 @@ ActiveRecord::Schema.define(version: 20160306140002) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "fullname"
+    t.string   "mobile_number"
+    t.string   "verification_code"
+    t.boolean  "is_verified"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

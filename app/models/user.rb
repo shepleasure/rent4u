@@ -11,4 +11,15 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
 
   validates_presence_of :fullname
+
+  validates :mobile_number, phone: { possible: false, types: [:mobile] }
+
+  def needs_mobile_number_verifying?
+    if is_verified
+      return false
+    else
+      return true
+    end
+  end
+
 end
