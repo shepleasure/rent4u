@@ -23,6 +23,7 @@ gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'figaro'
 gem 'twilio-ruby', '~> 4.0.0'
 gem 'phonelib'
+gem 'social-share-button', '~> 0.1.10'
 
 group :development, :test do
   gem 'byebug'

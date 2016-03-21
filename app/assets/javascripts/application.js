@@ -17,4 +17,5 @@
 //= require cocoon
 //= require turbolinks
 //= require listings
+//= require social-share-button
 //= require_tree .
