@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   match '/verifications',    to: 'verifications#sendpin',    via: :get
 
   resources :listing_attachments
-  devise_for :users, :controllers => { :registrations => "acme/registrations"}
+
+  devise_for :users, :controllers => { :registrations => "acme/registrations", :omniauth_callbacks => 'omniauth_callbacks'}
+
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+
   root 'categories#index'
 
   resources :categories do

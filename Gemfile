@@ -23,6 +23,9 @@ gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'figaro'
 gem 'twilio-ruby', '~> 4.0.0'
 gem 'phonelib'
+gem 'omniauth', '~> 1.3', '>= 1.3.1'
+gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
+gem 'omniauth-facebook', '~> 3.0'
 
 group :development, :test do
   gem 'byebug'
