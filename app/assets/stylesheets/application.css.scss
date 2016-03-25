@@ -49,14 +49,14 @@ body, a {
   border: none;
   padding-top: 1em;
   text-transform: uppercase;
+  font-family: "raleway-medium";
   .navbar-brand {
-    font-family: "raleway-medium";
-    font-size: 1.6em;
+    font-size: 20px;
     letter-spacing: 0.1em;
     .logo {
       font-family: "hightide";
       color: $yellow;
-      font-size: 1.1em;
+      font-size: 21px;
       letter-spacing: 0em;
     }
   }
