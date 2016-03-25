@@ -51,19 +51,19 @@ body, a {
   text-transform: uppercase;
   font-family: "raleway-medium";
   .navbar-brand {
-    font-size: 20px;
+    font-size: 19.5px;
     letter-spacing: 0.1em;
     .logo {
       font-family: "hightide";
       color: $yellow;
-      font-size: 21px;
+      font-size: 20.5px;
       letter-spacing: 0em;
     }
   }
   .navbar-right a {
-    font-family: "raleway-regular";
     color: $black;
     letter-spacing: 0.1em;
+    font-size: 13.5px;
   }
   .post {
     background-color: $yellow;
