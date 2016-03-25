@@ -1,6 +1,6 @@
 class ReviewNotifier < ApplicationMailer
 
-	default :from => 'Rent4U'
+	default :from => 'Mrentz'
 
 	  # send a signup email to the user, pass in the user object that   contains the user's email address
 	  def send_review_email(user, review_user, listing)
