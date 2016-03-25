@@ -22,23 +22,51 @@
 
 @import 'normalize';
 
-.notification-dropdown {
-  margin-top: 10px;
-  button {
-    border: none;
-  }
+$yellow: #FFCD33;
+$black: #1A1A1A;
+
+@font-face {
+  font-family: "hightide";
+  src: url(/assets/HighTide.otf) format("truetype");
 }
 
-.notification-index-list {
-  margin-top: 5em;
-  list-style: none;
-  li {
-    margin-top: 1em;
-    background-color: white;
-    padding: 1.5em;
-  }
+@font-face {
+  font-family: "raleway-medium";
+  src: url(/assets/Raleway-Medium.ttf) format("truetype");
 }
 
-.unread {
-  background-color: gray;
+@font-face {
+  font-family: "raleway-regular";
+  src: url(/assets/Raleway-Regular.ttf) format("truetype");
+}
+
+body, a {
+  color: $black;
+}
+
+#navbar-customise {
+  background-color: white;
+  border: none;
+  padding-top: 1em;
+  text-transform: uppercase;
+  .navbar-brand {
+    font-family: "raleway-medium";
+    font-size: 1.6em;
+    letter-spacing: 0.1em;
+    .logo {
+      font-family: "hightide";
+      color: $yellow;
+      font-size: 1.1em;
+      letter-spacing: 0em;
+    }
+  }
+  .navbar-right a {
+    font-family: "raleway-regular";
+    color: $black;
+    letter-spacing: 0.1em;
+  }
+  .post {
+    background-color: $yellow;
+    border-radius: 0.8em;
+  }
 }
