@@ -12,6 +12,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require material_icons
  *= require social-share-button
  *= require_self
  *= require jquery-ui
@@ -21,9 +22,14 @@
 @import "bootstrap";
 
 @import 'normalize';
+@import 'media';
 
 $yellow: #FFCD33;
 $black: #1A1A1A;
+$light-black: #808080;
+$light-yellow: #FFE066;
+$blue: #A9BEEF;
+$light-blue: #BED1F4;
 
 @font-face {
   font-family: "hightide";
@@ -47,10 +53,10 @@ body, a {
 #navbar-customise {
   background-color: white;
   border: none;
-  padding-top: 1em;
+  margin: 1em 0;
   text-transform: uppercase;
   font-family: "raleway-medium";
-  .navbar-brand {
+  .navbar-brand a {
     font-size: 19.5px;
     letter-spacing: 0.1em;
     .logo {
@@ -58,15 +64,66 @@ body, a {
       color: $yellow;
       font-size: 20.5px;
       letter-spacing: 0em;
-    }
-  }
+      }
+    &:hover, &:focus {
+      color: $black;
+      text-decoration: none;
+    } 
+  } 
   .navbar-right a {
     color: $black;
     letter-spacing: 0.1em;
     font-size: 13.5px;
-  }
+    }
+  .nav-others a:hover, .nav-others a:focus {
+    color: $light-black;
+    }
   .post {
     background-color: $yellow;
-    border-radius: 0.8em;
+    &:hover, &:focus {
+      background-color: $light-yellow;
+    }
+  }
+}
+
+#search-section {
+  font-family: "raleway-regular";
+  text-align: center;
+  margin-bottom: 15px;
+  .form-group {
+    position: relative;
+    input {
+     text-indent: 20px;
+    }
+    .form-control {
+      border-radius: 0px;
+      margin-right: -5px;
+      border: 1px solid $blue;
+      color: $black;
+    }
+    .material-icons {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      color: $black;
+    }
+    select {
+    background: url(down_arrow.png) no-repeat right;
+    appearance:none;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    cursor: pointer;
+    }
+  }
+  .btn {
+    border-radius: 0px;
+    background-color: $blue;
+    color: white;
+    font-family: "raleway-medium";
+    border-color: $blue;
+    &:hover, &:focus, &:active {
+      outline: none;
+      background-color: $light-blue;
+    }
   }
 }

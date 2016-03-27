@@ -24,6 +24,7 @@ gem 'figaro'
 gem 'twilio-ruby', '~> 4.0.0'
 gem 'phonelib'
 gem 'social-share-button', '~> 0.1.10'
+gem 'material_icons'
 
 group :development, :test do
   gem 'byebug'

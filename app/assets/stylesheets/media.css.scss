@@ -1,0 +1,91 @@
+/* Custom, iPhone Retina */ 
+$yellow: #FFCD33;
+$black: #1A1A1A;
+$light-black: #808080;
+$light-yellow: #FFE066;
+$blue: #A9BEEF;
+$light-blue: #BED1F4;
+
+@media only screen and (min-width : 320px) and (max-width : 479px) {
+
+  #navbar-customise {
+    .navbar-toggle {
+      border-color: $blue;
+      &:hover, &:focus {
+        background-color: $blue;
+        .icon-bar {
+        background-color: white;
+        }
+      } 
+      .icon-bar {
+        background-color: $blue;
+      }
+    }
+  }
+
+  #search-section {
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+ /* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) and (max-width : 767px) {
+  #search-section {
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+  #navbar-customise {
+    .post {
+      border-radius: 0.8em;
+    }
+  }
+
+  #search-section {
+    select { 
+      width: 275px;
+    }
+  }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+  #navbar-customise {
+    .post {
+      border-radius: 0.8em;
+    }
+  }
+
+  #search-section {
+    select { 
+      width: 275px;
+    }
+  }
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+  #navbar-customise {
+    .post {
+      border-radius: 0.8em;
+    }
+  }
+
+  #search-section {
+    select { 
+      width: 275px;
+    }
+  }
+
+}
