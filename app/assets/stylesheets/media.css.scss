@@ -32,6 +32,22 @@ $light-blue: #BED1F4;
 
  /* Extra Small Devices, Phones */ 
 @media only screen and (min-width : 480px) and (max-width : 767px) {
+
+  #navbar-customise {
+    .navbar-toggle {
+      border-color: $blue;
+      &:hover, &:focus {
+        background-color: $blue;
+        .icon-bar {
+        background-color: white;
+        }
+      } 
+      .icon-bar {
+        background-color: $blue;
+      }
+    }
+  }
+
   #search-section {
     .btn {
       width: 100%;
