@@ -20,6 +20,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'grid-ms';
 
 @import 'normalize';
 @import 'media';
@@ -30,6 +31,7 @@ $light-black: #808080;
 $light-yellow: #FFE066;
 $blue: #A9BEEF;
 $light-blue: #BED1F4;
+$grey: #EEEEEE;
 
 @font-face {
   font-family: "hightide";
@@ -53,7 +55,8 @@ body, a {
 #navbar-customise {
   background-color: white;
   border: none;
-  margin: 1em 0;
+  margin-top: 1em;
+  margin-bottom: .3em;
   text-transform: uppercase;
   font-family: "raleway-medium";
   .navbar-brand a {
@@ -76,7 +79,7 @@ body, a {
     font-size: 13.5px;
     }
   .nav-others a:hover, .nav-others a:focus {
-    color: $light-black;
+    color: $yellow;
     }
   .post {
     background-color: $yellow;
@@ -89,7 +92,7 @@ body, a {
 #search-section {
   font-family: "raleway-regular";
   text-align: center;
-  margin-bottom: 15px;
+  padding-bottom: 1.5em;
   .form-group {
     position: relative;
     input {
@@ -125,5 +128,45 @@ body, a {
       outline: none;
       background-color: $light-blue;
     }
+  }
+}
+
+#category-section {
+  .panel-default, .panel-heading, .panel-footer {
+    border-color: $blue;
+    background-color: transparent;
+    color: $black;
+  }
+  .panel-heading a {
+    font-family: "raleway-medium";
+  }
+  .panel-body {
+    padding: 0px;
+  }
+  .panel-footer p {
+    font-family: "raleway-regular";
+    margin: 0px;
+    font-size: 13px;
+  }
+  .panel-default:hover, .panel-default:focus {
+      border-color: $yellow;
+      box-shadow: 4px 4px 10px $light-black;
+      .panel-heading {
+        border-color: $yellow;
+        a {
+          color: $yellow;
+          text-decoration: none;
+        }
+      }
+      .panel-footer {
+        border-color: $yellow;
+      }
+      .panel-footer a:hover, .panel-footer a:focus{
+        color: $yellow;
+        text-decoration: none;
+      }
+  }
+  .ads-section {
+    background-color: $grey;
   }
 }

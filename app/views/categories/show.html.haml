@@ -4,7 +4,7 @@
 
 - @category.subcategories.each do |subcategory|
 	%ol
-		%li= link_to subcategory.name, category_subcategory_path(@baby, subcategory)
+		%li= link_to subcategory.name, category_subcategory_path(@book, subcategory)
 %ul
 	%li 
 		= link_to "Popular", request.query_parameters.merge({:price => "popular"})
