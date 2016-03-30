@@ -54,7 +54,7 @@
 
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6
 					.panel.panel-default
-						.panel-heading.text-center
+						.panel-heading.text-center.rfix-320
 							= link_to @event.name, category_path(@event)
 						.panel-body
 							= link_to image_tag("event.jpg", class: "img-responsive"), category_path(@event)
@@ -118,11 +118,12 @@
 							= link_to @vehicle.name, category_path(@vehicle)
 						.panel-body
 							= link_to image_tag("vehicle.jpg", class: "img-responsive"), category_path(@vehicle)
-						.panel-footer
+						.panel-footer.rfix-320-2
 							- @vehicle.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@vehicle, subcategory)
-		.col-md-2.ads-section
-			%h4.text-center Ads section
+		.col-md-2
+			.ads-section
+				%h4.text-center Ads section
 
 
 .jumbotron
