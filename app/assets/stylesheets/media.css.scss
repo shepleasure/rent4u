@@ -40,13 +40,13 @@ $grey: #EEEEEE;
     .panel-heading {
       padding: 10px 2px;
       a {
-        font-size: 10.5px;
+        font-size: 10.2px;
       }
     }
     .panel-footer {
       padding: 10px 4px;
       a {
-        font-size: 10.2px;
+        font-size: 9.8px;
       }
     }
   }
@@ -86,13 +86,13 @@ $grey: #EEEEEE;
     .panel-heading {
       padding: 10px 2px;
       a {
-        font-size: 12px;
+        font-size: 11.5px;
       }
     }
     .panel-footer {
       padding: 10px 4px;
       a {
-        font-size: 11.5px;
+        font-size: 11px;
       }
     }
   }
@@ -140,6 +140,15 @@ $grey: #EEEEEE;
       width: 100%;
     }
   }
+  #category-section {
+    .pright {
+      padding-right: 10px;
+    }
+    .pleft {
+      padding-left: 10px;
+    }
+  }
+
 }
 
 /* Small Devices, Tablets */
