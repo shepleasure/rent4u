@@ -77,5 +77,5 @@ Subcategory.where(name: 'Travel & Luggage', category_id: sport_category.id).firs
 
 Subcategory.where(name: 'Bikes', category_id: vehicle_category.id).first_or_create(name: 'Bikes', category_id: vehicle_category.id)
 Subcategory.where(name: 'Cars', category_id: vehicle_category.id).first_or_create(name: 'Cars', category_id: vehicle_category.id)
-Subcategory.where(name: 'Trucks & Commercial Vehicles', category_id: vehicle_category.id).first_or_create(name: 'Trucks & Commercial Vehicles', category_id: vehicle_category.id)
+Subcategory.where(name: 'Commercial Vehicles', category_id: vehicle_category.id).first_or_create(name: 'Commercial Vehicles', category_id: vehicle_category.id)
 Subcategory.where(name: 'Jeeps & Vans', category_id: vehicle_category.id).first_or_create(name: 'Jeeps & Vans', category_id: vehicle_category.id)

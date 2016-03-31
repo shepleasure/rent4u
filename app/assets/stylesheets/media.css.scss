@@ -7,7 +7,7 @@ $blue: #A9BEEF;
 $light-blue: #BED1F4;
 $grey: #EEEEEE;
 
-@media only screen and (min-width : 320px) and (max-width : 479px) {
+@media only screen and (min-width : 320px) and (max-width : 359px) {
 
   #navbar-customise {
     .navbar-toggle {
@@ -29,6 +29,74 @@ $grey: #EEEEEE;
       width: 100%;
     }
   }
+
+  #category-section {
+    .pright {
+      padding-right: 0px;
+    }
+    .pleft {
+      padding-left: 0px;
+    }
+    .panel-heading {
+      padding: 10px 2px;
+      a {
+        font-size: 10.5px;
+      }
+    }
+    .panel-footer {
+      padding: 10px 4px;
+      a {
+        font-size: 10.2px;
+      }
+    }
+  }
+
+}
+
+@media only screen and (min-width : 360px) and (max-width : 479px) {
+
+  #navbar-customise {
+    .navbar-toggle {
+      border-color: $blue;
+      &:hover, &:focus {
+        background-color: $blue;
+        .icon-bar {
+        background-color: white;
+        }
+      } 
+      .icon-bar {
+        background-color: $blue;
+      }
+    }
+  }
+
+  #search-section {
+    .btn {
+      width: 100%;
+    }
+  }
+
+  #category-section {
+    .pright {
+      padding-right: 0px;
+    }
+    .pleft {
+      padding-left: 0px;
+    }
+    .panel-heading {
+      padding: 10px 2px;
+      a {
+        font-size: 12px;
+      }
+    }
+    .panel-footer {
+      padding: 10px 4px;
+      a {
+        font-size: 11.5px;
+      }
+    }
+  }
+
 }
 
 /* (320x480) Smartphone, Portrait */
@@ -42,9 +110,6 @@ $grey: #EEEEEE;
     #category-section {
       .rfix-320 a {
         font-size: 13.8px;
-      }
-      .rfix-320-2 p a {
-        font-size: 12.7px;
       }
     }
 }
@@ -142,9 +207,6 @@ $grey: #EEEEEE;
   #search-section {
     select { 
       width: 275px;
-    }
-    .btn {
-      margin-top: 10px;
     }
   }
 
@@ -255,10 +317,5 @@ $grey: #EEEEEE;
     }
   }
 
-  #category-section {
-    .rfix-320-2 p a {
-      font-size: 12.7px;
-    }
-  }
 
 }

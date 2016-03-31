@@ -2,7 +2,7 @@
 	.row
 		.col-md-10.category-tiles
 			.row
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @book.name, category_path(@book)
@@ -12,7 +12,7 @@
 							- @book.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@book, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @camera.name, category_path(@camera)
@@ -22,7 +22,7 @@
 							- @camera.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@camera, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @clothing.name, category_path(@clothing)
@@ -32,7 +32,7 @@
 							- @clothing.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@clothing, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @computer.name, category_path(@computer)
@@ -42,7 +42,7 @@
 							- @computer.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@computer, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @electronic.name, category_path(@electronic)
@@ -52,7 +52,7 @@
 							- @electronic.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@electronic, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center.rfix-320
 							= link_to @event.name, category_path(@event)
@@ -62,7 +62,7 @@
 							- @event.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@event, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @medical.name, category_path(@medical)
@@ -72,7 +72,7 @@
 							- @medical.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@medical, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @musical.name, category_path(@musical)
@@ -82,7 +82,7 @@
 							- @musical.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@musical, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @realestate.name, category_path(@realestate)
@@ -92,7 +92,7 @@
 							- @realestate.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@realestate, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @service.name, category_path(@service)
@@ -102,7 +102,7 @@
 							- @service.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@service, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @sport.name, category_path(@sport)
@@ -112,7 +112,7 @@
 							- @sport.subcategories.each do |subcategory|
 								%p= link_to subcategory.name, category_subcategory_path(@sport, subcategory)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6
+				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center
 							= link_to @vehicle.name, category_path(@vehicle)
