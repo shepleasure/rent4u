@@ -7,9 +7,31 @@
 		= csrf_meta_tags
 		%meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
 
+		%link{rel: "apple-touch-icon-precomposed", sizes: "57x57", href: "assets/apple-touch-icon-57x57.png"}
+		%link{rel: "apple-touch-icon-precomposed", sizes: "114x114", href: "assets/apple-touch-icon-114x114.png"}
+		%link{rel: "apple-touch-icon-precomposed", sizes: "72x72", href: "assets/apple-touch-icon-72x72.png"}
+		%link{rel: "apple-touch-icon-precomposed", sizes: "144x144", href: "assets/apple-touch-icon-144x144.png"}
+		%link{rel: "apple-touch-icon-precomposed", sizes: "60x60", href: "assets/apple-touch-icon-60x60.png"}
+		%link{rel: "apple-touch-icon-precomposed", sizes: "120x120", href: "assets/apple-touch-icon-120x120.png"}
+		%link{rel: "apple-touch-icon-precomposed", sizes: "76x76", href: "assets/apple-touch-icon-76x76.png"}
+		%link{rel: "apple-touch-icon-precomposed", sizes: "152x152", href: "assets/apple-touch-icon-152x152.png"}
+		%link{rel: "icon", type: "image/png", href: "assets/favicon-196x196.png", sizes: "196x196"}
+		%link{rel: "icon", type: "image/png", href: "assets/favicon-96x96.png", sizes: "96x96"}
+		%link{rel: "icon", type: "image/png", href: "assets/favicon-32x32.png", sizes: "32x32"}
+		%link{rel: "icon", type: "image/png", href: "assets/favicon-16x16.png", sizes: "16x16"}
+		%link{rel: "icon", type: "image/png", href: "assets/favicon-128.png", sizes: "128x128"}
+		%meta{name: "application-name", content: "&nbsp;"}
+		%meta{name: "msapplication-TileColor", content: "#FFFFFF" }
+		%meta{name: "msapplication-TileImage", content: "assets/mstile-144x144.png" }
+		%meta{name: "msapplication-square70x70logo", content: "assets/mstile-70x70.png" }
+		%meta{name: "msapplication-square150x150logo", content: "assets/mstile-150x150.png" }
+		%meta{name: "msapplication-wide310x150logo", content: "assets/mstile-310x150.png" }
+		%meta{name: "msapplication-square310x310logo", content: "assets/mstile-310x310.png" }
+
+
 	%body
 
-		%nav.navbar.navbar-default#navbar-customise
+		%nav.navbar.navbar-default.navbar-fixed-top#navbar-customise
 			.container
 				.navbar-header
 					%button.navbar-toggle{:type => "button", :data => {:toggle => "collapse", :target => "#myNavbar"}}
@@ -35,7 +57,7 @@
 							%li.nav-others= link_to "Sign Up", new_user_registration_path
 							%li.post= link_to 'Rent an Item', new_listing_path, 'data-no-turbolink' => true
 
-		.container
+		.container.content
 			- flash.each do |name, msg|
 				= content_tag :div, msg, class: "alert alert-info"
 
@@ -55,13 +77,54 @@
 					= submit_tag 'Search', :class => "btn btn-default"
 
 			= yield
-			= link_to "Rent4U", root_path
-			%ul
-			%li= link_to "Help and FAQ", help_path
-			%li= link_to "Terms of Use", term_path
-			%li= link_to "Privacy Policy", privacy_path
-			%li= link_to "About Us" , about_path
-			%li= link_to "Contact Us", contact_path
+
+		.space-footer
+		#footer
+			.container
+				.row
+					.col-md-12
+						.social-media
+
+							%a{:href => "https://facebook.com/username", :target => "_blank"}
+								%svg{:xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :version => "1.1", :x => "0px", :y => "0px", :viewBox => "0 0 41 41", :style => "enable-background:new 0 0 40 40;", "xml:space" => "preserve"}
+									%g#XMLID_2_
+										%circle.st0{:cx => "20.5", :cy => "20.5", :r => "20"}
+										%path.st1{:d => "M15.8,17h1.8v-1.8c0-0.8,0-2,0.6-2.7c0.6-0.8,1.4-1.3,2.8-1.3c2.3,0,3.3,0.3,3.3,0.3l-0.5,2.7   c0,0-0.8-0.2-1.5-0.2c-0.7,0-1.3,0.3-1.3,1V17h2.9l-0.2,2.6H21v9.1h-3.4v-9.1h-1.8V17z"}
+
+							%a{:href => "https://twitter.com/username", :target => "_blank"}
+								%svg{:xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :version => "1.1", :x => "0px", :y => "0px", :viewBox => "0 0 41 41", :style => "enable-background:new 0 0 40 40;", "xml:space" => "preserve"}
+									%g#XMLID_2_
+										%circle.st0{:cx => "20.5", :cy => "20.5", :r => "20"}
+										%path.st1{:d => "M28.8,14.6c-0.6,0.3-1.3,0.5-2.1,0.6c0.7-0.4,1.3-1.2,1.6-2c-0.7,0.4-1.5,0.7-2.3,0.9   c-0.7-0.7-1.6-1.1-2.6-1.1c-2,0-3.6,1.6-3.6,3.6c0,0.3,0,0.6,0.1,0.8c-3-0.2-5.6-1.6-7.4-3.8c-0.3,0.5-0.5,1.2-0.5,1.8   c0,1.2,0.6,2.4,1.6,3c-0.6,0-1.1-0.2-1.6-0.4v0c0,1.7,1.2,3.2,2.9,3.5c-0.3,0.1-0.6,0.1-0.9,0.1c-0.2,0-0.5,0-0.7-0.1   C13.6,23,15,24,16.6,24c-1.2,1-2.8,1.5-4.5,1.5c-0.3,0-0.6,0-0.9,0c1.6,1,3.5,1.6,5.5,1.6c6.6,0,10.3-5.5,10.3-10.3   c0-0.2,0-0.3,0-0.5C27.7,15.9,28.3,15.3,28.8,14.6"}
+
+							%a{:href => "https://instagram.com/username", :target => "_blank"}
+								%svg{:xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :version => "1.1", :x => "0px", :y => "0px", :viewBox => "0 0 41 41", :style => "enable-background:new 0 0 40 40;", "xml:space" => "preserve"}
+									%g#XMLID_2_
+										%circle.st0{:cx => "20.5", :cy => "20.5", :r => "20"}
+										%path.st1{:d => "M25.4,11.2H14.6c-1.9,0-3.4,1.5-3.4,3.4v3.6v7.2c0,1.9,1.5,3.4,3.4,3.4h10.8   c1.9,0,3.4-1.5,3.4-3.4v-7.2v-3.6C28.8,12.7,27.3,11.2,25.4,11.2z M26.4,13.2l0.4,0v0.4v2.6l-3,0l0-3L26.4,13.2z M17.5,18.2   c0.6-0.8,1.5-1.3,2.5-1.3c1,0,1.9,0.5,2.5,1.3c0.4,0.5,0.6,1.1,0.6,1.8c0,1.7-1.4,3.1-3.1,3.1c-1.7,0-3.1-1.4-3.1-3.1   C16.9,19.3,17.1,18.7,17.5,18.2z M27.1,25.4c0,0.9-0.8,1.7-1.7,1.7H14.6c-0.9,0-1.7-0.8-1.7-1.7v-7.2h2.6c-0.2,0.6-0.4,1.2-0.4,1.8   c0,2.6,2.2,4.8,4.8,4.8c2.6,0,4.8-2.2,4.8-4.8c0-0.6-0.1-1.2-0.4-1.8h2.6V25.4z"}
+
+							%a{:href => "https://youtube.com/username", :target => "_blank"}
+								%svg{:xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :version => "1.1", :x => "0px", :y => "0px", :viewBox => "0 0 41 41", :style => "enable-background:new 0 0 40 40;", "xml:space" => "preserve"}
+									%g#XMLID_2_
+										%circle.st0{:cx => "20.5", :cy => "20.5", :r => "20"}
+										%path.st1{:d => "M23.4,20l-5.7,3.4v-6.8L23.4,20z M28.8,23.1v-6.3c0,0,0-3-3-3H14.2c0,0-3,0-3,3v6.3   c0,0,0,3,3,3h11.5C25.8,26.2,28.8,26.2,28.8,23.1"}
+
+				.row
+					.col-md-12
+						.footer-links
+							%ul
+								%li= link_to "Home", root_path
+								%li= link_to "Help & FAQ", help_path
+								%li= link_to "Terms of Use", term_path
+								%li= link_to "Privacy Policy", privacy_path
+								%li= link_to "About Us" , about_path
+								%li= link_to "Contact Us", contact_path
+			.container-fluid
+				.row.copyright
+					.container
+						%p &copy; 2016 MRENTZ | All Rigths Reserved
+
+
 
 - @search_listings = Listing.all
 
