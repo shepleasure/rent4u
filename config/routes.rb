@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   match '/verifications',    to: 'verifications#sendpin',    via: :get
 
   resources :listing_attachments
-  devise_for :users, :controllers => { :registrations => "acme/registrations"}
+  devise_for :users, :controllers => { :registrations => "acme/registrations" }
+
   root 'categories#index'
 
   resources :categories do

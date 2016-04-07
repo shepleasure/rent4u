@@ -77,6 +77,7 @@ $grey: #EEEEEE;
       font-size: 10px;
     }
   }
+  
 
 }
 
@@ -241,6 +242,14 @@ $grey: #EEEEEE;
     }
   }
 
+  #sign_up {
+    .modal-sm {
+      width: 350px;
+      margin: auto;
+      margin-top: 15px;
+    }
+  }
+
 
 }
 
@@ -332,6 +341,12 @@ $grey: #EEEEEE;
       ul {
         margin-left: -3em;
       }
+    }
+  }
+
+  #sign_up {
+    .modal-sm {
+      width: 350px;
     }
   }
 
@@ -427,6 +442,12 @@ $grey: #EEEEEE;
     }
   }
 
+  #sign_up {
+    .modal-sm {
+      width: 350px;
+    }
+  }
+
 }
 
 /* Medium Devices, Desktops */
@@ -471,6 +492,12 @@ $grey: #EEEEEE;
     }
   }
 
+  #sign_up {
+    .modal-sm {
+      width: 350px;
+    }
+  }
+
 }
 
 /* Large Devices, Wide Screens */
@@ -508,6 +535,12 @@ $grey: #EEEEEE;
       ul {
         margin-left: -3em;
       }
+    }
+  }
+
+  #sign_up {
+    .modal-sm {
+      width: 350px;
     }
   }
 

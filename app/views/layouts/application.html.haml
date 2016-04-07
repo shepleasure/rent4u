@@ -7,6 +7,7 @@
 		= csrf_meta_tags
 		%meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
 
+
 		%link{rel: "apple-touch-icon-precomposed", sizes: "57x57", href: "assets/apple-touch-icon-57x57.png"}
 		%link{rel: "apple-touch-icon-precomposed", sizes: "114x114", href: "assets/apple-touch-icon-114x114.png"}
 		%link{rel: "apple-touch-icon-precomposed", sizes: "72x72", href: "assets/apple-touch-icon-72x72.png"}
@@ -28,11 +29,12 @@
 		%meta{name: "msapplication-wide310x150logo", content: "assets/mstile-310x150.png" }
 		%meta{name: "msapplication-square310x310logo", content: "assets/mstile-310x310.png" }
 
-
 	%body
+
 
 		%nav.navbar.navbar-default.navbar-fixed-top#navbar-customise
 			.container
+
 				.navbar-header
 					%button.navbar-toggle{:type => "button", :data => {:toggle => "collapse", :target => "#myNavbar"}}
 						%span.icon-bar
@@ -53,13 +55,12 @@
 							%li.nav-others= link_to "Sign Out", destroy_user_session_path, method: :delete
 							%li.post= link_to 'Rent an Item', current_user.needs_mobile_number_verifying? ? verifications_path : new_listing_path, 'data-no-turbolink' => true
 						- else
-							%li.nav-others= link_to "Sign In", new_user_session_path
-							%li.nav-others= link_to "Sign Up", new_user_registration_path
+							%li.nav-others= link_to "Sign In", "#login", "data-toggle" => "modal"
+
+							%li.nav-others= link_to "Sign Up", "#sign_up", "data-toggle" => "modal"
 							%li.post= link_to 'Rent an Item', new_listing_path, 'data-no-turbolink' => true
 
 		.container.content
-			- flash.each do |name, msg|
-				= content_tag :div, msg, class: "alert alert-info"
 
 			#search-section
 				= form_tag search_main_listings_path, method: :get, :class => "form-inline" do |f|
@@ -76,7 +77,19 @@
 
 					= submit_tag 'Search', :class => "btn btn-default"
 
+			#flash-section 
+				- flash.each do |name, msg|
+					.alert.alert-warning.fade.in{:class => "alert-#{name}"}
+						%a.close{href: "#", :data => { :dismiss => "alert" }, :aria => { :label => "close" }}
+							&times;
+						= msg
+
+			
 			= yield
+
+			= render "devise/sessions/login_modal"
+
+			= render "devise/registrations/sign_up_modal"
 
 		.space-footer
 		#footer
@@ -169,3 +182,20 @@
 	delay:250,
 	});
 	});
+
+%script
+	$(document).ready(function() {
+	$("#modal-login").click(function() {
+	$("#modal").modal("hide");
+	});
+	});
+
+%script
+	$(document).ready(function() {
+	$('#sign_up').on('shown.bs.modal', function (event) {
+	$('.password #user_password').hidePassword(true);
+	}); 
+	}); 
+
+
+

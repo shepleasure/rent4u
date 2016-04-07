@@ -25,6 +25,7 @@ gem 'twilio-ruby', '~> 4.0.0'
 gem 'phonelib'
 gem 'social-share-button', '~> 0.1.10'
 gem 'material_icons'
+gem "parsley-rails"
 
 group :development, :test do
   gem 'byebug'

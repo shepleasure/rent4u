@@ -1,4 +1,6 @@
 class Acme::RegistrationsController < Devise::RegistrationsController
+
+  
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
 
@@ -50,6 +52,10 @@ class Acme::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.for(:account_update) do |u|
       u.permit(:fullname, :email, :password, :password_confirmation, :mobile_number, :current_password, :is_verified)
     end
+  end
+
+  def after_sign_up_path_for(resource)
+    current_user.needs_mobile_number_verifying? ? verifications_path : new_listing_path
   end
 
   # The path used after sign up.

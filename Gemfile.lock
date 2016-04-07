@@ -224,6 +224,8 @@ GEM
     nokogiri (1.6.7.1-x86-mingw32)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
+    parsley-rails (2.0.7.0)
+      railties (>= 3.0.0)
     pg (0.18.4)
     pg (0.18.4-x86-mingw32)
     phonelib (0.5.6)
@@ -342,6 +344,7 @@ DEPENDENCIES
   jquery-ui-rails
   material_icons
   mini_magick (~> 4.3, >= 4.3.6)
+  parsley-rails
   pg
   phonelib
   rails (= 4.2.5)
