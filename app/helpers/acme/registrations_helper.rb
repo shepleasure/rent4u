@@ -16,8 +16,8 @@ module Acme::RegistrationsHelper
     p current_user.verification_code.empty?
     html = <<-HTML
       <h3>Enter Verification Code</h3>
-      #{form_tag(verifications_path, method: "patch")}
-      #{text_field_tag('verification_code')}
+      #{form_tag(verifications_path, method: "patch", 'data-parsley-validate' => '')}
+      #{text_field_tag('verification_code', nil,  required: true)}
       #{button_tag('Submit', type: "submit")}
       </form>
     HTML

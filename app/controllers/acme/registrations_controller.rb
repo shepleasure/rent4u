@@ -38,7 +38,7 @@ class Acme::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
@@ -56,6 +56,10 @@ class Acme::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     current_user.needs_mobile_number_verifying? ? verifications_path : new_listing_path
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 
   # The path used after sign up.

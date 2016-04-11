@@ -1,0 +1,24 @@
+.row
+    .col-md-4
+    .col-md-4
+        #sign_in
+            .sign-in-title
+                %p Change your password
+
+            .sign-in-content
+                = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put, 'data-parsley-validate' => '' } do |f|
+
+                    = f.input :reset_password_token, as: :hidden
+                    = f.full_error :reset_password_token
+
+                    .form-inputs
+
+                        = f.input :password, required: true, :input_html => {                              :'data-parsley-required-message' => 'Password is required',                  :"data-parsley-length" => "[6, 20]",                                           :"data-parsley-length-message" => "Too short",                                 :'data-parsley-trigger' => 'change focusout' }, hint: ("6 characters minimum"), label: false, :placeholder => 'Password'
+
+                    .form-action.text-center
+                        = f.button :submit, "Change my password"
+
+            .sign-in-footer
+                = render "devise/shared/links"
+
+    .col-md-4            
