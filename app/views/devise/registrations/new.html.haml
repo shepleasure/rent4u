@@ -17,7 +17,7 @@
                                 
                                 = f.input :email, required: true, :input_html => {                                :'data-parsley-required-message' => 'Email is required',                      :'data-parsley-email-message' => 'Not a valid email address',                  :'data-parsley-trigger' => 'change focusout'},  label: false, :placeholder => 'Email'
 
-                                = f.input :password, required: true, :input_html => {                              :'data-parsley-required-message' => 'Full name is required',                  :"data-parsley-length" => "[6, 20]",                                           :"data-parsley-length-message" => "Too short",                                 :'data-parsley-trigger' => 'change focusout' }, hint: ("6 characters minimum"), label: false, :placeholder => 'Password'
+                                = f.input :password, required: true, :input_html => {                              :'data-parsley-required-message' => 'Password is required',                  :"data-parsley-length" => "[6, 20]",                                           :"data-parsley-length-message" => "Too short",                                 :'data-parsley-trigger' => 'change focusout' }, hint: ("6 characters minimum"), label: false, :placeholder => 'Password'
 
 
 

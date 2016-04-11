@@ -200,9 +200,9 @@ body, a {
   margin-top: 5em;
 }
 
-#sign_up {
+#sign_up, #sign_in {
   font-family: "raleway-medium";
-  .sign-up-title {
+  .sign-up-title, .sign-in-title {
     text-align: center;
     p {
       text-transform: uppercase;
@@ -215,7 +215,7 @@ body, a {
       color:$blue;
     }
   }
-  .sign-up-content {
+  .sign-up-content, .sign-in-content{
     .form-control {
       border: 1px solid $grey;
     }
@@ -284,7 +284,6 @@ body, a {
     }
   }
   .sign-up-footer {
-    border-top: none;
     text-align: center;
     a {
       display: block;
@@ -297,6 +296,18 @@ body, a {
       }
     }
 
+  }
+  .sign-in-footer {
+    text-align: center;
+    margin-top: 20px;
+    border-top : 1px solid $grey;
+    padding-top: 15px;
+    a {
+      &:hover, &:focus {
+        color: $yellow;
+        text-decoration: none;
+      }
+    }
   }
 }
 
