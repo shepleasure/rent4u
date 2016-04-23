@@ -26,6 +26,7 @@ gem 'phonelib'
 gem 'social-share-button', '~> 0.1.10'
 gem 'material_icons'
 gem "parsley-rails"
+gem 'file_validators'
 
 group :development, :test do
   gem 'byebug'

@@ -131,8 +131,14 @@
 	- @s_title = listing.title
 	- search_titles.push(@s_title)
 
-	- @s_location = listing.city
+	- if listing.locality.blank?
+		- @s_location = listing.city
+	- else
+		- @s_location = listing.locality + ", " + listing.city
+
 	- search_location.push(@s_location)
+
+
 
 - search_titles.uniq!
 - @json = search_titles.to_json
@@ -177,6 +183,7 @@
 	$(document).ready(function() {
 	$('.password #user_password').hidePassword(true);
 	}); 
+
 
 
 

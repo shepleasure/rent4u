@@ -1,47 +1,83 @@
-= javascript_include_tag 'listing.js'
-
-= simple_form_for @listing, html: { multipart: true } do |f|
-	.form-group
-		= f.input :title, input_html: { class: 'form-control' }
-
-
+= simple_form_for @listing, html: { multipart: true, 'data-parsley-validate' => '' } do |f|
 	
-	= f.simple_fields_for :listing_attachments do |avatar|
-		= render 'listing_attachment_fields', f: avatar
-	.links
-		= link_to_add_association 'add a photo', f, :listing_attachments
+	.well
+		.row
+			.col-md-6
+				.form-group
+					%label.required Category
+					= f.collection_select :category_id, Category.all, :id, :name, {:include_blank => "Choose a Category", :selected => "Choose a Category"}, required: true , class: "form-control", :'data-parsley-required-message' => 'Category is required', :'data-parsley-trigger' => 'change focusout', autofocus: true
 
-	.form-group
-		%label Category
-		= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category" }, input_html: { class: "dropdown-toggle" }
+			.col-md-6
+				.form-group
+					%label.required SubCategory
+					= f.select :subcategory_id, options_for_select([]), {:include_blank => "Choose a SubCategory", :selected => "Choose a SubCategory"}, { required: 'true' , class: "form-control", :'data-parsley-required-message' => 'SubCategory is required', :'data-parsley-trigger' => 'change focusout' }
 
-	.form-group
-		%label SubCategory
-		= f.select :subcategory_id, options_for_select([])
-	.form-group
-		= f.input :description, input_html: { class: 'form-control' }
+	.well
+		.form-group
+			#listing_attachments
+				= f.simple_fields_for :listing_attachments, html: { multipart: true, 'data-parsley-validate' => '' } do |avatar|
+					= render 'listing_attachment_fields', f: avatar
+				.links
+					= link_to_add_association 'Upload image(s)', f, :listing_attachments, required: true, class: "btn btn-default"
+					%p.help-block You can upload till 6 images. You need to upload atleast one image.
 
-	.form-group
-		= f.input :city, input_html: { class: 'form-control', id: 'automplete-1'}
+		.form-group
+			= f.input :title, input_html: { class: 'form-control', :'data-parsley-required-message' => 'Title is required', :'data-parsley-length' => '[2, 32]',                                                  :'data-parsley-length-message' => 'Title should contain atleast 2 characters',                    :'data-parsley-trigger' => 'change focusout' },  :placeholder => 'Title for your item'
 
-	.form-group
-		= f.input :locality, input_html: { class: 'form-control' }
+		.form-group
+			= f.input :description, input_html: { class: 'form-control', placeholder: "Describe your item" , :'data-parsley-required-message' => 'Description is required', :'data-parsley-trigger' => 'change focusout'}
 
-	.row
-		.col-xs-4.col-sm-3.col-md-2.col-lg-1	
-			.form-group
-				= f.input :price, input_html: { class: 'form-control' }
-		.col-xs-4.col-sm-3.col-md-2.col-lg-1
-			%br
-			%p per
-		.col-xs-4.col-sm-3.col-md-2.col-lg-1
-			%br
-			.form-group
-				= f.select :time, ['hour','day','week','month'], :selected => 'hour', input_html: { class: 'form-control' }
+	.well
+		.row
+			.col-md-6
+				.form-group
+					= f.input :city, input_html: { class: 'form-control', id: 'automplete-1', placeholder: "Your City", :'data-parsley-required-message' => 'City is required', :'data-parsley-trigger' => 'change focusout'}
+			.col-md-6
+				.form-group
+					= f.input :locality, input_html: { class: 'form-control', placeholder: "Your Area/Street name [optional]" }
 
+	.well
+		.row
+			.col-md-6
+				.row.price-div
+					.col-xs-5.price-input	
+						.form-group
+							= f.input :price, input_html: { class: 'form-control', placeholder: "INR", :'data-parsley-required-message' => 'Price is required', :'data-parsley-trigger' => 'change focusout', :'data-parsley-pattern' => "/\\d+(?:[.,]\\d+)?/", :'data-parsley-pattern-message' => 'Price seems to be invalid' },  required: true
+					.col-xs-2.p-input
+						.form-group
+							%label.time hidden
+							.form-control per
+					.col-xs-5.per-input
+						.form-group
+							%label.time hidden
+							= f.select :time, ['hour','day','week','month'], { :selected => "hour"}, required: true, class: "form-control"
+			.col-md-6
+				.form-group.radio-style
+					%p Delivery
+					= f.radio_button :delivery, 'available'
+					= f.label :delivery, 'Available', :value => 'available'
+					= f.radio_button :delivery, 'not available'
+					= f.label :delivery, 'Not available', :value => 'not available'
 
-	= f.button :submit, "Post an Item", class: "btn btn-primary"
+		.row
+			.col-md-12
+				.form-group
+					%label Terms & Conditions
+					= f.input :terms, input_html: { class: 'form-control', placeholder: "Terms & Conditions if any" }, label: false		
 
+		.row
+			.col-md-6
+				.form-group.radio-style
+					%p.required Security Deposit
+					= f.radio_button :security, 'yes', required: true, :'data-parsley-trigger' => 'change focusout'
+					= f.label :security, 'Yes', :value => 'yes'
+					= f.radio_button :security, 'no'
+					= f.label :security, 'No', :value => 'no', required: true, :'data-parsley-trigger' => 'change focusout'
+			.col-md-6
+				.form-group#security-amount
+					= f.input :security_amount, input_html: { class: 'form-control', :'data-parsley-required-message' => 'Security amount is required', :'data-parsley-trigger' => 'change focusout', :'data-parsley-pattern' => "/\\d+(?:[.,]\\d+)?/", :'data-parsley-pattern-message' => 'Price seems to be invalid' }, :placeholder => 'INR'
+
+	= f.button :submit, "Post an Item", class: "btn btn-default post"
 
 
 %script 
@@ -53,6 +89,40 @@
 	source: availableTutorials,
 	autoFocus:true,
 	minLength:1,
-	delay:250,
+	open: function() {
+	$("ul.ui-menu").width( $(this).innerWidth() );
+	}
+	});
+	});
+
+%script
+	$(document).ready(function() {
+
+	function check_to_hide_or_show_add_link() {
+	if ($('#listing_attachments .nested-fields').length == 6) {
+	$('#listing_attachments .links a').hide("slow");
+	} else {
+	$('#listing_attachments .links a').show( "slow" );
+	}
+	}
+
+	$('#listing_attachments').bind('cocoon:after-insert', function() {
+	check_to_hide_or_show_add_link();
+	});
+
+	$('#listing_attachments').bind('cocoon:after-remove', function() {
+	check_to_hide_or_show_add_link();
+	});
+
+	check_to_hide_or_show_add_link();
+
+	$("input[name='listing[security]']").click(function() {
+	if ($("#listing_security_yes").is(":checked")) {
+	$("#security-amount").show();
+	$("#listing_security_amount").attr('required');
+	} else {
+	$("#security-amount").hide();
+	$("#listing_security_amount").removeAttr('required');
+	}
 	});
 	});

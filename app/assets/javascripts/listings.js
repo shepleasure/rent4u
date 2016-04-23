@@ -24,10 +24,4 @@ $(document).ready(function(){
   
   getSubcategories(getSelectedCategory());
 
-  $('.remove_fields').click(function(){
-    alert('Image have been removed. Click post to update')
-  });
-
-   
-
 });

@@ -6,7 +6,11 @@ class Listing < ActiveRecord::Base
 	validates_presence_of :title
 	validates_presence_of :description
 	validates_presence_of :city
-	validates_presence_of :listing_attachments
+	validates_presence_of :security
+
+	validate do |listing|
+    	listing.errors[:base] << "Atleast one image is required. Upload Image below" if listing.listing_attachments.blank?
+  	end
 
 	has_many :listing_attachments, dependent: :destroy
     accepts_nested_attributes_for :listing_attachments, reject_if: proc{ |param| param[:avatar].blank? && param[:avatar_cache].blank? && param[:id].blank? }, allow_destroy: true

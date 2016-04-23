@@ -1,8 +1,35 @@
-%tr.nested-fields
-	%td
-		= f.file_field :avatar
-		= f.hidden_field :avatar_cache, :value => f.object.avatar_cache
-	%td
-		- if f.object.avatar.url.present?
-			= image_tag f.object.avatar.thumb.url
-	%td= link_to_remove_association "remove", f
+/ .nested-fields
+/ 	.row
+/ 		.col-md-4
+/ 			.form-group
+/ 				= f.file_field :avatar, required: true, class: "file-field" 
+/ 				= f.hidden_field :avatar_cache, :value => f.object.avatar_cache
+
+/ 		- if f.object.avatar.url.present?
+/ 			.col-md-4
+/ 				.form-group
+/ 					= image_tag f.object.avatar.thumb.url
+
+/ 		.col-md-4
+/ 			.form-group
+/ 				= link_to_remove_association "remove", f
+
+.nested-fields
+	
+	.fileinput.fileinput-new{ :"data-provides" => "fileinput" }
+
+		.fileinput-new.thumbnail{:style => "width: 200px; height: 150px;"}
+			- if f.object.avatar.url.present?
+				= image_tag f.object.avatar.thumb.url, :"data-src" => "holder.js/100%x100%"
+
+
+		.fileinput-preview.fileinput-exists.thumbnail{:style => "max-width: 200px; max-height: 150px;"}
+
+
+		%span.btn.btn-default.btn-file
+			%span.fileinput-new Select image
+			%span.fileinput-exists Change
+			= f.file_field :avatar
+			= f.hidden_field :avatar_cache, :value => f.object.avatar_cache
+
+		%a.btn.btn-default.fileinput-exists{:"data-dismiss" => "fileinput", :href => "#"} Remove
