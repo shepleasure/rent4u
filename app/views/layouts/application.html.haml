@@ -53,7 +53,7 @@
 							%li.nav-others= link_to "My Items", mylistings_path
 							%li.nav-others= link_to "My Account", edit_user_registration_path
 							%li.nav-others= link_to "Sign Out", destroy_user_session_path, method: :delete
-							%li.post= link_to 'Rent an Item', current_user.needs_mobile_number_verifying? ? verifications_path : new_listing_path, 'data-no-turbolink' => true
+							%li.post= link_to 'Rent an Item', new_listing_path, 'data-no-turbolink' => true
 						- else
 							%li.nav-others= link_to "Sign In", new_user_session_path
 

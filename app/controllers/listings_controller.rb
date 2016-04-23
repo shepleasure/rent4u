@@ -2,6 +2,7 @@ class ListingsController < ApplicationController
 
 	before_action :find_listing, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, except: [:index, :show, :search_main, :search]
+	before_action :verified, only: [ :new ]
 
 
 	def new
@@ -79,6 +80,12 @@ class ListingsController < ApplicationController
 
 	def find_listing
 		@listing = Listing.find(params[:id])
+	end
+
+	def verified
+		if current_user.needs_mobile_number_verifying? 
+			redirect_to(verifications_path)
+		end
 	end
 
 end
