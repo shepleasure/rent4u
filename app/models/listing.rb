@@ -7,6 +7,7 @@ class Listing < ActiveRecord::Base
 	validates_presence_of :description
 	validates_presence_of :city
 	validates_presence_of :security
+	validates_presence_of :price
 
 	validate do |listing|
     	listing.errors[:base] << "Atleast one image is required. Upload Image below" if listing.listing_attachments.blank?

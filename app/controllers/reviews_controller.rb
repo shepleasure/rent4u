@@ -42,10 +42,14 @@ class ReviewsController < ApplicationController
 	def update
 		@notice_type = 'modifi'
 
-		@review.update(review_params)
-		create_notification @listing, @review, @notice_type
-		ReviewNotifier.send_edit_review_email(@listing.user,@review.user.fullname, @review.listing.title).deliver
-		redirect_to @listing
+		if @review.update(review_params)
+			create_notification @listing, @review, @notice_type
+			ReviewNotifier.send_edit_review_email(@listing.user,@review.user.fullname, @review.listing.title).deliver
+			redirect_to @listing
+		else
+			flash[:alert] = @review.errors.full_messages.to_sentence
+			render 'edit'
+		end
 	end
 
 	def destroy

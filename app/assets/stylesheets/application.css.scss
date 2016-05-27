@@ -32,8 +32,8 @@ $yellow: #FFCD33;
 $black: #1A1A1A;
 $light-black: #808080;
 $light-yellow: #FFE066;
-$blue: #A9BEEF;
-$light-blue: #BED1F4;
+$blue: #2AB9C7;
+$light-blue: #43E0E8;
 $grey: #E6E6E6;
 $light-grey: #EEEEEE;
 $red: #a94442;
@@ -41,6 +41,7 @@ $red-border: #ebccd1;
 $green: #3c763d;
 $green-border: #D6E9C6;
 $links: #337AB7;
+$new: #474e5d;
 
 
 @font-face {
@@ -56,6 +57,11 @@ $links: #337AB7;
 @font-face {
   font-family: "raleway-regular";
   src: url(/assets/Raleway-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "raleway-bold";
+  src: url(/assets/Raleway-Bold.ttf) format("truetype");
 }
 
 html {
@@ -195,7 +201,7 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
 }
 
 #category-section {
-  .panel-default, .panel-heading, .panel-footer {
+  .panel-footer, .panel-heading {
     border-color: $grey;
     background-color: transparent;
     color: $black;
@@ -526,61 +532,6 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
         background-color: $light-blue;
       }
     }
-
-
-    ul#ui-id-1 {
-      background-color: pink !important;
-    }
-    
-ul#ui-id-1.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  float: left;
-  display: none;
-  min-width: 160px;
-  _width: 160px;
-  padding: 4px 0;
-  margin: 2px 0 0 0;
-  list-style: none;
-  background-color: #000;
-  border-color: #ccc;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: solid;
-  border-width: 1px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
-
-  .ui-menu-item > a.ui-corner-all {
-    display: block;
-    padding: 3px 15px;
-    clear: both;
-    font-weight: normal;
-    line-height: 18px;
-    color: #555555;
-    white-space: nowrap;
-
-    &.ui-state-hover, &.ui-state-active {
-      color: #ffffff;
-      text-decoration: none;
-      background-color: #0088cc;
-      border-radius: 0px;
-      -webkit-border-radius: 0px;
-      -moz-border-radius: 0px;
-      background-image: none;
-    }
-  }
-}
     select {
       background: url(down_arrow.png) no-repeat right;
       appearance:none;
@@ -800,6 +751,176 @@ ul#ui-id-1.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
       &:focus {
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 255, 0, 0.4);
       }
+    }
+  }
+}
+
+#show {
+  .r-bold {
+    font-weight: 600;
+  }
+  #image {
+    margin-top: 20px;
+  }
+/*  .thumb{
+    float:left;
+    margin-right:10px;
+    margin-top:10px;
+    width: 80px;
+    &:hover, &:focus, &:active {
+      border: 3px solid $yellow;
+    }
+  }*/
+  .activethumb {
+    border: 3px solid $yellow;
+  }
+  font-family: "raleway-medium";
+  .show-title{
+    margin-top: 15px;
+    p {
+      text-transform: capitalize;
+      padding-top: 10px;
+      padding-bottom: 15px;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      border-bottom : 1px solid $grey;
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .show-content {
+    .share {
+      padding-top: 5px;
+    }
+    .social-share-button-twitter {
+      background: url("/assets/share-twitter.png");
+      width: 30px;
+      height: 30px;
+      &:hover, &:focus, &:active {
+        background: url("/assets/share-twitter-hover.png");
+      }
+    }
+    .social-share-button-facebook {
+      background: url("/assets/share-fb.png");
+      width: 30px;
+      height: 30px;
+      &:hover, &:focus, &:active {
+        background: url("/assets/share-fb-hover.png");
+      }
+    }
+    .social-share-button-google_plus {
+      background: url("/assets/share-google.png");
+      width: 30px;
+      height: 30px;&:hover, &:focus, &:active {
+        background: url("/assets/share-google-hover.png");
+      }
+    }
+    .social-share-button-pinterest {
+      background: url("/assets/share-pin.png");
+      width: 30px;
+      height: 30px;
+      &:hover, &:focus, &:active {
+        background: url("/assets/share-pin-hover.png");
+      }
+    }
+    .price {
+      margin-top: 15px;
+      .number {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .block {
+        display: block;
+      }
+    }
+    .security {
+      .number {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .block {
+        display: block;
+      }
+    }
+    .delivery {
+      span {
+        display: block;
+      }
+    }
+    .city {
+      text-transform: capitalize;
+      span {
+        display: block;
+      }
+    }
+    .show-btn {
+      text-align: center;
+      .btn {
+        background-color: $blue;
+        color: white;
+        font-family: "raleway-medium";
+        border-color: $blue;
+        margin-left: 5px;
+        &:hover, &:focus, &:active {
+          outline: none;
+          background-color: $light-blue;
+        }
+      }
+    }
+  }
+  .nav-pills > li > a {
+    border-bottom: 2px solid $grey;
+    border-radius: 0px;
+    &:hover, &:focus {
+      color: $blue;
+    }
+  }
+  .nav-pills > li.active > a {
+    color: $black;
+    background-color: transparent;
+    border-bottom: 2px solid $blue;
+  }
+
+  .tab-content {
+    .terms {
+      span {
+        display: block;
+      }
+    }
+    .review-title {
+      text-transform: capitalize;
+      font-weight: 600;
+    }
+    i {
+      font-size: 20px;
+      color: $light-black;
+      cursor: pointer;
+    }
+    .review-by {
+      color: $light-black;
+      padding-top: 10px;
+      font-size: 13px;
+    }
+    .comment {
+      padding-top: 10px;
+    }
+    .posted {
+      margin-top: 10px;
+      margin-bottom: 25px;
+      color: $light-black;
+      font-size: 13px;
+    }
+    .btn {
+      background-color: $blue;
+      color: white;
+      font-family: "raleway-medium";
+      border-color: $blue;
+      &:hover, &:focus, &:active {
+        outline: none;
+        background-color: $light-blue;
+      }
+    }
+    #home, #menu1 {
+      margin-top: 9px;
     }
   }
 }

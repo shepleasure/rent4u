@@ -1,3 +1,14 @@
-%h1 Editing Review
-= render 'form'
-= link_to 'Back', listing_path(@listing)
+.bread
+	= link_to "Home", root_path
+	>
+	= link_to @listing.title.capitalize, listing_path(@listing)
+	>
+	Editing Review
+.row
+	.col-md-4
+		#edit
+			.edit-title
+				%p 
+					Editing Review
+			= render 'form'
+	.col-md-8
