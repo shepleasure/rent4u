@@ -19,11 +19,11 @@
 					= @listing.title
 			.show-content
 				.row
-					.col-ms-6
+					.col-ms-6.col-md-6
 						.star-rating{:data => {'score' => @avg_review}} 
 						%em= @reviews.length
 						= "review".pluralize(@reviews.count)
-					.col-ms-6.text-center
+					.col-ms-6.col-md-6.text-center
 						%p.pull-left.share.r-bold Share :
 						= social_share_button_tag(@listing.title)
 				.row

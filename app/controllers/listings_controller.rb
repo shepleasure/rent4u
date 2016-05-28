@@ -22,7 +22,9 @@ class ListingsController < ApplicationController
 	end
 
 	def show
-		
+		if @listing.listing_attachments.blank?
+			redirect_to :back
+		end
 		@reviews = Review.where(listing_id: @listing.id).order("created_at DESC")
 
 		if @reviews.blank?

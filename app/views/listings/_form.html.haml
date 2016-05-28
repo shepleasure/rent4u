@@ -18,7 +18,7 @@
 				= f.simple_fields_for :listing_attachments, html: { multipart: true, 'data-parsley-validate' => '' } do |avatar|
 					= render 'listing_attachment_fields', f: avatar
 				.links
-					= link_to_add_association 'Upload image(s)', f, :listing_attachments, required: true, class: "btn btn-default"
+					= link_to_add_association 'Add image(s)', f, :listing_attachments, required: true, class: "btn btn-default"
 					%p.help-block You can upload till 6 images. You need to upload atleast one image.
 
 		.form-group
@@ -77,7 +77,7 @@
 				.form-group#security-amount
 					= f.input :security_amount, input_html: { class: 'form-control', :'data-parsley-required-message' => 'Security amount is required', :'data-parsley-trigger' => 'change focusout', :'data-parsley-pattern' => "/\\d+(?:[.,]\\d+)?/", :'data-parsley-pattern-message' => 'Price seems to be invalid' }, :placeholder => 'INR'
 
-	= f.button :submit, "Post an Item", class: "btn btn-default post"
+	= f.button :submit, ( f.object.new_record? ? "Post an Item" : "Update an Item"), class: "btn btn-default post"
 
 
 %script 
