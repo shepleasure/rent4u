@@ -20,8 +20,6 @@ gem 'cocoon', '~> 1.2', '>= 1.2.6'
 gem "jquery-ui-rails"
 gem 'will_paginate', '~> 3.1'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
-gem 'ajax_pagination'
-gem 'jquery-historyjs'
 gem 'figaro'
 gem 'twilio-ruby', '~> 4.0.0'
 gem 'phonelib'
