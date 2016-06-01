@@ -19,5 +19,6 @@
 //= require turbolinks
 //= require listings
 //= require social-share-button
+//= require ajax_pagination
 //= require_tree .
 

@@ -15,6 +15,7 @@
  *= require parsley
  *= require material_icons
  *= require social-share-button
+ *= require ajax_pagination
  *= require_self
  *= require jquery-ui
  */
@@ -36,6 +37,7 @@ $blue: #2AB9C7;
 $light-blue: #43E0E8;
 $grey: #E6E6E6;
 $light-grey: #EEEEEE;
+$dark-grey: #888;
 $red: #a94442;
 $red-border: #ebccd1;
 $green: #3c763d;
@@ -762,15 +764,6 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
   #image {
     margin-top: 20px;
   }
-/*  .thumb{
-    float:left;
-    margin-right:10px;
-    margin-top:10px;
-    width: 80px;
-    &:hover, &:focus, &:active {
-      border: 3px solid $yellow;
-    }
-  }*/
   .activethumb {
     border: 3px solid $yellow;
   }
@@ -922,6 +915,61 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     #home, #menu1 {
       margin-top: 9px;
     }
+  }
+}
+
+#list {
+  font-family: "raleway-medium";
+  .nav-pills > li > a {
+    border-bottom: 2px solid $grey;
+    border-radius: 0px;
+    &:hover, &:focus {
+      color: $blue;
+    }
+  }
+  .nav-pills > li.active > a {
+    color: $black;
+    background-color: transparent;
+    border-bottom: 2px solid $blue;
+  }
+  .each-list {
+    img {
+      &:hover, &:focus {
+        border: 1px solid $yellow;
+      }
+    }
+    .title {
+      color: $dark-grey;
+      p {
+        font-size: 25px;
+        margin-bottom: 0px;
+        text-transform: capitalize;
+        a {
+            color: $black;
+            &:hover, &:focus {
+              color: $yellow;
+              text-decoration: none;
+            }
+        }
+      }
+      /*.date {
+        margin-top: 20px;
+      }*/
+    }
+    .pr {
+      text-align: right;
+    }
+  }
+  .pagination > li > a, .pagination > li > span {
+    color: $blue;
+  }
+  .pagination > .disabled > span {
+    color: #777;
+  }
+  .pagination > .active > span {
+    color: #fff;
+    background-color: $blue;
+    border-color: $blue;
   }
 }
 

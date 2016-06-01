@@ -30,7 +30,7 @@
 					.col-md-12.price
 						%p
 							%span.r-bold.block Price :
-							Rs. 
+							&#8377; 
 							%span.number= @listing.price
 							per 
 							= @listing.time
@@ -193,8 +193,6 @@
 														%p.comment= review.comment
 													.col-ms-12.col-sm-12
 														%p.posted= "Posted on #{review.created_at.strftime('%d/%m/%y') }"
-										
-
 
 
 

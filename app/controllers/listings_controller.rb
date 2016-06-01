@@ -48,16 +48,14 @@ class ListingsController < ApplicationController
 	end
 
 	def search_main
-		if params[:price].blank? || params[:price] == "new"
-			@listings = Listing.search_main(params).order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
-		elsif params[:price] == "high"
-			@listings = Listing.search_main(params).order("price DESC").paginate(:page => params[:page], :per_page => 3)	
-		elsif params[:price] == "low"
-			@listings = Listing.search_main(params).order("price ASC").paginate(:page => params[:page], :per_page => 3)
-		elsif params[:price] == "popular"
-			@listings_def = Listing.search_main(params)
-			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:page], :per_page => 3)
-		end	
+		@new_listings = Listing.search_main(params).order("created_at DESC").paginate(:page => params[:new_page], :per_page => 5)
+
+		@high_listings = Listing.search_main(params).order("price DESC").paginate(:page => params[:high_page], :per_page => 5)
+
+		@low_listings = Listing.search_main(params).order("price ASC").paginate(:page => params[:low_page], :per_page => 5)
+
+		@listings_def = Listing.search_main(params)
+		@popular_listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:popular_page], :per_page => 5)
 	end
 
 	def mylistings

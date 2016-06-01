@@ -25,3 +25,22 @@ $(document).ready(function(){
   getSubcategories(getSelectedCategory());
 
 });
+
+$(document).ready(function() {
+  $(".sort_paginate_ajaxnew").on("click", ".pagination a",  function(){
+    $.getScript(this.href);
+    return false;
+  });
+  $(".sort_paginate_ajaxhigh").on("click", ".pagination a",  function(){
+    $.getScript(this.href);
+    return false;
+  });
+  $(".sort_paginate_ajaxlow").on("click", ".pagination a",  function(){
+    $.getScript(this.href);
+    return false;
+  });
+  $(".sort_paginate_ajaxpopular").on("click", ".pagination a",  function(){
+    $.getScript(this.href);
+    return false;
+  });
+});
