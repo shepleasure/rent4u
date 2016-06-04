@@ -57,7 +57,7 @@
 						- else
 							%li.nav-others= link_to "Sign In", new_user_session_path
 
-							%li.nav-others= link_to "Sign Up", new_user_registration_path 
+							%li.nav-others= link_to "Sign Up", new_user_registration_path, 'data-no-turbolink' => true 
 							%li.post= link_to 'Rent an Item', new_listing_path, 'data-no-turbolink' => true
 
 		.container.content

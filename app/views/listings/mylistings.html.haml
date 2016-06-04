@@ -1,54 +1,54 @@
-= link_to "Home", root_path
->
-My Items
+.bread
+	= link_to "Home", root_path
+	>
+	My Items
 
-%ul
-	%li 
-		= link_to "Popular", request.query_parameters.merge({:price => "popular"})
-	%li 
-		= link_to "High Price", request.query_parameters.merge({:price => "high"})
-	%li 
-		= link_to "Low Price", request.query_parameters.merge({:price => "low"})
-	%li 
-		= link_to "New", request.query_parameters.merge({:price => "new"})
-		
-%ul
-- if @listings.present?
-	- @listings.each do |listing|
-		%li
-			%span
-				= listing.created_at.strftime('%B %d, %Y')
+#list
+	.row
+		.col-md-10
+			%ul.nav.nav-pills.nav-justified
+				%li.active
+					%a{"data-toggle" => "pill", :href => "#new"} New
+				%li
+					%a{"data-toggle" => "pill", :href => "#high"} High Price
+
+				%li
+					%a{"data-toggle" => "pill", :href => "#low"} Low Price
+
+				%li
+					%a{"data-toggle" => "pill", :href => "#popular"} Popular
 			%br
-			= link_to image_tag(listing.listing_attachments.first.avatar.thumb.url), listing
-			- if listing.reviews.blank?
-				- @avg_review = 0
-			- else
-				- @avg_review = listing.reviews.average(:rating).round(2)
-			.star-rating{:data => {'score' => @avg_review}} 
-			= link_to listing.title, listing
-			( 
-			= listing.city
-			- if listing.locality.blank?
-				)
-			- else 
-				,
-				= listing.locality
-				)
-			- if listing.price.blank?
-			-else
-				Rs. 
-				= listing.price 
-				per 
-				= listing.time
-	= will_paginate @listings, renderer: BootstrapPagination::Rails
-- else 
-	%p No Items found
 
-%script
-	$('.star-rating').raty({
-	path: '/assets/',
-	readOnly: true,
-	score: function() {
-	return $(this).attr('data-score');
-	}
-	});
+			.tab-content
+				#new.tab-pane.fade.in.active
+
+					- if @new_listings.present?
+						.sort_paginate_ajaxnew
+							= render "new_listings"
+						
+					- else 
+						%p No Items found
+
+				#high.tab-pane.fade
+					- if @high_listings.present?
+						.sort_paginate_ajaxhigh
+							= render "high_listings"
+						
+					- else 
+						%p No Items found
+
+				#low.tab-pane.fade
+					- if @low_listings.present?
+						.sort_paginate_ajaxlow
+							= render "low_listings"
+						
+					- else 
+						%p No Items found
+
+				#popular.tab-pane.fade
+					- if @popular_listings.present?
+						.sort_paginate_ajaxpopular
+							= render "popular_listings"
+						
+					- else 
+						%p No Items found

@@ -74,7 +74,7 @@
 					.col-md-6
 					.col-md-6.show-btn
 						- if @listing.user == current_user
-							= link_to 'Edit', edit_listing_path, class: "btn btn-default"
+							= link_to 'Edit', edit_listing_path, class: "btn btn-default", 'data-no-turbolink' => true
 							= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
 						- else
 							= link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default"

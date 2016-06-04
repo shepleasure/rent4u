@@ -13,6 +13,19 @@ class ListingsController < ApplicationController
 		@listing = Listing.new(listing_params)
 		@listing.user = current_user
 
+		if @listing.time == "day"
+			@listing.total = @listing.price*31
+
+		elsif @listing.time == "week"
+			@listing.total = @listing.price*4
+
+		elsif @listing.time == "month"
+			@listing.total = @listing.price
+
+		elsif @listing.time == "hour"
+			@listing.total = @listing.price*730
+		end
+
 		if @listing.save
 		    redirect_to @listing
 		else
@@ -38,8 +51,25 @@ class ListingsController < ApplicationController
 	end
 
 	def update
-		@listing.update(listing_params)
-		redirect_to @listing
+		if @listing.time == "day"
+			@listing.total = @listing.price*31
+
+		elsif @listing.time == "week"
+			@listing.total = @listing.price*4
+
+		elsif @listing.time == "month"
+			@listing.total = @listing.price
+
+		elsif @listing.time == "hour"
+			@listing.total = @listing.price*730
+		end
+
+		if @listing.update(listing_params)
+			redirect_to @listing
+		else
+			flash[:alert] = @listing.errors.full_messages.to_sentence
+			render 'edit'
+		end
 	end
 
 	def destroy
@@ -48,34 +78,34 @@ class ListingsController < ApplicationController
 	end
 
 	def search_main
+
 		@new_listings = Listing.search_main(params).order("created_at DESC").paginate(:page => params[:new_page], :per_page => 5)
 
-		@high_listings = Listing.search_main(params).order("price DESC").paginate(:page => params[:high_page], :per_page => 5)
+		@high_listings = Listing.search_main(params).order("total DESC").paginate(:page => params[:high_page], :per_page => 5)
 
-		@low_listings = Listing.search_main(params).order("price ASC").paginate(:page => params[:low_page], :per_page => 5)
+		@low_listings = Listing.search_main(params).order("total ASC").paginate(:page => params[:low_page], :per_page => 5)
 
 		@listings_def = Listing.search_main(params)
 		@popular_listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:popular_page], :per_page => 5)
 	end
 
 	def mylistings
-		if params[:price].blank? || params[:price] == "new"
-			@listings = Listing.where(user: current_user).order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
-		elsif params[:price] == "high"
-			@listings = Listing.where(user: current_user).order("price DESC").paginate(:page => params[:page], :per_page => 3)	
-		elsif params[:price] == "low"
-			@listings = Listing.where(user: current_user).order("price ASC").paginate(:page => params[:page], :per_page => 3)
-		elsif params[:price] == "popular"
-			@listings_def = Listing.where(user: current_user)
-			@listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:page], :per_page => 3)
-		end	
+			
+		@new_listings = Listing.where(user: current_user).order("created_at DESC").paginate(:page => params[:new_page], :per_page => 5)
+
+		@high_listings = Listing.where(user: current_user).order("total DESC").paginate(:page => params[:high_page], :per_page => 5)
+
+		@low_listings = Listing.where(user: current_user).order("total ASC").paginate(:page => params[:low_page], :per_page => 5)
+
+		@listings_def = Listing.where(user: current_user)
+		@popular_listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:popular_page], :per_page => 5)
 	end
 
 
 	private
 
 	def listing_params
-		params.require(:listing).permit(:title, :description, :city, :locality, :price, :time, :category_id, :subcategory_id, :security, :terms, :delivery, :security_amount, listing_attachments_attributes: [:id, :avatar, :avatar_cache, :_destroy])
+		params.require(:listing).permit(:title, :description, :city, :locality, :price, :time, :category_id, :subcategory_id, :security, :terms, :delivery, :security_amount, :total, listing_attachments_attributes: [:id, :avatar, :avatar_cache, :_destroy])
 	end
 
 	def find_listing

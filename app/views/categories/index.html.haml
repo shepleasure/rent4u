@@ -7,122 +7,96 @@
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @book.name, category_path(@book)
+							= link_to @book.name, category_path(@book.name)
 						.panel-body
-							= link_to image_tag("book.jpg", class: "img-responsive"), category_path(@book)
-						.panel-footer
-							- @book.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@book, subcategory)
+							= link_to image_tag("book.jpg", class: "img-responsive"), category_path(@book.name)
 
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @camera.name, category_path(@camera)
+							= link_to @camera.name, category_path(@camera.name)
 						.panel-body
-							= link_to image_tag("camera.jpg", class: "img-responsive"), category_path(@camera)
-						.panel-footer
-							- @camera.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@camera, subcategory)
-
+							= link_to image_tag("camera.jpg", class: "img-responsive"), category_path(@camera.name)
+						
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @clothing.name, category_path(@clothing)
+							= link_to @clothing.name, category_path(@clothing.name)
 						.panel-body
-							= link_to image_tag("clothing.jpg", class: "img-responsive"), category_path(@clothing)
-						.panel-footer
-							- @clothing.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@clothing, subcategory)
+							= link_to image_tag("clothing.jpg", class: "img-responsive"), category_path(@clothing.name)
+						
 
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @computer.name, category_path(@computer)
+							= link_to @computer.name, category_path(@computer.name)
 						.panel-body
-							= link_to image_tag("computer.jpg", class: "img-responsive"), category_path(@computer)
-						.panel-footer
-							- @computer.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@computer, subcategory)
+							= link_to image_tag("computer.jpg", class: "img-responsive"), category_path(@computer.name)
+						
 
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @electronic.name, category_path(@electronic)
+							= link_to @electronic.name, category_path(@electronic.name)
 						.panel-body
-							= link_to image_tag("electronic.jpg", class: "img-responsive"), category_path(@electronic)
-						.panel-footer
-							- @electronic.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@electronic, subcategory)
+							= link_to image_tag("electronic.jpg", class: "img-responsive"), category_path(@electronic.name)
+						
+							
 
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center.rfix-320
-							= link_to @event.name, category_path(@event)
+							= link_to @event.name, category_path(@event.name)
 						.panel-body
-							= link_to image_tag("event.jpg", class: "img-responsive"), category_path(@event)
-						.panel-footer
-							- @event.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@event, subcategory)
+							= link_to image_tag("event.jpg", class: "img-responsive"), category_path(@event.name)
+						
 
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @medical.name, category_path(@medical)
+							= link_to @medical.name, category_path(@medical.name)
 						.panel-body
-							= link_to image_tag("medical.jpg", class: "img-responsive"), category_path(@medical)
-						.panel-footer
-							- @medical.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@medical, subcategory)
+							= link_to image_tag("medical.jpg", class: "img-responsive"), category_path(@medical.name)
+						
 
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @musical.name, category_path(@musical)
+							= link_to @musical.name, category_path(@musical.name)
 						.panel-body
-							= link_to image_tag("musical.jpg", class: "img-responsive"), category_path(@musical)
-						.panel-footer
-							- @musical.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@musical, subcategory)
+							= link_to image_tag("musical.jpg", class: "img-responsive"), category_path(@musical.name)
+						
 
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @realestate.name, category_path(@realestate)
+							= link_to @realestate.name, category_path(@realestate.name)
 						.panel-body
-							= link_to image_tag("realestate.jpg", class: "img-responsive"), category_path(@realestate)
-						.panel-footer
-							- @realestate.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@realestate, subcategory)
-
+							= link_to image_tag("realestate.jpg", class: "img-responsive"), category_path(@realestate.name)
+						
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @service.name, category_path(@service)
+							= link_to @service.name, category_path(@service.name)
 						.panel-body
-							= link_to image_tag("service.jpg", class: "img-responsive"), category_path(@service)
-						.panel-footer
-							- @service.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@service, subcategory)
+							= link_to image_tag("service.jpg", class: "img-responsive"), category_path(@service.name)
+						
 
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @sport.name, category_path(@sport)
+							= link_to @sport.name, category_path(@sport.name)
 						.panel-body
-							= link_to image_tag("sport.jpg", class: "img-responsive"), category_path(@sport)
-						.panel-footer
-							- @sport.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@sport, subcategory)
+							= link_to image_tag("sport.jpg", class: "img-responsive"), category_path(@sport.name)
+						
 
 				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
 					.panel.panel-default
 						.panel-heading.text-center
-							= link_to @vehicle.name, category_path(@vehicle)
+							= link_to @vehicle.name, category_path(@vehicle.name)
 						.panel-body
-							= link_to image_tag("vehicle.jpg", class: "img-responsive"), category_path(@vehicle)
-						.panel-footer.rfix-320-2
-							- @vehicle.subcategories.each do |subcategory|
-								%p= link_to subcategory.name, category_subcategory_path(@vehicle, subcategory)
+							= link_to image_tag("vehicle.jpg", class: "img-responsive"), category_path(@vehicle.name)
+						
 		.col-md-2
 			.ads-section
 				%h4.text-center Ads section

@@ -1,16 +1,27 @@
 = simple_form_for @listing, html: { multipart: true, 'data-parsley-validate' => '' } do |f|
-	
+
 	.well
 		.row
-			.col-md-6
-				.form-group
-					%label.required Category
-					= f.collection_select :category_id, Category.all, :id, :name, {:include_blank => "Choose a Category", :selected => "Choose a Category"}, required: true , class: "form-control", :'data-parsley-required-message' => 'Category is required', :'data-parsley-trigger' => 'change focusout', autofocus: true
+			- if f.object.new_record?
+				.col-md-6
+					.form-group
+						%label.required Category
+						= f.collection_select :category_id, Category.all, :id, :name, {:include_blank => "Choose a Category", :selected => "Choose a Category"}, required: true , class: "form-control", :'data-parsley-required-message' => 'Category is required', :'data-parsley-trigger' => 'change focusout keyup'
 
-			.col-md-6
-				.form-group
-					%label.required SubCategory
-					= f.select :subcategory_id, options_for_select([]), {:include_blank => "Choose a SubCategory", :selected => "Choose a SubCategory"}, { required: 'true' , class: "form-control", :'data-parsley-required-message' => 'SubCategory is required', :'data-parsley-trigger' => 'change focusout' }
+				.col-md-6
+					.form-group
+						%label.required SubCategory
+						= f.select :subcategory_id, options_for_select([]), {:include_blank => "Choose a SubCategory", :selected => "Choose a SubCategory"}, { required: 'true' , class: "form-control", :'data-parsley-required-message' => 'SubCategory is required', :'data-parsley-trigger' => 'change focusout keyup' }
+			- else
+				.col-md-6
+					.form-group
+						%label.required Category
+						= f.collection_select :category_id, Category.all, :id, :name , { :prompt=>true },   {required: true , class: "form-control", :'data-parsley-required-message' => 'Category is required', :'data-parsley-trigger' => 'change focusout keyup'}
+
+				.col-md-6
+					.form-group
+						%label.required SubCategory
+						= f.select :subcategory_id, options_for_select([]), { :prompt=>true }, required: 'true' , class: "form-control", :'data-parsley-required-message' => 'SubCategory is required', :'data-parsley-trigger' => 'change focusout keyup' 
 
 	.well
 		.form-group
@@ -22,16 +33,16 @@
 					%p.help-block You can upload till 6 images. You need to upload atleast one image.
 
 		.form-group
-			= f.input :title, input_html: { class: 'form-control', :'data-parsley-required-message' => 'Title is required', :'data-parsley-length' => '[2, 32]',                                                  :'data-parsley-length-message' => 'Title should contain atleast 2 characters',                    :'data-parsley-trigger' => 'change focusout' },  :placeholder => 'Title for your item'
+			= f.input :title, input_html: { class: 'form-control', :'data-parsley-required-message' => 'Title is required', :'data-parsley-length' => '[2, 32]',                                                  :'data-parsley-length-message' => 'Title should contain atleast 2 characters',                    :'data-parsley-trigger' => 'change  keyup' },  :placeholder => 'Title for your item'
 
 		.form-group
-			= f.input :description, input_html: { class: 'form-control', placeholder: "Describe your item" , :'data-parsley-required-message' => 'Description is required', :'data-parsley-trigger' => 'change focusout'}
+			= f.input :description, input_html: { class: 'form-control', placeholder: "Describe your item" , :'data-parsley-required-message' => 'Description is required', :'data-parsley-trigger' => 'change focusout keyup'}
 
 	.well
 		.row
 			.col-md-6
 				.form-group
-					= f.input :city, input_html: { class: 'form-control', id: 'automplete-1', placeholder: "Your City", :'data-parsley-required-message' => 'City is required', :'data-parsley-trigger' => 'change focusout'}
+					= f.input :city, input_html: { class: 'form-control', id: 'automplete-1', placeholder: "Your City", :'data-parsley-required-message' => 'City is required', :'data-parsley-trigger' => 'change focusout keyup'}
 			.col-md-6
 				.form-group
 					= f.input :locality, input_html: { class: 'form-control', placeholder: "Your Area/Street name [optional]" }
@@ -42,7 +53,7 @@
 				.row.price-div
 					.col-xs-5.price-input	
 						.form-group
-							= f.input :price, input_html: { class: 'form-control', placeholder: "INR", :'data-parsley-required-message' => 'Price is required', :'data-parsley-trigger' => 'change focusout', :'data-parsley-pattern' => "/\\d+(?:[.,]\\d+)?/", :'data-parsley-pattern-message' => 'Price seems to be invalid' },  required: true
+							= f.input :price, input_html: { class: 'form-control', placeholder: "INR", :'data-parsley-required-message' => 'Price is required', :'data-parsley-trigger' => 'change focusout keyup', :'data-parsley-pattern' => "/\\d+(?:[.,]\\d+)?/", :'data-parsley-pattern-message' => 'Price seems to be invalid' },  required: true
 					.col-xs-2.p-input
 						.form-group
 							%label.time hidden
@@ -50,7 +61,10 @@
 					.col-xs-5.per-input
 						.form-group
 							%label.time hidden
-							= f.select :time, ['hour','day','week','month'], { :selected => "hour"}, required: true, class: "form-control"
+							- if f.object.new_record?
+								= f.select :time, ['hour','day','week','month'], { :selected => "hour"}, required: true, class: "form-control"
+							- else
+								= f.select :time, ['hour','day','week','month'], { :prompt=>true }, required: true, class: "form-control"
 			.col-md-6
 				.form-group.radio-style
 					%p Delivery
@@ -69,13 +83,13 @@
 			.col-md-6
 				.form-group.radio-style
 					%p.required Security Deposit
-					= f.radio_button :security, 'yes', required: true, :'data-parsley-trigger' => 'change focusout'
+					= f.radio_button :security, 'yes', required: true, :'data-parsley-trigger' => 'change focusout keyup'
 					= f.label :security, 'Yes', :value => 'yes'
 					= f.radio_button :security, 'no'
-					= f.label :security, 'No', :value => 'no', required: true, :'data-parsley-trigger' => 'change focusout'
+					= f.label :security, 'No', :value => 'no', required: true, :'data-parsley-trigger' => 'change focusout keyup'
 			.col-md-6
 				.form-group#security-amount
-					= f.input :security_amount, input_html: { class: 'form-control', :'data-parsley-required-message' => 'Security amount is required', :'data-parsley-trigger' => 'change focusout', :'data-parsley-pattern' => "/\\d+(?:[.,]\\d+)?/", :'data-parsley-pattern-message' => 'Price seems to be invalid' }, :placeholder => 'INR'
+					= f.input :security_amount, input_html: { class: 'form-control', :'data-parsley-required-message' => 'Security amount is required', :'data-parsley-trigger' => 'change focusout keyup', :'data-parsley-pattern' => "/\\d+(?:[.,]\\d+)?/", :'data-parsley-pattern-message' => 'Price seems to be invalid' }, :placeholder => 'INR'
 
 	= f.button :submit, ( f.object.new_record? ? "Post an Item" : "Update an Item"), class: "btn btn-default post"
 
