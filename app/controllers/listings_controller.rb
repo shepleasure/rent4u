@@ -51,6 +51,14 @@ class ListingsController < ApplicationController
 	end
 
 	def update
+
+		if @listing.update(listing_params)
+			redirect_to @listing
+		else
+			flash[:alert] = @listing.errors.full_messages.to_sentence
+			render 'edit'
+		end
+
 		if @listing.time == "day"
 			@listing.total = @listing.price*31
 
@@ -63,46 +71,45 @@ class ListingsController < ApplicationController
 		elsif @listing.time == "hour"
 			@listing.total = @listing.price*730
 		end
-
-		if @listing.update(listing_params)
-			redirect_to @listing
-		else
-			flash[:alert] = @listing.errors.full_messages.to_sentence
-			render 'edit'
-		end
 	end
 
 	def destroy
+		update_notification @listing
 		@listing.destroy
 		redirect_to root_path
 	end
 
 	def search_main
 
-		@new_listings = Listing.search_main(params).order("created_at DESC").paginate(:page => params[:new_page], :per_page => 5)
+		@new_listings = Listing.search_main(params).order("created_at DESC").paginate(:page => params[:new_page], :per_page => 12)
 
-		@high_listings = Listing.search_main(params).order("total DESC").paginate(:page => params[:high_page], :per_page => 5)
+		@high_listings = Listing.search_main(params).order("total DESC").paginate(:page => params[:high_page], :per_page => 12)
 
-		@low_listings = Listing.search_main(params).order("total ASC").paginate(:page => params[:low_page], :per_page => 5)
+		@low_listings = Listing.search_main(params).order("total ASC").paginate(:page => params[:low_page], :per_page => 12)
 
 		@listings_def = Listing.search_main(params)
-		@popular_listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:popular_page], :per_page => 5)
+		@popular_listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:popular_page], :per_page => 12)
 	end
 
 	def mylistings
 			
-		@new_listings = Listing.where(user: current_user).order("created_at DESC").paginate(:page => params[:new_page], :per_page => 5)
+		@new_listings = Listing.where(user: current_user).order("created_at DESC").paginate(:page => params[:new_page], :per_page => 12)
 
-		@high_listings = Listing.where(user: current_user).order("total DESC").paginate(:page => params[:high_page], :per_page => 5)
+		@high_listings = Listing.where(user: current_user).order("total DESC").paginate(:page => params[:high_page], :per_page => 12)
 
-		@low_listings = Listing.where(user: current_user).order("total ASC").paginate(:page => params[:low_page], :per_page => 5)
+		@low_listings = Listing.where(user: current_user).order("total ASC").paginate(:page => params[:low_page], :per_page => 12)
 
 		@listings_def = Listing.where(user: current_user)
-		@popular_listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:popular_page], :per_page => 5)
+		@popular_listings = @listings_def.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:popular_page], :per_page => 12)
 	end
 
 
 	private
+
+	def update_notification(listing)  
+		@notification = Notification.find_by(listing_id: listing.id)
+	    @notification.update read: true
+	end  
 
 	def listing_params
 		params.require(:listing).permit(:title, :description, :city, :locality, :price, :time, :category_id, :subcategory_id, :security, :terms, :delivery, :security_amount, :total, listing_attachments_attributes: [:id, :avatar, :avatar_cache, :_destroy])

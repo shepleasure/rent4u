@@ -1,9 +1,16 @@
-.dropdown.notification-dropdown
-	%button.btn.btn-default.dropdown-toggle{ type: 'button', id: 'dropdownMenu1', data: { toggle: 'dropdown' }, 'aria-haspopup': true, 'aria-expanded': true }
-		= current_user.notifications.unread.count
-		%span.glyphicon.glyphicon-flag
-	%ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
-		%li.dropdown-header.text-center Notifications
-		= render current_user.notifications.order('created_at DESC').limit(5)
-		%li.divider{ role: 'separator' }
-		%li.text-center= link_to 'View All', notifications_path
+#notification
+	.dropdown.notification-dropdown
+		%button.btn.btn-default.dropdown-toggle{ type: 'button', id: 'dropdownMenu1', data: { toggle: 'dropdown' }, 'aria-haspopup': true, 'aria-expanded': true }
+			
+			%span.glyphicon.glyphicon-bell
+			- if current_user.notifications.unread.count == 0
+			-else
+				%span.badge 
+					= current_user.notifications.unread.count
+		%ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
+			%li.dropdown-header.text-center Notifications
+			- if current_user.notifications.blank?
+				%li.no No Notifications Found
+			- else
+				= render current_user.notifications.order('created_at DESC').limit(4)
+				%li.text-center.view= link_to 'View All', notifications_path

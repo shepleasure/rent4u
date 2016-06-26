@@ -1,88 +1,93 @@
 = render "layouts/search" 
-.bread
-	= link_to "Home", root_path
-	>
 
-	- case params[:category]
-	- when '1'
-		Baby Accessories and Toys
-	- when '2'
-		Books
-	- when '3'
-		Camera and Accessories
-	- when '4'
-		Costume and Accessories
-	- when '5'
-		Electronics
-	- when '6'
-		Event and Wedding Supplies
-	- when '7'
-		Media and Gaming 
-	- when '8'
-		Medical Supplies
-	- when '9'
-		Musical Instruments
-	- when '10'
-		Real Estate
-	- when '11'
-		Services
-	- when '12'
-		Sports, Fitness and Outdoor
-	- when '13'
-		Vehicles
-	- else
-		Search results
+.container
+	.bread
+		= link_to "Home", root_path
+		>
 
-#list
-	.row
-		.col-md-10
-			%ul.nav.nav-pills.nav-justified
-				%li.active
-					%a{"data-toggle" => "pill", :href => "#new"} New
-				%li
-					%a{"data-toggle" => "pill", :href => "#high"} High Price
+		- case params[:category]
+		- when '1'
+			Baby Accessories and Toys
+		- when '2'
+			Books
+		- when '3'
+			Camera and Accessories
+		- when '4'
+			Costume and Accessories
+		- when '5'
+			Electronics
+		- when '6'
+			Event and Wedding Supplies
+		- when '7'
+			Media and Gaming 
+		- when '8'
+			Medical Supplies
+		- when '9'
+			Musical Instruments
+		- when '10'
+			Real Estate
+		- when '11'
+			Services
+		- when '12'
+			Sports, Fitness and Outdoor
+		- when '13'
+			Vehicles
+		- else
+			Search results
 
-				%li
-					%a{"data-toggle" => "pill", :href => "#low"} Low Price
+#new-list
+	.container
+		.row
+			.col-md-12
+				%ul.nav.nav-pills.nav-justified
+					%li.active
+						%a{"data-toggle" => "pill", :href => "#new"} New
+					%li
+						%a{"data-toggle" => "pill", :href => "#high"} High Price
 
-				%li
-					%a{"data-toggle" => "pill", :href => "#popular"} Popular
-			%br
+					%li
+						%a{"data-toggle" => "pill", :href => "#low"} Low Price
 
-			.tab-content
-				#new.tab-pane.fade.in.active
+					%li
+						%a{"data-toggle" => "pill", :href => "#popular"} Popular
+				%br
 
-					- if @new_listings.present?
-						.sort_paginate_ajaxnew
-							= render "new_listings"
-						
-					- else 
-						%p No Items found
+				.tab-content
+					#new.tab-pane.fade.in.active
+						.row.details
+							- if @new_listings.present?
+								.sort_paginate_ajaxnew
+									= render "new_listings"
+								
+							- else 
+								%p No Items found
 
-				#high.tab-pane.fade
-					- if @high_listings.present?
-						.sort_paginate_ajaxhigh
-							= render "high_listings"
-						
-					- else 
-						%p No Items found
+					#high.tab-pane.fade
+						.row.details
+							- if @high_listings.present?
+								.sort_paginate_ajaxhigh
+									= render "high_listings"
+								
+							- else 
+								%p No Items found
 
-				#low.tab-pane.fade
-					- if @low_listings.present?
-						.sort_paginate_ajaxlow
-							= render "low_listings"
-						
-					- else 
-						%p No Items found
+					#low.tab-pane.fade
+						.row.details
+							- if @low_listings.present?
+								.sort_paginate_ajaxlow
+									= render "low_listings"
+								
+							- else 
+								%p No Items found
 
-				#popular.tab-pane.fade
-					- if @popular_listings.present?
-						.sort_paginate_ajaxpopular
-							= render "popular_listings"
-						
-					- else 
-						%p No Items found
-
+					#popular.tab-pane.fade
+						.row.details
+							- if @popular_listings.present?
+								.sort_paginate_ajaxpopular
+									= render "popular_listings"
+								
+							- else 
+								%p No Items found
 
 
 

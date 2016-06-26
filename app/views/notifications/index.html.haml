@@ -1,5 +1,41 @@
 .container
+	.bread
+		= link_to "Home", root_path
+		>
+		Notifications
 	.row
-		.col-md-6.col-md-offset-3
-			%ul.notification-index-list
-				= render @notifications
+		.col-md-6
+			#notification-list
+				.title
+					%p 
+						All notifications
+				- if @notifications.present?
+					- @notifications.each do |notification|
+						- if notification.listing.nil?
+						- else
+							.each{:class => ('unread' if notification.read == false)}
+								- if notification.notice_type == 'modifi'
+									= link_to(link_through_path(notification)) do
+										.row
+											.col-xs-4.col-lg-2
+												= image_tag(notification.listing.listing_attachments.first.avatar.showthumb.url, class: "img-responsive img-thumbnail")
+											.col-xs-8.col-lg-10
+												%p
+													= "#{notification.notified_by.fullname} has #{notification.notice_type}ed their review on your post" 
+													%span.time
+														%span.glyphicon.glyphicon-time
+														= "#{time_ago_in_words(notification.created_at)} ago"
+
+								- else 
+									= link_to(link_through_path(notification)) do
+										.row
+											.col-xs-4.col-lg-2
+												= image_tag(notification.listing.listing_attachments.first.avatar.showthumb.url, class: "img-responsive img-thumbnail")
+											.col-xs-8.col-lg-10
+												%p
+													= "#{notification.notified_by.fullname} has #{notification.notice_type}ed your post" 
+													%span.time
+														%span.glyphicon.glyphicon-time
+														= "#{time_ago_in_words(notification.created_at)} ago"
+				- else
+					No Notifications Found

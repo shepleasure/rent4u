@@ -1,0 +1,8 @@
+- if !flash.empty?
+	#flash-section 
+		- flash.each do |name, msg|
+			.alert.alert-warning.fade.in{:class => "alert-#{name}"}
+				%a.close{href: "#", :data => { :dismiss => "alert" }, :aria => { :label => "close" }}
+					&times;
+				= msg
+	- flash.clear

@@ -1,0 +1,7 @@
+#category-menu
+	%ul.list-inline
+		%li{:class => "#{'active' if params[:category].blank? || params[:category] == "all"}"}
+			= link_to "All Categories", new_items_categories_path(category: "all")
+		- @all.each do |category|
+			%li{:class => "#{'active' if params[:category] == category.name}"}
+				= link_to category.name, new_items_categories_path(category: category.name)

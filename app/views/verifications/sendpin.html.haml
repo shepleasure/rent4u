@@ -1,24 +1,26 @@
-.bread
-	= link_to "Home", root_path
-	>
-	Verify
+.container
+	.bread
+		= link_to "Home", root_path
+		>
+		Verify
 
-.row
-	.col-md-6
-		#verify-section
-			.verify-title 
-				%p Verify your mobile number
-			%p In order to rent an item you are supposed to verify your mobile number.
-			= mobile_verification_button
-			%p Verification code will be sent to #{current_user.mobile_number}. 
-			%p 
-				If you want to change your mobile number
-				= link_to "Click here", edit_user_registration_path
+	.row
+		.col-md-6
+			#verify-section
+				.verify-title 
+					%p Verify your mobile number
+				%p In order to rent an item you are supposed to verify your mobile number.
+				= mobile_verification_button
+				%p.light Verification code will be sent to #{current_user.mobile_number}. 
+				%p.light 
+					If you want to change your mobile number
+					= link_to "Click here", edit_user_registration_path
 
-			.verify-footer
-				%p Enter verification code
-				= verify_mobile_number_form
+				.verify-footer
+					%p.blue Enter verification code
+					= verify_mobile_number_form
 
-	.col-md-6
+		.col-md-6
 
-.foot-space
+	.foot-space
+

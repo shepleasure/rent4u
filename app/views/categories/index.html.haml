@@ -1,135 +1,191 @@
-= render "layouts/search"
+#search-section.home
+	.container
+		= render "layouts/flash"
+		%h1 Welcome to Mrentz
+		%h3 The place where you can earn or save money by renting.
+		= form_tag search_main_listings_path, method: :get, :class => "form-inline" do |f|
+			.form-group
+				%i.material-icons.md-18
+					&#xE8B6;
+				= text_field_tag :search_main, nil, placeholder: 'Looking for..', :class => "form-control"
+			.form-group
+				%i.material-icons.md-18
+					&#xE0C8;
+				= text_field_tag :location, nil, placeholder: 'Near..', :class => "form-control"
+			.form-group
+				= select_tag :category, options_for_select(Category.all.map { |c| [c.name, c.id] }), :include_blank => 'All categories', :default => nil, :class => "form-control"
 
-#category-section
-	.row
-		.col-md-10.category-tiles
-			.row
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @book.name, category_path(@book.name)
-						.panel-body
-							= link_to image_tag("book.jpg", class: "img-responsive"), category_path(@book.name)
+			= submit_tag 'Search', :class => "btn btn-default"
+		%h4 Happy Renting !
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @camera.name, category_path(@camera.name)
-						.panel-body
-							= link_to image_tag("camera.jpg", class: "img-responsive"), category_path(@camera.name)
-						
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @clothing.name, category_path(@clothing.name)
-						.panel-body
-							= link_to image_tag("clothing.jpg", class: "img-responsive"), category_path(@clothing.name)
-						
+.container
+	#category-section
+		.row
+			.col-md-10.category-tiles
+				.header
+					%h2 Browse our Categories			
+				.row
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @book.name, category_path(@book.name)
+							.panel-body
+								= link_to image_tag("book.jpg", class: "img-responsive"), category_path(@book.name)
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @computer.name, category_path(@computer.name)
-						.panel-body
-							= link_to image_tag("computer.jpg", class: "img-responsive"), category_path(@computer.name)
-						
-
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @electronic.name, category_path(@electronic.name)
-						.panel-body
-							= link_to image_tag("electronic.jpg", class: "img-responsive"), category_path(@electronic.name)
-						
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @camera.name, category_path(@camera.name)
+							.panel-body
+								= link_to image_tag("camera.jpg", class: "img-responsive"), category_path(@camera.name)
+							
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @clothing.name, category_path(@clothing.name)
+							.panel-body
+								= link_to image_tag("clothing.jpg", class: "img-responsive"), category_path(@clothing.name)
 							
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
-					.panel.panel-default
-						.panel-heading.text-center.rfix-320
-							= link_to @event.name, category_path(@event.name)
-						.panel-body
-							= link_to image_tag("event.jpg", class: "img-responsive"), category_path(@event.name)
-						
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @computer.name, category_path(@computer.name)
+							.panel-body
+								= link_to image_tag("computer.jpg", class: "img-responsive"), category_path(@computer.name)
+							
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @medical.name, category_path(@medical.name)
-						.panel-body
-							= link_to image_tag("medical.jpg", class: "img-responsive"), category_path(@medical.name)
-						
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @electronic.name, category_path(@electronic.name)
+							.panel-body
+								= link_to image_tag("electronic.jpg", class: "img-responsive"), category_path(@electronic.name)
+							
+								
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @musical.name, category_path(@musical.name)
-						.panel-body
-							= link_to image_tag("musical.jpg", class: "img-responsive"), category_path(@musical.name)
-						
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
+						.panel.panel-default
+							.panel-heading.text-center.rfix-320
+								= link_to @event.name, category_path(@event.name)
+							.panel-body
+								= link_to image_tag("event.jpg", class: "img-responsive"), category_path(@event.name)
+							
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @realestate.name, category_path(@realestate.name)
-						.panel-body
-							= link_to image_tag("realestate.jpg", class: "img-responsive"), category_path(@realestate.name)
-						
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @service.name, category_path(@service.name)
-						.panel-body
-							= link_to image_tag("service.jpg", class: "img-responsive"), category_path(@service.name)
-						
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @medical.name, category_path(@medical.name)
+							.panel-body
+								= link_to image_tag("medical.jpg", class: "img-responsive"), category_path(@medical.name)
+							
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @sport.name, category_path(@sport.name)
-						.panel-body
-							= link_to image_tag("sport.jpg", class: "img-responsive"), category_path(@sport.name)
-						
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @musical.name, category_path(@musical.name)
+							.panel-body
+								= link_to image_tag("musical.jpg", class: "img-responsive"), category_path(@musical.name)
+							
 
-				.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
-					.panel.panel-default
-						.panel-heading.text-center
-							= link_to @vehicle.name, category_path(@vehicle.name)
-						.panel-body
-							= link_to image_tag("vehicle.jpg", class: "img-responsive"), category_path(@vehicle.name)
-						
-		.col-md-2
-			.ads-section
-				%h4.text-center Ads section
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @realestate.name, category_path(@realestate.name)
+							.panel-body
+								= link_to image_tag("realestate.jpg", class: "img-responsive"), category_path(@realestate.name)
+							
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @service.name, category_path(@service.name)
+							.panel-body
+								= link_to image_tag("service.jpg", class: "img-responsive"), category_path(@service.name)
+							
+
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pright
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @sport.name, category_path(@sport.name)
+							.panel-body
+								= link_to image_tag("sport.jpg", class: "img-responsive"), category_path(@sport.name)
+							
+
+					.col-lg-3.col-md-4.col-sm-4.col-ms-6.col-xs-6.pleft
+						.panel.panel-default
+							.panel-heading.text-center
+								= link_to @vehicle.name, category_path(@vehicle.name)
+							.panel-body
+								= link_to image_tag("vehicle.jpg", class: "img-responsive"), category_path(@vehicle.name)
+							
+			.col-md-2
+				.ads-section
+					%h5.text-center Ads section
 
 
-.jumbotron
-	%h3 Top Rated Items
-	- if @listings.present?
-		- @listings.each do |listing|
-			%li
-				%span
-					= listing.created_at.strftime('%B %d, %Y')
-				%br
-				= link_to image_tag(listing.listing_attachments.first.avatar.thumb.url), listing
-				.star-rating{:data => {'score' => listing.average_rating}} 
-				= link_to listing.title, listing
-				( 
-				= listing.city
-				- if listing.locality.blank?
-					)
-				- else 
-					,
-					= listing.locality
-					)
-				- if listing.price.blank?
-				-else
-					Rs. 
-					= listing.price 
-					per 
-					= listing.time
-	- else 
-		%p No Items found
+#top-rated
+	.container
+		.header.clearfix
+			%h2 Top Rated Items
+			%p.view-more
+				= link_to "View All Items", rated_categories_path
+		.row.details
+			- if @listings.present?
+				- @listings.each do |listing|
+					.col-lg-2.col-ms-6.col-sm-4.col-md-2.col-bms-6.grid
+						.image-fit
+							= link_to image_tag(listing.listing_attachments.first.avatar.list.url, class: "img-responsive"), listing
+						%h3
+							= link_to listing.title, listing
+						- if listing.reviews.blank?
+							- @avg_review = 0
+						- else
+							- @avg_review = listing.reviews.average(:rating).round(2)
+						.star-rating{:data => {'score' => @avg_review}}
+						%p
+							= listing.city
+							- if listing.price.blank?
+							-else
+								|
+								&#8377; 
+								= listing.price 
+								per 
+								= listing.time
+			- else 
+				.col-xs-12
+					%p No Items found
 
+#new-items
+	.container
+		.header.clearfix
+			%h2 New Items
+			%p.view-more
+				= link_to "View All Items", new_items_categories_path
+		.row.details
+			- if @new_listings.present?
+				- @new_listings.each do |listing|
+					.col-lg-2.col-ms-6.col-sm-4.col-md-2.col-bms-6.grid
+						.image-fit
+							= link_to image_tag(listing.listing_attachments.first.avatar.list.url, class: "img-responsive"), listing
+						%h3
+							= link_to listing.title, listing
+						- if listing.reviews.blank?
+							- @avg_review = 0
+						- else
+							- @avg_review = listing.reviews.average(:rating).round(2)
+						.star-rating{:data => {'score' => @avg_review}} 
+						%p
+							= listing.city
+							- if listing.price.blank?
+							-else
+								|
+								&#8377; 
+								= listing.price 
+								per 
+								= listing.time
+			- else 
+				.col-xs-12
+					%p No Items found
 
 %script
 	$('.star-rating').raty({
@@ -139,4 +195,6 @@
 	return $(this).attr('data-score');
 	}
 	});
+
+
 

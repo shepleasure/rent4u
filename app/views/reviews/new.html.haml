@@ -1,14 +1,18 @@
-.bread
-	= link_to "Home", root_path
-	>
-	= link_to @listing.title.capitalize, listing_path(@listing)
-	>
-	Write a Review
-.row
-	.col-md-4
-		#edit
-			.edit-title
-				%p 
-					Write a Review
-			= render 'form'
-	.col-md-8
+.container
+	.bread
+		= link_to "Home", root_path
+		>
+		= link_to @listing.title.capitalize, listing_path(@listing)
+		>
+		Write a Review
+
+	= render "layouts/flash"
+				
+	.row
+		.col-md-4
+			#edit
+				.edit-title
+					%p 
+						Write a Review
+				= render 'form'
+		.col-md-8

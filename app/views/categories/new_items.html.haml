@@ -1,0 +1,49 @@
+= render "layouts/search" 
+
+.container
+	.bread
+		= link_to "Home", root_path
+		>
+		New Items
+
+	= render "layouts/category_menu"
+
+#new-list
+	.container
+		.row.details
+			- if @listings.present?
+				- @listings.each do |listing|
+					.col-lg-2.col-ms-6.col-sm-4.col-md-2.col-bms-6.grid
+						.image-fit
+							= link_to image_tag(listing.listing_attachments.first.avatar.list.url, class: "img-responsive"), listing
+						%h3
+							= link_to listing.title, listing
+						- if listing.reviews.blank?
+							- @avg_review = 0
+						- else
+							- @avg_review = listing.reviews.average(:rating).round(2)
+						.star-rating{:data => {'score' => @avg_review}} 
+						%p
+							= listing.city
+							- if listing.price.blank?
+							-else
+								|
+								&#8377; 
+								= listing.price 
+								per 
+								= listing.time
+				.text-center.clearfix
+					= will_paginate @listings, renderer: BootstrapPagination::Rails
+			- else 
+				%p No Items found
+
+
+
+%script
+	$('.star-rating').raty({
+	path: '/assets/',
+	readOnly: true,
+	score: function() {
+	return $(this).attr('data-score');
+	}
+	});

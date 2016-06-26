@@ -1,54 +1,59 @@
-.bread
-	= link_to "Home", root_path
-	>
-	My Items
+.container
+	.bread
+		= link_to "Home", root_path
+		>
+		My Items
 
-#list
-	.row
-		.col-md-10
-			%ul.nav.nav-pills.nav-justified
-				%li.active
-					%a{"data-toggle" => "pill", :href => "#new"} New
-				%li
-					%a{"data-toggle" => "pill", :href => "#high"} High Price
+#new-list
+	.container
+		.row
+			.col-md-12
+				%ul.nav.nav-pills.nav-justified
+					%li.active
+						%a{"data-toggle" => "pill", :href => "#new"} New
+					%li
+						%a{"data-toggle" => "pill", :href => "#high"} High Price
 
-				%li
-					%a{"data-toggle" => "pill", :href => "#low"} Low Price
+					%li
+						%a{"data-toggle" => "pill", :href => "#low"} Low Price
 
-				%li
-					%a{"data-toggle" => "pill", :href => "#popular"} Popular
-			%br
+					%li
+						%a{"data-toggle" => "pill", :href => "#popular"} Popular
+				%br
 
-			.tab-content
-				#new.tab-pane.fade.in.active
+				.tab-content
+					#new.tab-pane.fade.in.active
+						.row.details
+							- if @new_listings.present?
+								.sort_paginate_ajaxnew
+									= render "new_listings"
+								
+							- else 
+								%p No Items found
 
-					- if @new_listings.present?
-						.sort_paginate_ajaxnew
-							= render "new_listings"
-						
-					- else 
-						%p No Items found
+					#high.tab-pane.fade
+						.row.details
+							- if @high_listings.present?
+								.sort_paginate_ajaxhigh
+									= render "high_listings"
+								
+							- else 
+								%p No Items found
 
-				#high.tab-pane.fade
-					- if @high_listings.present?
-						.sort_paginate_ajaxhigh
-							= render "high_listings"
-						
-					- else 
-						%p No Items found
+					#low.tab-pane.fade
+						.row.details
+							- if @low_listings.present?
+								.sort_paginate_ajaxlow
+									= render "low_listings"
+								
+							- else 
+								%p No Items found
 
-				#low.tab-pane.fade
-					- if @low_listings.present?
-						.sort_paginate_ajaxlow
-							= render "low_listings"
-						
-					- else 
-						%p No Items found
-
-				#popular.tab-pane.fade
-					- if @popular_listings.present?
-						.sort_paginate_ajaxpopular
-							= render "popular_listings"
-						
-					- else 
-						%p No Items found
+					#popular.tab-pane.fade
+						.row.details
+							- if @popular_listings.present?
+								.sort_paginate_ajaxpopular
+									= render "popular_listings"
+								
+							- else 
+								%p No Items found

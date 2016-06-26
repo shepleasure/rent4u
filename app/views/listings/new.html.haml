@@ -1,20 +1,23 @@
-.bread
-	= link_to "Home", root_path
-	>
-	Rent an Item
+.container	
+	.bread
+		= link_to "Home", root_path
+		>
+		Rent an Item
 
-.row
-	.col-md-8
-		#rent
-			.rent-title
-				%p Rent an Item
+	= render "layouts/flash"
 
-			.rent-content
-				= render 'form'
+	.row
+		.col-md-8
+			#rent
+				.rent-title
+					%p Rent an Item
 
-			.rent-footer
-				%p
-				= link_to "Back", :back
-	.col-md-4
+				.rent-content
+					= render 'form'
 
-.foot-space.hidden-md.hidden-lg
+				.rent-footer
+					%p
+					= link_to "Back", :back
+		.col-md-4
+
+	.foot-space.hidden-md.hidden-lg

@@ -1,149 +1,117 @@
 = render "layouts/search" 
-.bread
-	= link_to "Home", root_path
-	>
-	= @listing.title
 
-#show
-	.row
-		.col-md-5
-			#image.screen
-				= image_tag(@listing.listing_attachments.first.avatar.large.url, class: "img-responsive img-rounded")
-			- @listing.listing_attachments.each do |listing_attachment|
-				%a.image{:href => "#", :rel => listing_attachment.avatar.large.url, :class => "image"}
-					= image_tag(listing_attachment.avatar.showthumb.url, class: "img-responsive img-thumbnail thumb") if listing_attachment.avatar?
+.container
+	.bread
+		= link_to "Home", root_path
+		>
+		= @listing.title
 
-		.col-md-5.both
-			.show-title
-				%p
-					= @listing.title
-			.show-content
-				.row
-					.col-ms-6.col-md-6
-						.star-rating{:data => {'score' => @avg_review}} 
-						%em= @reviews.length
-						= "review".pluralize(@reviews.count)
-					.col-ms-6.col-md-6.text-center
-						%p.pull-left.share.r-bold Share :
-						= social_share_button_tag(@listing.title)
-				.row
-					.col-md-12.price
-						%p
-							%span.r-bold.block Price :
-							&#8377; 
-							%span.number= @listing.price
-							per 
-							= @listing.time
 
-					.col-md-12.city
-						%p
-							%span.r-bold City :
-							- if @listing.locality.blank?
-								= @listing.city
-							- else
-								= @listing.city
-								, #{@listing.locality} 
+	#show
+		.row
+			.col-md-5
+				#image.screen.image-fit
+					= image_tag(@listing.listing_attachments.first.avatar.large.url, class: "img-responsive")
+				- @listing.listing_attachments.each do |listing_attachment|
+					%a.image{:href => "#", :rel => listing_attachment.avatar.large.url, :class => "image"}
+						= image_tag(listing_attachment.avatar.showthumb.url, class: "img-responsive img-thumbnail thumb") if listing_attachment.avatar?
 
-					.col-md-12.security
-						%p
-							%span.r-bold.block Security Amount :
-							- if @listing.security_amount.blank?
-								Not applicable
-							- else
-								Rs.
-								%span.number= @listing.security_amount
-
-					.col-md-12.delivery
-						- if @listing.delivery.nil?
-						-else
-							%p
-								%span.r-bold Delivery :
-								- if @listing.delivery == "available"
-									Available
-								- else
-									Not Available
-
-					.col-md-12
-						%p 
-							posted 
-							=time_ago_in_words(@listing.created_at)
-							ago
-							by
-							= @listing.user.fullname.titleize
-
-					.col-md-6
-					.col-md-6.show-btn
-						- if @listing.user == current_user
-							= link_to 'Edit', edit_listing_path, class: "btn btn-default", 'data-no-turbolink' => true
-							= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
-						- else
-							= link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default"
-		.col-md-2
-	%br
-	.row
-		.col-md-5
-			%ul.nav.nav-pills.nav-justified
-				%li.active
-					%a.left{"data-toggle" => "pill", :href => "#home"} Description
-				%li
-					%a.right{"data-toggle" => "pill", :href => "#menu1"} Reviews
-
-			.tab-content
-				#home.tab-pane.fade.in.active
+			.col-md-5.both
+				.show-title
+					%h3
+						= @listing.title
+				.show-content
 					.row
-						.col-md-12
+						.col-ms-6.col-md-6.review
+							.star-rating{:data => {'score' => @avg_review}} 
+							%em= @reviews.length
+							= "review".pluralize(@reviews.count)
+						.col-ms-6.col-md-6.text-center
+							%p.pull-left.share.r-bold Share :
+							= social_share_button_tag(@listing.title)
+					.row
+						.col-md-12.price
 							%p
-								= @listing.description
-						.col-md-12.terms
-							- if @listing.terms.blank?
-							- else
+								&#8377; 
+								= @listing.price
+								%span
+									per 
+									= @listing.time
+
+						.col-md-12.city
+							%p
+								%span.r-bold City :
+								- if @listing.locality.blank?
+									= @listing.city
+								- else
+									= @listing.city
+									, #{@listing.locality} 
+
+						.col-md-12.security
+							%p
+								%span.r-bold.block Security Amount :
+								- if @listing.security_amount.blank?
+									Not applicable
+								- else
+									Rs.
+									%span.number= @listing.security_amount
+
+						.col-md-12.delivery
+							- if @listing.delivery.nil?
+							-else
 								%p
-									%span.r-bold Terms & Conditions :
-									= @listing.terms
-				#menu1.tab-pane.fade
-					- if @listing.user == current_user
-						- if @reviews.blank?
-							%p No reviews just yet.
-						- else							
-							- @reviews.each do |review|
-								.reviews								
-									.row
-										.col-ms-4.col-sm-4								
-											.row
-												.col-ms-12.col-sm-12								
-													%span.star-rating{:data => {'score' => review.rating}} 
-												.col-ms-12.col-sm-12
-													%p.review-by= "By #{review.user.fullname}"
-										.col-ms-8.col-sm-8
-											.row
-												.col-ms-12.col-sm-12								
-													.row
-														.col-xs-12								
-															%span.review-title= review.title 
-												
-												.col-ms-12.col-sm-12
-													%p.comment= review.comment
-												.col-ms-12.col-sm-12
-													%p.posted= "Posted on #{review.created_at.strftime('%d/%m/%y') }"
+									%span.r-bold Delivery :
+									- if @listing.delivery == "available"
+										Available
+									- else
+										Not Available
 
+						.col-md-12
+							%p.review
+								posted 
+								=time_ago_in_words(@listing.created_at)
+								ago
+								by
+								= @listing.user.fullname.titleize
 
-					- else
-						- if @reviews.blank?
-							.row
-								.col-ms-8.col-sm-8
-									%p No reviews just yet, would you like to add the first!
-								.col-ms-4.col-sm-4
-									= link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default"
-						- else 
-							.row
-								.col-ms-8.col-sm-8
-									%p Have you rented this product yet ?
-								.col-ms-4.col-sm-4
-									= link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default"
-							%br
-							- @reviews.each do |review|
-								- if review.user == current_user
-									.reviews
+						.col-md-6
+						.col-md-6.show-btn
+							- if @listing.user == current_user
+								= link_to 'Edit', edit_listing_path, class: "btn btn-default", 'data-no-turbolink' => true
+								= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+							- else
+								= link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default", 'data-no-turbolink' => true
+			.col-md-2
+				.ads-section
+					%h5.text-center Ads section
+		%br
+		.row
+			.col-md-5
+				%ul.nav.nav-pills.nav-justified
+					%li.active
+						%a.left{"data-toggle" => "pill", :href => "#home"} Description
+					%li
+						%a.right{"data-toggle" => "pill", :href => "#menu1"} Reviews
+
+				.tab-content
+					#home.tab-pane.fade.in.active
+						.row
+							.col-md-12
+								%p
+									= @listing.description
+							.col-md-12.terms
+								- if @listing.terms.blank?
+								- else
+									%p
+										%span.r-bold Terms & Conditions :
+										= @listing.terms
+					#menu1.tab-pane.fade
+						- if @listing.user == current_user
+							- if @reviews.blank?
+								%p No reviews just yet.
+							- else							
+								- @reviews.each do |review|
+									.reviews								
 										.row
 											.col-ms-4.col-sm-4								
 												.row
@@ -155,44 +123,81 @@
 												.row
 													.col-ms-12.col-sm-12								
 														.row
-															.col-xs-10								
-																%span.review-title= review.title 
-															.col-xs-2
-																.dropdown
-																	%a.dropdown-toggle{"data-toggle" => "dropdown"}
-																		%i.material-icons &#xE5D4;
-																	%ul.dropdown-menu.dropdown-menu-right
-																		%li
-																			= link_to 'Edit', edit_listing_review_path(@listing, review)
-																		%li
-																			= link_to 'Delete', [review.listing, review], method: :delete, data: { confirm: "Are you sure?" }
-													.col-ms-12.col-sm-12
-														%p.comment= review.comment
-													.col-ms-12.col-sm-12
-														%p.posted= "Posted on #{review.created_at.strftime('%d/%m/%y') }"
-								
-							- @reviews.each do |review|
-								- if review.user == current_user
-								- else
-									.reviews								
-										.row
-											.col-ms-4.col-sm-4
-												.row
-													.col-ms-12.col-sm-12								
-														%span.star-rating{:data => {'score' => review.rating}} 
-													.col-ms-12.col-sm-12
-														%p.review-by= "By #{review.user.fullname}"
-											.col-ms-8.col-sm-8
-												.row
-													.col-ms-12.col-sm-12								
-														.row
 															.col-xs-12								
 																%span.review-title= review.title 
-
+													
 													.col-ms-12.col-sm-12
 														%p.comment= review.comment
 													.col-ms-12.col-sm-12
 														%p.posted= "Posted on #{review.created_at.strftime('%d/%m/%y') }"
+
+
+						- else
+							- if @reviews.blank?
+								.row
+									.col-ms-8.col-sm-8
+										%p No reviews just yet, would you like to add the first!
+									.col-ms-4.col-sm-4
+										= link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default", 'data-no-turbolink' => true
+							- else 
+								.row
+									.col-ms-8.col-sm-8
+										%p Have you rented this product yet ?
+									.col-ms-4.col-sm-4
+										= link_to "Write a Review", new_listing_review_path(@listing), class: "btn btn-default", 'data-no-turbolink' => true
+								%br
+								- @reviews.each do |review|
+									- if review.user == current_user
+										.reviews
+											.row
+												.col-ms-4.col-sm-4								
+													.row
+														.col-ms-12.col-sm-12								
+															%span.star-rating{:data => {'score' => review.rating}} 
+														.col-ms-12.col-sm-12
+															%p.review-by= "By #{review.user.fullname}"
+												.col-ms-8.col-sm-8
+													.row
+														.col-ms-12.col-sm-12								
+															.row
+																.col-xs-10								
+																	%span.review-title= review.title 
+																.col-xs-2
+																	.dropdown
+																		%a.dropdown-toggle{"data-toggle" => "dropdown"}
+																			%i.material-icons &#xE5D4;
+																		%ul.dropdown-menu.dropdown-menu-right
+																			%li
+																				= link_to 'Edit', edit_listing_review_path(@listing, review), 'data-no-turbolink' => true
+																			%li
+																				= link_to 'Delete', [review.listing, review], method: :delete, data: { confirm: "Are you sure?" }
+														.col-ms-12.col-sm-12
+															%p.comment= review.comment
+														.col-ms-12.col-sm-12
+															%p.posted= "Posted on #{review.created_at.strftime('%d/%m/%y') }"
+									
+								- @reviews.each do |review|
+									- if review.user == current_user
+									- else
+										.reviews								
+											.row
+												.col-ms-4.col-sm-4
+													.row
+														.col-ms-12.col-sm-12								
+															%span.star-rating{:data => {'score' => review.rating}} 
+														.col-ms-12.col-sm-12
+															%p.review-by= "By #{review.user.fullname}"
+												.col-ms-8.col-sm-8
+													.row
+														.col-ms-12.col-sm-12								
+															.row
+																.col-xs-12								
+																	%span.review-title= review.title 
+
+														.col-ms-12.col-sm-12
+															%p.comment= review.comment
+														.col-ms-12.col-sm-12
+															%p.posted= "Posted on #{review.created_at.strftime('%d/%m/%y') }"
 
 
 
@@ -215,7 +220,6 @@
 	$('#image').fadeIn('slow');
 	$('#image').html('<img src="' + image + '"/>');
 	$('#image img').addClass("img-responsive");
-	$('#image img').addClass("img-rounded");
 	return false;
 	});
 	});

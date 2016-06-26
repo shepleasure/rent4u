@@ -1,19 +1,20 @@
-.row
-	.col-md-4
-	.col-md-4
-		#forgot
-			.forgot-title
-				%p Forgot your password?
+.container
+	.row
+		.col-md-4
+		.col-md-4
+			#forgot
+				.forgot-title
+					%p Forgot your password?
 
-			.forgot-content
-				= simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post, 'data-parsley-validate' => '' } do |f|
-					.form-inputs
-						= f.input :email, required: true, :input_html => {                                :'data-parsley-required-message' => 'Email is required',                      :'data-parsley-email-message' => 'Not a valid email address',                  :'data-parsley-trigger' => 'change focusout'}, autofocus: true, label: false, :placeholder => 'Email'
+				.forgot-content
+					= simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post, 'data-parsley-validate' => '' } do |f|
+						.form-inputs
+							= f.input :email, required: true, :input_html => {                                :'data-parsley-required-message' => 'Email is required',                      :'data-parsley-email-message' => 'Not a valid email address',                  :'data-parsley-trigger' => 'change focusout'}, autofocus: true, label: false, :placeholder => 'Email'
 
-					.form-action.text-center
-						= f.button :submit, "Send me reset password instructions"
+						.form-action.text-center
+							= f.button :submit, "Send me reset password instructions"
 
-			.forgot-footer
-				= render "devise/shared/links"
+				.forgot-footer
+					= render "devise/shared/links"
 
-	.col-md-4
+		.col-md-4

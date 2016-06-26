@@ -1,24 +1,25 @@
-.row
-	.col-md-4
-	.col-md-4
-		#sign_in
-			.sign-in-title
-				%p Log in for mrentz
+.container
+	.row
+		.col-md-4
+		.col-md-4
+			#sign_in
+				.sign-in-title
+					%p Log in for mrentz
 
-			.sign-in-content
-				= simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { 'data-parsley-validate' => '' } do |f|
-					.form-inputs
-						= f.input :email, required: true, :input_html => {                                :'data-parsley-required-message' => 'Email is required',                      :'data-parsley-email-message' => 'Not a valid email address',                  :'data-parsley-trigger' => 'change focusout'}, autofocus: true, label: false, :placeholder => 'Email'
+				.sign-in-content
+					= simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { 'data-parsley-validate' => '' } do |f|
+						.form-inputs
+							= f.input :email, required: true, :input_html => {                                :'data-parsley-required-message' => 'Email is required',                      :'data-parsley-email-message' => 'Not a valid email address',                  :'data-parsley-trigger' => 'change focusout'}, autofocus: true, label: false, :placeholder => 'Email'
 
-						= f.input :password, required: true, :input_html => {                              :'data-parsley-required-message' => 'Password is required',                   :'data-parsley-trigger' => 'change focusout' }, label: false, :placeholder => 'Password'
+							= f.input :password, required: true, :input_html => {                              :'data-parsley-required-message' => 'Password is required',                   :'data-parsley-trigger' => 'change focusout' }, label: false, :placeholder => 'Password'
 
-						= f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+							= f.input :remember_me, as: :boolean if devise_mapping.rememberable?
 
-					.form-action.text-center
-						= f.button :submit, "Log in"
+						.form-action.text-center
+							= f.button :submit, "Log in"
 
-			.sign-in-footer
-				= render "devise/shared/links"
+				.sign-in-footer
+					= render "devise/shared/links"
 
-	.col-md-4            
+		.col-md-4            
 

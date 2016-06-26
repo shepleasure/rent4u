@@ -29,7 +29,7 @@
 
 
 $yellow: #FFCD33;
-$black: #1A1A1A;
+$black: #000;
 $light-black: #808080;
 $light-yellow: #FFE066;
 $blue: #2AB9C7;
@@ -42,7 +42,8 @@ $red-border: #ebccd1;
 $green: #3c763d;
 $green-border: #D6E9C6;
 $links: #337AB7;
-$new: #474e5d;
+$new: #0F2231;
+$blue-grey: #8b8b9f;
 
 
 @font-face {
@@ -51,13 +52,13 @@ $new: #474e5d;
 }
 
 @font-face {
-  font-family: "raleway-medium";
-  src: url(/assets/Raleway-Medium.ttf) format("truetype");
+  font-family: "regular";
+  src: url(/assets/regular.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: "raleway-regular";
-  src: url(/assets/Raleway-Regular.ttf) format("truetype");
+  font-family: "light";
+  src: url(/assets/light.ttf) format("truetype");
 }
 
 @font-face {
@@ -65,30 +66,57 @@ $new: #474e5d;
   src: url(/assets/Raleway-Bold.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "regular";
+  src: url(/assets/OpenSans-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "light";
+  src: url(/assets/OpenSans-Light.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "bold";
+  src: url(/assets/OpenSans-Bold.ttf) format("truetype");
+}
+
 html {
   position: relative;
   min-height: 100%;
 }
 
-body, a {
-  color: $black;
+html, body {
+  font-family: "regular";
 }
 
+body, a {
+  color: $new;
+}
+
+
 .bread {
-  font-family: "raleway-medium";
-  a:hover, a:focus {
-    color: $yellow;
-    text-decoration: none;
-  }
+  padding: 3em 0 1.5em 0;
+  font-family: "regular";
+  color: $blue-grey;
+  a {
+    color: $blue-grey;
+    &:hover, &:focus {
+      color: $yellow;
+      text-decoration: none;
+    }
+  }  
 }
 
 .foot-space {
   margin-bottom: 30px;
 }
 
+.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}
+
 ul#ui-id-1.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
   li {
-    font-family: "raleway-medium";
+    font-family: "regular";
     color: $black;
   }
   .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
@@ -101,7 +129,7 @@ ul#ui-id-1.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
 
 ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
   li {
-    font-family: "raleway-medium";
+    font-family: "regular";
     color: $black;
   }
   .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
@@ -113,19 +141,23 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
 }
 
 #navbar-customise {
+  padding: 1.5em 0;
   background-color: white;
   border-color: $grey;
   text-transform: uppercase;
-  font-family: "raleway-medium";
+  .navbar-collapse {
+    border: none;
+  }
   .navbar-brand a {
-    font-size: 18.5px;
-    letter-spacing: 0.1em;
-    .logo {
+    font-size: 1.15em;
+    font-weight: 700; 
+    letter-spacing: 1px; 
+    span {
       font-family: "hightide";
+      font-weight: 300;
       color: $yellow;
-      font-size: 20.5px;
-      letter-spacing: 0em;
-      }
+      margin-right: -7px;
+    }
     &:hover, &:focus {
       color: $black;
       text-decoration: none;
@@ -138,10 +170,10 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
   .navbar-right {
     margin-top: 5px;
     a {
-    color: $black;
-    letter-spacing: 0.1em;
-    font-size: 13px;
+    color: $blue-grey;
+    font-size: 1em;
     outline: none;
+    text-transform: capitalize;
     }
    } 
   .nav-others a:hover, .nav-others a:focus {
@@ -149,16 +181,26 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
   .post {
     background-color: $yellow;
+    a {
+      color: white;
+      font-weight: 700;
+    }
     &:hover, &:focus {
       background-color: $light-yellow;
+      a {
+        color: white;
+      }
     }
   }
 }
 
+
 #search-section {
-  font-family: "raleway-regular";
+  background-image: url("blur.jpg");
+  background-size: cover;
+  background-color: $new;
+  font-family: "light";
   text-align: center;
-  padding-bottom: 1.5em;
   .form-group {
     position: relative;
     input {
@@ -178,6 +220,7 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
     select {
     background: url(down_arrow.png) no-repeat right;
+    background-color: white;
     appearance:none;
     -moz-appearance:none; /* Firefox */
     -webkit-appearance:none; /* Safari and Chrome */
@@ -188,7 +231,7 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     border-radius: 0px;
     background-color: $blue;
     color: white;
-    font-family: "raleway-medium";
+    font-family: "regular";
     border-color: $blue;
     &:hover, &:focus, &:active {
       outline: none;
@@ -197,43 +240,82 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
   }
 }
 
+#search-section.home {
+  padding-top: 2em;
+  padding-bottom: 2.5em;
+  h1 {
+    color: white;
+    font-size: 3em;
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+  h3 {
+    color: white;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    font-size: 2em;
+  }
+  h4 {
+    color: white;
+    margin-top: 20px;
+    letter-spacing: 3px;
+  }
+}
+
 #flash-section {
-  font-family: "raleway-medium";
+  margin-top: 15px;
+  font-family: "regular";
+  .alert {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    display: -webkit-inline-box;
+  }
+  .close {
+    margin-left: 10px;
+    font-size: 25px;
+    line-height: 0.7;
+    color: #474E5D;
+    opacity: 0.5;
+  }
 }
 
 #category-section {
-  .panel-footer, .panel-heading {
-    border-color: $grey;
-    background-color: transparent;
-    color: $black;
+  padding: 3em 0;
+  .header {
+    padding: 0 0 1.5em 0;
+    h2 {
+      font-family: "regular";
+      display: inline;
+      font-size: 1.75em;
+    }
+  }
+  .category-tiles {
+    .name {
+      margin-bottom: 10px;
+    }
+  }
+ .panel-heading {
+    border-color: $new;
+    background-color: $new;
   }
   .panel-heading a {
-    font-family: "raleway-medium";
+    font-family: "regular";
+    color: white;
   }
   .panel-body {
     padding: 0px;
-  }
-  .panel-footer p {
-    font-family: "raleway-regular";
-    margin: 0px;
-    font-size: 13px;
   }
   .panel-default:hover, .panel-default:focus {
       border-color: $yellow;
       box-shadow: 4px 4px 10px $light-black;
       .panel-heading {
         border-color: $yellow;
+        background-color: white;
         a {
           color: $yellow;
           text-decoration: none;
         }
-      }
-      .panel-footer {
-        border-color: $yellow;
-      }
-      .panel-footer a:hover, .panel-footer a:focus{
-        color: $yellow;
-        text-decoration: none;
       }
   }
   .ads-section {
@@ -241,21 +323,133 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
   }
 }
 
+#top-rated, #new-items {
+  .image-fit {
+    background-color: $new;
+    height: 200px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 1%;
+    border-radius: 6px;
+    img {
+      margin: auto;
+    }
+  }
+  border-top: 1px solid $grey;
+  padding: 3em 0;
+  .header {
+    padding: 0 0 1.5em 0;
+    h2 {
+      font-size: 1.75em;
+      display: inline;
+      font-family: "regular";
+    }
+    .view-more {
+      float: right;
+      font-size: .9em;
+      margin: .75em 0 0 0;
+      display: inline;
+      a {
+        color: $blue-grey;
+        &:hover, &:focus {
+          color: $yellow;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .details {
+    h3 {
+      font-size: 1.25em;
+      /*margin: 1em 0 0 0;*/
+      text-transform: capitalize;
+      a {
+        color: $new;
+        &:hover, &:focus {
+          text-decoration: none;
+          color: $yellow;
+        }
+      }
+    }
+    p {
+      font-size: .8em;
+      color: $blue-grey;
+      margin: 0.5em 0;
+    }
+  }
+}
+
+#new-list {
+  padding-bottom: 3em;
+  .nav-pills > li > a {
+    border-bottom: 2px solid $grey;
+    border-radius: 0px;
+    &:hover, &:focus {
+      color: $blue;
+    }
+  }
+  .nav-pills > li.active > a {
+    color: $black;
+    background-color: transparent;
+    border-bottom: 2px solid $blue;
+  }
+  .image-fit {
+    background-color: $new;
+    height: 200px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 1%;
+    border-radius: 6px;
+    img {
+      margin: auto;
+    }
+  }
+  .details {
+    h3 {
+      font-size: 1.25em;
+      /*margin: 1em 0 0 0;*/
+      text-transform: capitalize;
+      a {
+        color: $new;
+        &:hover, &:focus {
+          text-decoration: none;
+          color: $yellow;
+        }
+      }
+    }
+    p {
+      font-size: .8em;
+      color: $blue-grey;
+      margin: 0.5em 0;
+    }
+  }
+  .pagination > li > a, .pagination > li > span {
+    color: $blue;
+  }
+  .pagination > .disabled > span {
+    color: #777;
+  }
+  .pagination > .active > span {
+    color: #fff;
+    background-color: $blue;
+    border-color: $blue;
+  }
+}
+
 .content {
-  margin-top: 5em;
+  margin-top: 6.6em;
 }
 
 #sign_up, #sign_in, #forgot {
-  font-family: "raleway-medium";
+  font-family: "regular";
   .sign-up-title, .sign-in-title , .forgot-title{
     text-align: center;
     p {
-      text-transform: uppercase;
+      text-transform: capitalize;
+      margin-top: 20px;
       margin-bottom: 20px;
-      padding-top: 10px;
       padding-bottom: 15px;
-      font-size: 16px;
-      letter-spacing: 0.1em;
+      font-size: 1.75em;
       border-bottom : 1px solid $grey;
       color:$blue;
     }
@@ -270,6 +464,8 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
     .help-block {
       margin-left: 8px;
+      color: $blue-grey;
+      font-size: .9em;
     } 
     .parsley-errors-list {
       margin-left: 8px;
@@ -277,6 +473,9 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
       li {
         color: $red;
       }
+    }
+    .checkbox label {
+      color: $blue-grey;
     }
     button.hideShowPassword-toggle.hideShowPassword-toggle-show , button.hideShowPassword-toggle.hideShowPassword-toggle-hide {
       background-color: transparent;
@@ -307,10 +506,11 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
     .form-action {
       .btn {
-        color: $black;
+        color: white;
         background-color: $yellow;
-        padding-left: 3em;
-        padding-right: 3em;
+        padding: .5em 1em;
+        text-transform: capitalize;
+        font-weight: bold;
         border: none;
         &:hover, &:focus {
           background-color: $light-yellow;
@@ -321,7 +521,8 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
     .terms {
       text-align: center;
-      font-size: 12px;
+      color: $blue-grey;
+      font-size: .9em;
       padding-top: 10px;
       a {
         color: $yellow;
@@ -338,6 +539,8 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
     .help-block {
       margin-left: 8px;
+      color: $blue-grey;
+      font-size: .9em;
     } 
     .parsley-errors-list {
       margin-left: 8px;
@@ -367,10 +570,11 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
     .form-action {
       .btn {
-        color: $black;
+        color: white;
         background-color: $yellow;
-        padding-left: 0.5em;
-        padding-right: 0.5em;
+        padding: .5em 1em;
+        text-transform: capitalize;
+        font-weight: bold;
         border: none;
         &:hover, &:focus {
           background-color: $light-yellow;
@@ -409,19 +613,15 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
 }
 
 #edit {
-  font-family: "raleway-medium";
+  font-family: "regular";
   .edit-title{
-    margin-top: 15px;
     p {
-      text-transform: uppercase;
+      text-transform: capitalize;
       margin-bottom: 20px;
-      padding-top: 10px;
       padding-bottom: 15px;
-      font-size: 16px;
-      letter-spacing: 0.1em;
+      font-size: 1.75em;
       border-bottom : 1px solid $grey;
       color:$blue;
-      font-weight: bold;
     }
   }
   .edit-content {
@@ -433,6 +633,8 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
     .help-block {
       margin-left: 8px;
+      color: $blue-grey;
+      font-size: .9em;
     } 
     .parsley-errors-list {
       margin-left: 8px;
@@ -473,10 +675,11 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
     .form-action {
       .btn {
-        color: $black;
+        color: white;
         background-color: $yellow;
-        padding-left: 3em;
-        padding-right: 3em;
+        padding: .5em 1em;
+        text-transform: capitalize;
+        font-weight: bold;
         border: none;
         &:hover, &:focus {
           background-color: $light-yellow;
@@ -500,24 +703,21 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
 }
 
 #rent {
-  font-family: "raleway-medium";
+  .thumbnail {
+    background-color: $new;
+  }
   .rent-title{
-    margin-top: 15px;
     p {
-      text-transform: uppercase;
+      text-transform: capitalize;
       margin-bottom: 20px;
-      padding-top: 10px;
       padding-bottom: 15px;
-      font-size: 16px;
-      letter-spacing: 0.1em;
+      font-size: 1.75em;
       border-bottom : 1px solid $grey;
       color:$blue;
-      font-weight: bold;
     }
   }
   .rent-content {
     .well {
-      background-color: transparent;
       border-color: $light-grey;
     }
     .form-control {
@@ -526,7 +726,7 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     .add_fields {
       background-color: $blue;
       color: white;
-      font-family: "raleway-medium";
+      font-family: "regular";
       border-color: $blue;
       &:hover {
         outline: none;
@@ -547,6 +747,8 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     p.required:after{content:"*"}
     .help-block {
       margin-left: 8px;
+      color: $blue-grey;
+      font-size: .9em;
     } 
     .parsley-errors-list {
       margin-left: 8px;
@@ -577,7 +779,7 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     input.parsley-error, select.parsley-error, textarea.parsley-error {
       border: 1px solid $red;
       color: $red;
-      background-color: transparent;
+      background-color: white;
       &:focus {
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.4);
       }
@@ -585,16 +787,17 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     input.parsley-success, select.parsley-success, textarea.parsley-success {
       border: 1px solid $green;
       color: $green;
-      background-color: transparent;
+      background-color: white;
       &:focus {
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 255, 0, 0.4);
       }
     }
     .post {
-      color: $black;
+      color: white;
       background-color: $yellow;
-      padding-left: 2em;
-      padding-right: 2em;
+      padding: .5em 1em;
+      text-transform: capitalize;
+      font-weight: bold;
       border: none;
       &:hover, &:focus {
         background-color: $light-yellow;
@@ -645,23 +848,25 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
 }
 
 #verify-section {
-  font-family: "raleway-medium";
+  font-family: "regular";
   h3 {
     display: none;
   }
   .verify-title{
-    margin-top: 15px;
     p {
-      text-transform: uppercase;
+      text-transform: capitalize;
       margin-bottom: 20px;
-      padding-top: 10px;
       padding-bottom: 15px;
-      font-size: 16px;
-      letter-spacing: 0.1em;
+      font-size: 1.75em;
       border-bottom : 1px solid $grey;
       color:$blue;
-      font-weight: bold;
     }
+  }
+  .light {
+    color: $blue-grey;
+  }
+  .blue {
+    color: $blue;
   }
   a {
     text-decoration: underline;
@@ -684,14 +889,9 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     -webkit-box-shadow: 0 0 0px 1000px white inset;
   }
   button {
-      color: $black;
       background-color: $yellow;
-      padding-left: 3em;
-      padding-right: 3em;
-      border: none;
       display: inline-block;
       margin-bottom: 5px;
-      font-weight: normal;
       text-align: center;
       vertical-align: middle;
       touch-action: manipulation;
@@ -706,6 +906,11 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+      color: white;
+        padding: .5em 1em;
+        text-transform: capitalize;
+        font-weight: bold;
+        border: none;
       &:hover, &:focus {
         background-color: $light-yellow;
         border: none;
@@ -757,8 +962,21 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
 }
 
 #show {
+  .image-fit {
+    background-color: $new;
+    height: 380px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 1%;
+    border-radius: 6px;
+    img {
+      margin: auto;
+    }
+  }
   .r-bold {
-    font-weight: 600;
+    font-weight: bold;
+    font-size: 1em;
+    color: $new;
   }
   #image {
     margin-top: 20px;
@@ -766,22 +984,25 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
   .activethumb {
     border: 3px solid $yellow;
   }
-  font-family: "raleway-medium";
+  font-family: "regular";
   .show-title{
     margin-top: 15px;
-    p {
+    h3 {
       text-transform: capitalize;
-      padding-top: 10px;
-      padding-bottom: 15px;
-      font-size: 16px;
-      letter-spacing: 0.1em;
+      font-size: 1.5em;
       border-bottom : 1px solid $grey;
-      font-weight: bold;
       overflow: hidden;
       text-overflow: ellipsis;
+      color: $new;
+      padding-bottom: 15px;
     }
   }
   .show-content {
+    color: $new;
+    .review {
+      color: $blue-grey;
+      font-size: .9em;
+    }
     .share {
       padding-top: 5px;
     }
@@ -818,17 +1039,10 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
     .price {
       margin-top: 15px;
-      .number {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      .block {
-        display: block;
-      }
+      font-size: 1.3em;
+      color: $new;
     }
     .security {
-      .number {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
       .block {
         display: block;
       }
@@ -849,8 +1063,8 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
       .btn {
         background-color: $blue;
         color: white;
-        font-family: "raleway-medium";
-        border-color: $blue;
+        font-family: "regular";
+        border: none;
         margin-left: 5px;
         &:hover, &:focus, &:active {
           outline: none;
@@ -873,6 +1087,7 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
   }
 
   .tab-content {
+    color: $new;
     .terms {
       span {
         display: block;
@@ -881,6 +1096,7 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     .review-title {
       text-transform: capitalize;
       font-weight: 600;
+      font-size: 1.1em;
     }
     i {
       font-size: 20px;
@@ -888,9 +1104,9 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
       cursor: pointer;
     }
     .review-by {
-      color: $light-black;
+      color: $blue-grey;
       padding-top: 10px;
-      font-size: 13px;
+      font-size: .9em;
     }
     .comment {
       padding-top: 10px;
@@ -898,13 +1114,13 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     .posted {
       margin-top: 10px;
       margin-bottom: 25px;
-      color: $light-black;
-      font-size: 13px;
+      color: $blue-grey;
+      font-size: .9em;
     }
     .btn {
       background-color: $blue;
       color: white;
-      font-family: "raleway-medium";
+      font-family: "regular";
       border-color: $blue;
       &:hover, &:focus, &:active {
         outline: none;
@@ -918,7 +1134,18 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
 }
 
 #list {
-  font-family: "raleway-medium";
+  .image-fit {
+    background-color: $new;
+    height: 200px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 1%;
+    border-radius: 6px;
+    img {
+      margin: auto;
+    }
+  }
+  font-family: "regular";
   .nav-pills > li > a {
     border-bottom: 2px solid $grey;
     border-radius: 0px;
@@ -938,13 +1165,14 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
       }
     }
     .title {
-      color: $dark-grey;
+      color: $blue-grey;
+      font-size: 1em;
       p {
-        font-size: 25px;
+        font-size: 1.4em;
         margin-bottom: 0px;
         text-transform: capitalize;
         a {
-            color: $black;
+            color: $new;
             &:hover, &:focus {
               color: $yellow;
               text-decoration: none;
@@ -973,25 +1201,32 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
 }
 
 #category-menu {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  .nav-pills {
+  padding: .5em 0 2.5em 0;
+  ul {
     li {
-      border: 1px solid $blue;
+      list-style: none;
+      background-color: $blue;
       margin-right: 10px;
+      margin-bottom: 10px;
       border-radius: 4px;
+      padding: .3em .5em; 
       a {
-        padding: 5px 10px;
-          &:hover, &:focus, &:active {
-          background-color: $blue;
-          color: white;
+        color: white;
+      }
+      &:hover, &:focus {
+        background-color: $light-blue;
+        a {
+          text-decoration: none;
         }
       }
     }
   }
-  .nav-pills > li.active > a {
-    background-color: $blue;
-    color: white;
+  ul > li.active {
+    a {
+      color: $blue-grey;
+    }
+    border: 1px solid $blue;
+    background-color: white;
   }
 }
 
@@ -1002,10 +1237,10 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
   bottom: 0;
   left: 0;
   text-align: center;
-  font-family: "raleway-medium";
-  padding-top: 2em;
+  font-family: "regular";
+  padding-top: 3em;
   a {
-    color: $black;
+    color: $blue-grey;
   }
   .social-media a {
     display: inline-block;
@@ -1039,9 +1274,8 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
       list-style-type: none;
       padding-left: 10px;
       padding-right: 10px;
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0.1em;
+      text-transform: capitalize;
+      font-size: .9em;
       a:hover, a:focus {
         color: $yellow;
         text-decoration: none;
@@ -1049,14 +1283,155 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     }
   }
   .copyright {
-    background-color: $black;
+    padding: 1em 0;
+    background-image: url("blur.jpg");
+    background-size: cover;
+    background-color: $new;
+    .logo {
+      padding-bottom: .5em;
+      a {
+        font-size: 1.15em;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: white;
+        span {
+          font-family: "hightide";
+          font-weight: 300;
+          color: $yellow;
+          margin-right: -6px;
+          font-size: 1.1em;
+        }
+        &:hover, &:focus {
+          color: white;
+          text-decoration: none;
+        } 
+      }
+    }
     p {
-      padding-top: 15px;
-      padding-bottom: 5px;
       color: white;
-      font-size: 11px;
+      font-size: 0.8em;
     }
   }
 
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
 }
+
+#notification {
+  margin-top: 6px;
+  .btn-default {
+    color: $blue-grey;
+    &:hover, &:focus, &:active {
+      background-color: white;
+    }
+  }
+  .btn .badge {
+    top: -10px;
+    background-color: $blue;
+  }
+
+  .btn-default:active:hover, .btn-default:active:focus, .btn-default:active.focus, .btn-default.active:hover, .btn-default.active:focus, .btn-default.active.focus, .open > .btn-default.dropdown-toggle:hover, .open > .btn-default.dropdown-toggle:focus, .open > .btn-default.dropdown-toggle.focus {
+    background-color: white;
+    border-color: white;
+    outline: none;
+  }
+
+  .dropdown-header {
+    text-transform: capitalize;
+    font-size: 1em;
+    border-bottom : 1px solid $grey;
+    color:$blue;
+    padding: .5em 0 .7em 0;
+  }
+
+  .dropdown-menu .view a {
+    border-bottom: none;
+    padding: .7em 0 .7em 0;
+    color: $new;
+  }
+
+  .notification-dropdown {
+    margin-top: 4px;
+    button {
+      border: none;
+    }
+  }
+
+  .dropdown-menu li {
+    width: 25em;
+  }
+  .dropdown-menu li a {
+    padding: 10px 0 10px 0;
+    margin: 0 20px 0 20px;
+    border-bottom: 1px solid $grey; 
+    white-space: normal;
+    color: $new;
+    .time {
+      display: block;
+      font-size: .8em;
+      color: $blue-grey;
+      text-transform: lowercase;
+    }
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
+  .dropdown-menu .no {
+    padding: 10px 0 10px 0;
+    margin: 0 20px 0 20px;
+    white-space: normal;
+    color: $new;
+    text-transform: capitalize;
+  }
+
+  .dropdown-menu .unread {
+    background-color: $new;
+    a {
+      color: white;
+      &:hover, &:focus {
+        background-color: $new;
+      }
+    }
+  }
+
+  .glyphicon-bell {
+    font-size: 1.2em;
+  }
+}
+
+#notification-list {
+  .title{
+    p {
+      text-transform: capitalize;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      font-size: 1.75em;
+      border-bottom : 1px solid $grey;
+      color:$blue;
+    }
+  }
+  .each a .row {
+    padding: 10px 0 10px 0;
+    margin: 0 20px 0 20px;
+    text-transform: capitalize;
+    color: $new;
+    .time {
+      display: block;
+      font-size: .8em;
+      color: $blue-grey;
+      text-transform: lowercase;
+    }
+    &:hover, &:focus {
+      background-color: $grey;
+    }
+  }
+}
+
+.ads-section {
+    background-color: $grey;
+  }
 

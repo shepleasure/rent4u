@@ -25,3 +25,6 @@ module Acme::RegistrationsHelper
   end
 
 end
+
+
+

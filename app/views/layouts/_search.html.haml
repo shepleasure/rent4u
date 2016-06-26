@@ -1,14 +1,16 @@
 #search-section
-	= form_tag search_main_listings_path, method: :get, :class => "form-inline" do |f|
-		.form-group
-			%i.material-icons.md-18
-				&#xE8B6;
-			= text_field_tag :search_main, nil, placeholder: 'Looking for..', :class => "form-control"
-		.form-group
-			%i.material-icons.md-18
-				&#xE0C8;
-			= text_field_tag :location, nil, placeholder: 'Near..', :class => "form-control"
-		.form-group
-			= select_tag :category, options_for_select(Category.all.map { |c| [c.name, c.id] }), :include_blank => 'All categories', :default => nil, :class => "form-control"
+	.container
+		= render "layouts/flash"
+		= form_tag search_main_listings_path, method: :get, :class => "form-inline" do |f|
+			.form-group
+				%i.material-icons.md-18
+					&#xE8B6;
+				= text_field_tag :search_main, nil, placeholder: 'Looking for..', :class => "form-control"
+			.form-group
+				%i.material-icons.md-18
+					&#xE0C8;
+				= text_field_tag :location, nil, placeholder: 'Near..', :class => "form-control"
+			.form-group
+				= select_tag :category, options_for_select(Category.all.map { |c| [c.name, c.id] }), :include_blank => 'All categories', :default => nil, :class => "form-control"
 
-		= submit_tag 'Search', :class => "btn btn-default"
+			= submit_tag 'Search', :class => "btn btn-default"

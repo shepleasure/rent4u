@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   root 'categories#index'
 
   resources :categories, param: :name do
+    collection do
+      get 'rated'
+      get 'new_items'
+    end
   	resources :subcategories
   end
 

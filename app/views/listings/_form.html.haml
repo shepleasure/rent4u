@@ -33,7 +33,7 @@
 					%p.help-block You can upload till 6 images. You need to upload atleast one image.
 
 		.form-group
-			= f.input :title, input_html: { class: 'form-control', :'data-parsley-required-message' => 'Title is required', :'data-parsley-length' => '[2, 32]',                                                  :'data-parsley-length-message' => 'Title should contain atleast 2 characters',                    :'data-parsley-trigger' => 'change  keyup' },  :placeholder => 'Title for your item'
+			= f.input :title, input_html: { class: 'form-control', :'data-parsley-required-message' => 'Title is required', :'data-parsley-length' => '[2, 32]',                                                  :'data-parsley-length-message' => 'Title should contain atleast 2 characters',                    :'data-parsley-trigger' => 'change focusout keyup' },  :placeholder => 'Title for your item'
 
 		.form-group
 			= f.input :description, input_html: { class: 'form-control', placeholder: "Describe your item" , :'data-parsley-required-message' => 'Description is required', :'data-parsley-trigger' => 'change focusout keyup'}
@@ -91,6 +91,7 @@
 				.form-group#security-amount
 					= f.input :security_amount, input_html: { class: 'form-control', :'data-parsley-required-message' => 'Security amount is required', :'data-parsley-trigger' => 'change focusout keyup', :'data-parsley-pattern' => "/\\d+(?:[.,]\\d+)?/", :'data-parsley-pattern-message' => 'Price seems to be invalid' }, :placeholder => 'INR'
 
+	%p.help-block By clicking 'Post' you agree to our Terms of Use & Posting Rules
 	= f.button :submit, ( f.object.new_record? ? "Post an Item" : "Update an Item"), class: "btn btn-default post"
 
 

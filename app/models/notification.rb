@@ -8,4 +8,5 @@ class Notification < ActiveRecord::Base
   	def self.unread
 	  where(:read => false)
 	end
+
 end

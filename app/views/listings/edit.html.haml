@@ -1,22 +1,25 @@
-.bread
-	= link_to "Home", root_path
-	>
-	= link_to @listing.title.capitalize, listing_path(@listing)
-	>
-	Edit an Item
+.container
+	.bread
+		= link_to "Home", root_path
+		>
+		= link_to @listing.title.capitalize, listing_path(@listing)
+		>
+		Edit an Item
 
-.row
-	.col-md-8
-		#rent
-			.rent-title
-				%p Edit an Item
+	= render "layouts/flash"
 
-			.rent-content
-				= render 'form'
-				
-			.rent-footer
-				%p
-				= link_to "Back", :back
-	.col-md-4
+	.row
+		.col-md-8
+			#rent
+				.rent-title
+					%p Edit an Item
 
-.foot-space.hidden-md.hidden-lg
+				.rent-content
+					= render 'form'
+					
+				.rent-footer
+					%p
+					= link_to "Back", :back
+		.col-md-4
+
+	.foot-space.hidden-md.hidden-lg
