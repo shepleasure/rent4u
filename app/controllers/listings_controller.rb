@@ -116,7 +116,7 @@ class ListingsController < ApplicationController
 	end
 
 	def find_listing
-		@listing = Listing.find(params[:id])
+		@listing = Listing.friendly.find(params[:id])
 	end
 
 	def verified

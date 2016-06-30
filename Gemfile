@@ -27,6 +27,7 @@ gem 'social-share-button', '~> 0.1.10'
 gem 'material_icons'
 gem "parsley-rails"
 gem 'file_validators'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'byebug'

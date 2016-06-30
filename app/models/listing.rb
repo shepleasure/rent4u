@@ -9,6 +9,9 @@ class Listing < ActiveRecord::Base
 	validates_presence_of :security
 	validates_presence_of :price
 
+	extend FriendlyId
+	friendly_id :title, use: :slugged
+
 	validate do |listing|
     	listing.errors[:base] << "Atleast one image is required. Upload Image below" if listing.listing_attachments.blank?
   	end
