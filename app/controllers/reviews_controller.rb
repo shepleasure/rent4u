@@ -5,6 +5,8 @@ class ReviewsController < ApplicationController
 	before_action :authenticate_user!
 
 	def new
+		set_meta_tags title: 'Write Review', 
+					  description: "Mrentz write review page."
 		if current_user == @listing.user
 			redirect_to @listing
 		else
@@ -37,6 +39,8 @@ class ReviewsController < ApplicationController
 	end
 
 	def edit
+		set_meta_tags title: 'Edit Review', 
+					  description: "Mrentz edit review page."
 	end
 
 	def update

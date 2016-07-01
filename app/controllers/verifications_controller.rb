@@ -19,6 +19,8 @@ class VerificationsController < ApplicationController
 	end
 
 	def verify
+		set_meta_tags title: 'Verify', 
+					  description: "Mrentz verify phone number page."
       if current_user.verification_code == params[:verification_code]
 	      current_user.is_verified = true
 	      current_user.verification_code = ''

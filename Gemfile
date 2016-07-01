@@ -28,6 +28,7 @@ gem 'material_icons'
 gem "parsley-rails"
 gem 'file_validators'
 gem 'friendly_id'
+gem 'meta-tags'
 
 group :development, :test do
   gem 'byebug'

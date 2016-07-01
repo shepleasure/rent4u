@@ -5,9 +5,11 @@ class Acme::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+   def new
+        set_meta_tags title: 'Sign Up', 
+            description: "Mrentz Sign up page."
+     super
+   end
 
   # POST /resource
   # def create
@@ -15,9 +17,11 @@ class Acme::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   def edit
+        set_meta_tags title: 'My Account', 
+            description: "Mrentz My Accounts Edit page."
+     super
+   end
 
   # PUT /resource
   # def update

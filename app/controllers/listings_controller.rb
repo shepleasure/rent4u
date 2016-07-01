@@ -6,6 +6,8 @@ class ListingsController < ApplicationController
 
 
 	def new
+        set_meta_tags title: 'Rent An Item', 
+            description: "Mrentz Rent item form page."
 		@listing = 	Listing.new
 	end
 
@@ -35,6 +37,7 @@ class ListingsController < ApplicationController
 	end
 
 	def show
+        set_meta_tags description: "Mrentz Items show page."
 		if @listing.listing_attachments.blank?
 			redirect_to :back
 		end
@@ -48,6 +51,8 @@ class ListingsController < ApplicationController
 	end
 
 	def edit
+        set_meta_tags title: 'Edit An Item', 
+            description: "Mrentz Edit item form page."
 	end
 
 	def update
@@ -80,7 +85,8 @@ class ListingsController < ApplicationController
 	end
 
 	def search_main
-
+        set_meta_tags title: 'Search Results', 
+            description: "Mrentz Search results page."
 		@new_listings = Listing.search_main(params).order("created_at DESC").paginate(:page => params[:new_page], :per_page => 12)
 
 		@high_listings = Listing.search_main(params).order("total DESC").paginate(:page => params[:high_page], :per_page => 12)
@@ -92,7 +98,8 @@ class ListingsController < ApplicationController
 	end
 
 	def mylistings
-			
+		set_meta_tags title: 'My Items', 
+					  description: "Mrentz My Items page."
 		@new_listings = Listing.where(user: current_user).order("created_at DESC").paginate(:page => params[:new_page], :per_page => 12)
 
 		@high_listings = Listing.where(user: current_user).order("total DESC").paginate(:page => params[:high_page], :per_page => 12)

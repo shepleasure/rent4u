@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
 
 	def index
+		set_meta_tags title: 'Rent Items', 
+					  description: "The place where you can earn or save money by renting. Mrentz Home page."
+
 		@categories = Category.all
 		@book = @categories[0]
 		@camera = @categories[1]
@@ -21,6 +24,7 @@ class CategoriesController < ApplicationController
 	end
     
 	def show
+        set_meta_tags description: "Mrentz Catogories page."
 		@category = Category.find_by(name: params[:name])
 		@category_id = @category.id
 
@@ -64,6 +68,8 @@ class CategoriesController < ApplicationController
 	end
 
 	def rated
+		set_meta_tags title: 'Top rated Items', 
+					  description: "Mrentz top rated items page."
 		@all = Category.all
 		if params[:category].blank? || params[:category] == "all"
 			@listings = Listing.joins(:reviews, :listing_attachments).select("listings.*, avg(reviews.rating) as average_rating").group("listings.id").order("average_rating DESC").paginate(:page => params[:page], :per_page => 12)
@@ -76,6 +82,8 @@ class CategoriesController < ApplicationController
 	end
 
 	def new_items
+		set_meta_tags title: 'New Items', 
+					  description: "Mrentz new items page."
 		@all = Category.all
 		if params[:category].blank? || params[:category] == "all"
 			@listings = Listing.order("created_at DESC").paginate(:page => params[:page], :per_page => 12)
