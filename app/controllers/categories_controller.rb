@@ -1,8 +1,6 @@
 class CategoriesController < ApplicationController
 
 	def index
-		set_meta_tags title: 'Rent Items', 
-					  description: "The place where you can earn or save money by renting. Mrentz Home page."
 
 		@categories = Category.all
 		@book = @categories[0]
