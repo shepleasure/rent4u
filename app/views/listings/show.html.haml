@@ -41,6 +41,11 @@
 
 						.col-md-12.city
 							%p
+								%span.r-bold Contact Number :
+								= @listing.user.mobile_number
+
+						.col-md-12.city
+							%p
 								%span.r-bold City :
 								- if @listing.locality.blank?
 									= @listing.city

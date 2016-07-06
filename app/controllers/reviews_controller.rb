@@ -80,6 +80,6 @@ class ReviewsController < ApplicationController
 	end
 
 	def find_listing
-		@listing = Listing.find(params[:listing_id])
+		@listing = Listing.friendly.find(params[:listing_id])
 	end
 end
