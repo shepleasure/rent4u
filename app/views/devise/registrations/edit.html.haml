@@ -22,7 +22,7 @@
 
                             = f.input :mobile_number, required: true, :input_html => {                        :'data-parsley-required-message' => 'Mobile number is required',              :'data-parsley-pattern' => "^[7-9][0-9]{9}$",                                  :'data-parsley-pattern-message' => 'Invalid Mobile number',                   :'data-parsley-trigger' => 'change focusout keyup'}, :placeholder => 'Mobile Number'
 
-                            = f.hidden_field :is_verified, required: true, value: @test
+                            = f.hidden_field :is_verified, required: true
 
                             = f.input :email, required: true, :input_html => {                                :'data-parsley-required-message' => 'Email is required',                      :'data-parsley-email-message' => 'Not a valid email address',                  :'data-parsley-trigger' => 'change focusout keyup'}, :placeholder => 'Email'
 
@@ -45,8 +45,7 @@
 %script
     $(document).ready(function(){
     $("#user_mobile_number").change(function(){
-    - @test = 'false'
+    document.getElementById('user_is_verified').value = false;
     });
     });
-
 

@@ -11,8 +11,15 @@ Rails.application.routes.draw do
 
   match '/verifications',    to: 'verifications#sendpin',    via: :get
 
+  post 'details' => 'details#create'
+
+  patch 'details' => 'details#verify'
+
+  match '/details',    to: 'details#sendpin',    via: :get
+
   resources :listing_attachments
   devise_for :users, :controllers => { :registrations => "acme/registrations" }
+
 
   root 'categories#index'
 

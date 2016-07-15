@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
 	before_action :verified, only: [ :new ]
 
 
+
 	def new
         set_meta_tags title: 'Rent An Item', 
             description: "Mrentz Rent item form page."
@@ -37,6 +38,7 @@ class ListingsController < ApplicationController
 	end
 
 	def show
+	
         set_meta_tags description: "Mrentz Items show page."
 		if @listing.listing_attachments.blank?
 			redirect_to :back
@@ -125,6 +127,7 @@ class ListingsController < ApplicationController
 	def find_listing
 		@listing = Listing.friendly.find(params[:id])
 	end
+
 
 	def verified
 		if current_user.needs_mobile_number_verifying? 

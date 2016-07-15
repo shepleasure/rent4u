@@ -25,7 +25,7 @@ class VerificationsController < ApplicationController
 	      current_user.is_verified = true
 	      current_user.verification_code = ''
 	      current_user.save
-	      redirect_to new_listing_path, :flash => { :success => "Thank you for verifying your mobile number. You can now rent your item." }
+	      redirect_to root_path, :flash => { :success => "Thank you for verifying your mobile number. You can now rent your item." }
 	      return
 	    else
 	      redirect_to verifications_path, :flash => { :errors => "Invalid verification code." }

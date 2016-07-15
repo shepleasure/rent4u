@@ -4,6 +4,8 @@ class Acme::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
 
+
+
   # GET /resource/sign_up
    def new
         set_meta_tags title: 'Sign Up', 
@@ -47,7 +49,7 @@ class Acme::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:fullname, :email, :password, :password_confirmation, :mobile_number)
+      u.permit(:fullname, :email, :password, :password_confirmation, :mobile_number, :is_verified)
     end
   end
 
@@ -58,13 +60,26 @@ class Acme::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def after_sign_up_path_for(resource)
-    current_user.needs_mobile_number_verifying? ? verifications_path : new_listing_path
-  end
-
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
+
+  def after_sign_up_path_for(resource)
+      verifications_path
+  end 
+
+=begin
+  def after_update_path_for(resource)
+    if current_user.is_verified?
+      root_path
+    else
+      verifications_path
+    end
+  end
+=end
+
+
+
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
@@ -75,4 +90,5 @@ class Acme::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
 end

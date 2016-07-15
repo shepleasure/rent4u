@@ -29,6 +29,7 @@ gem "parsley-rails"
 gem 'file_validators'
 gem 'friendly_id'
 gem 'meta-tags'
+gem 'pry', '~> 0.10.3'
 
 group :development, :test do
   gem 'byebug'

@@ -18,6 +18,8 @@
                                     = f.input :fullname, required: true, :input_html => {                             :'data-parsley-required-message' => 'Full name is required',                   :'data-parsley-pattern' => '^[a-zA-Z]+(?: [a-zA-Z]+)?$',                                     :'data-parsley-pattern-message' => 'Full name can only contain Alphabets',    :'data-parsley-length' => '[2, 32]',                                          :'data-parsley-length-message' => 'Full name should contain atleast 2 characters',                                                                  :'data-parsley-trigger' => 'change focusout keyup submit'}, autofocus: true, label: false, :placeholder => 'Full name'
 
                                     = f.input :mobile_number, required: true, :input_html => {                        :'data-parsley-required-message' => 'Mobile number is required',              :'data-parsley-pattern' => "^[7-9][0-9]{9}$",                                  :'data-parsley-pattern-message' => 'Invalid Mobile number',                   :'data-parsley-trigger' => 'change focusout keyup submit'}, label: false, :placeholder => 'Mobile Number'
+
+                                    = f.hidden_field :is_verified, required: true, value: false
                                     
                                     = f.input :email, required: true, :input_html => {                                :'data-parsley-required-message' => 'Email is required',                      :'data-parsley-email-message' => 'Not a valid email address',                  :'data-parsley-trigger' => 'change focusout keyup submit'},  label: false, :placeholder => 'Email'
 

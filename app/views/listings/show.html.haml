@@ -42,7 +42,16 @@
 						.col-md-12.city
 							%p
 								%span.r-bold Contact Number :
-								= @listing.user.mobile_number
+								- if user_signed_in?
+									- if current_user.needs_mobile_number_verifying?
+										= link_to "Verify your number", verifications_path, 'data-no-turbolink' => true
+										to get Contact Details
+									- else
+										= @listing.user.mobile_number
+								- else
+									= link_to "Sign in", new_user_session_path, 'data-no-turbolink' => true 
+									to get Contact Details
+
 
 						.col-md-12.city
 							%p

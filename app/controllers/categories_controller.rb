@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
 
+	before_action :verified, only: [ :index ]
+
 	def index
 
 		@categories = Category.all
@@ -91,6 +93,14 @@ class CategoriesController < ApplicationController
 			
 			@listings = Listing.where(category_id: @category_id).order("created_at DESC").paginate(:page => params[:page], :per_page => 12)
 
+		end
+	end
+
+	private
+
+	def verified
+		if !current_user.nil? && current_user.needs_mobile_number_verifying? 
+			redirect_to(verifications_path)
 		end
 	end
 
