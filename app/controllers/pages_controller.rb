@@ -3,7 +3,9 @@ class PagesController < ApplicationController
 	end
 	def term	
 	end
-	def privacy	
+	def privacypolicy
+		set_meta_tags title: 'Privacy Policy', 
+            description: "Mrentz Privacy Policy Page."
 	end
 	def about	
 	end
