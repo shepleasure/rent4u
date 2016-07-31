@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 	def help	
 	end
-	def term	
+	def terms	
 	end
 	def privacypolicy
 		set_meta_tags title: 'Privacy Policy', 

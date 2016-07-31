@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   
   match '/help',    to: 'pages#help',    via: :get
-  match '/term',    to: 'pages#term',    via: :get
+  match '/terms',    to: 'pages#terms',    via: :get
   match '/privacypolicy', to: 'pages#privacypolicy', via: :get
   match '/about',   to: 'pages#about',   via: :get
   match '/contact', to: 'pages#contact', via: :get

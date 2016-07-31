@@ -1454,9 +1454,8 @@ ul#ui-id-2.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     color: $blue;
   }
   a {
-    text-decoration: underline;
+    color: $yellow;
     &:hover, &:focus {
-      color: $yellow;
       text-decoration: underline;
     }
   }
