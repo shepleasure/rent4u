@@ -30,6 +30,7 @@ gem 'file_validators'
 gem 'friendly_id'
 gem 'meta-tags'
 gem 'pry', '~> 0.10.3'
+gem 'mail_form', '~> 1.5', '>= 1.5.1'
 
 group :development, :test do
   gem 'byebug'

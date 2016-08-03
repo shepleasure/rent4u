@@ -40,12 +40,12 @@ Rails.application.routes.draw do
     resources :reviews, except: [:show, :index]
   end
 
+  resources :contacts, only: [:new, :create]
   
   match '/help',    to: 'pages#help',    via: :get
   match '/terms',    to: 'pages#terms',    via: :get
   match '/privacypolicy', to: 'pages#privacypolicy', via: :get
   match '/about',   to: 'pages#about',   via: :get
-  match '/contact', to: 'pages#contact', via: :get
   match '/subcategories/find_by_category', to: 'subcategories#find_by_category', via: :post
   match '/mylistings', to: 'listings#mylistings', via: :get
 

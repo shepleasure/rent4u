@@ -1,0 +1,44 @@
+- title "Mrentz | Contact us"
+.container
+	.bread
+		= link_to "Home", root_path
+		>
+		Contact us
+	= render "layouts/flash"
+	.row
+		.col-md-4
+			.text-center
+				= render "layouts/flash"
+			#rent
+				.rent-title
+					%p Say Hello!
+
+				.rent-content
+					= simple_form_for @contact, html: { multipart: true, 'data-parsley-validate' => '' } do |f|
+						.form-group
+							= f.input :name, required: true, :input_html => { class: 'form-control', :'data-parsley-required-message' => 'Full name is required',                   :'data-parsley-pattern' => '^[a-zA-Z]+(?: [a-zA-Z]+)?$',                                     :'data-parsley-pattern-message' => 'Full name can only contain Alphabets',    :'data-parsley-length' => '[2, 32]',                                          :'data-parsley-length-message' => 'Full name should contain atleast 2 characters',                                                                  :'data-parsley-trigger' => 'change focusout keyup submit'}, autofocus: true
+						.form-group
+							= f.input :email, required: true, :input_html => { class: 'form-control',                                :'data-parsley-required-message' => 'Email is required',                      :'data-parsley-email-message' => 'Not a valid email address',                  :'data-parsley-trigger' => 'change focusout'}
+
+						.form-group
+							%label{:for => "message"} Message*
+							= f.text_area :message, required: true, :as => :text, :rows => "4", class: 'form-control', :'data-parsley-required-message' => 'Message is required', :'data-parsley-trigger' => 'change focusout keyup'
+
+
+						.hidden
+							= f.input :nickname, :hint => 'Leave this field blank!'
+
+						= f.button :submit, "Send Message", class: "btn btn-default post"
+		.col-md-4
+		.col-md-4
+			#side-menu
+				.list-group
+					= link_to "Home", root_path, :class => "list-group-item #{'active' if current_page?(root_path)}"
+					= link_to "Help & FAQ", help_path, :class => "list-group-item #{'active' if current_page?(root_path)}"
+					= link_to "Terms & Conditions", terms_path, :class => "list-group-item #{'active' if current_page?(terms_path)}"
+					= link_to "Privacy Policy", privacypolicy_path, :class => "list-group-item #{'active' if current_page?(privacypolicy_path)}"
+					= link_to "About Us" , about_path, :class => "list-group-item #{'active' if current_page?(root_path)}"
+					= link_to "Contact Us", new_contact_path, :class => "list-group-item #{'active' if current_page?(new_contact_path) || current_page?(contacts_path) }"
+
+	.foot-space     
+
