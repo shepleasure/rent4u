@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   resources :contacts, only: [:new, :create]
   
-  match '/help',    to: 'pages#help',    via: :get
+  match '/howtorent',    to: 'pages#howtorent',    via: :get
   match '/terms',    to: 'pages#terms',    via: :get
   match '/privacypolicy', to: 'pages#privacypolicy', via: :get
   match '/about',   to: 'pages#about',   via: :get
